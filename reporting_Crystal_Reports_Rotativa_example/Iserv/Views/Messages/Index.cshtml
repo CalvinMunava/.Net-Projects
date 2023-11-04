@@ -1,0 +1,169 @@
+﻿@model IEnumerable<Iserv.Models.Message>
+
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Index";
+    if(User.IsInRole("Admin"))
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+    }
+    else if(User.IsInRole("Customer"))
+    {
+        Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+
+    }
+    else if(User.IsInRole("ServiceProvider"))
+    {
+        Layout = "~/Views/Shared/_LayoutProvider.cshtml";
+
+    }
+}
+
+<h2 style="color:white">Messages  @DateTime.Today.DayOfWeek  @DateTime.Now.ToShortTimeString() </h2>
+<br />
+<div style="background-color:#1D2026;height:600px;border-radius:30px;margin-left:20%">
+
+    <div class="container text-dark" style="border-radius:20px;width:auto;float:left;">
+        <div class="form-horizontal">
+            <div class="mb-4">
+                <button class="btn btn-info" style="width:90px;border-radius:20px" id="inboxbtn"> Inbox </button>
+                <button class="btn btn-dark" style="width:90px;border-radius:20px" id="sentbtn"> Sent</button><br />
+            </div>
+        </div>
+    </div>
+
+    <!--Inbox table-->
+    <div id="inbox">
+        <table class="table table-sm   table-hover" style="border-radius:20px;width:800px;color:white;background-color:#1D2026">
+            @foreach (var item in Model.Where(x=> x.MesseageLocation == "Inbox" && x.MessageSentTo == User.Identity.GetUserName()))
+            {
+                <tr>
+                    <td class="text-info">
+                        @DateTime.Parse(item.DateSent.ToString()).DayOfWeek <span style="color:white"> at  </span>   @DateTime.Parse(item.TimeSent.ToString()).ToShortTimeString()
+                    </td>
+                    <td style="color:white">
+                      From: <span class="text-info"> @item.SentFrom </span>
+                    </td>
+                    <td>
+                        <i class="fa fa-envelope"></i> <span class="text-info">Message: </span>   <button class="btn" style="background-color:rgba(0,0,0,0)" id="@item.MessageID" data-toggle="modal" data-target="#modal-@item.MessageID"> @item.MessageBody </button>
+                    </td>
+                </tr>
+            }
+        </table>
+        @foreach (var item in Model.Where(x => x.MesseageLocation == "Inbox" && x.MessageSentTo == User.Identity.GetUserName()))
+        {
+            <div class="modal fade" id="modal-@item.MessageID" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false" style="margin-left:-69px;margin-top:8%">
+
+                <div class="modal-dialog">
+
+                    <div class="modal-content" style="background-color:#1D2026;color:white;border-radius:15px;align-content:center">
+
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">Message From : <span class="text-info">@item.SentFrom</span></h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        @using (Html.BeginForm("Create", "Messages", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="modal-body">
+
+                                <p>Message sent at <span class="text-info">  @DateTime.Parse(item.TimeSent.ToString()).ToShortTimeString() </span> on <span class="text-info">  @DateTime.Parse(item.DateSent.ToString()).DayOfWeek.ToString()  </span></p>
+                                <p class="text-info">@item.MessageBody</p>
+
+                                <!--Below are inputs-->
+                                <input style="display: none" type="datetime" id="DateSent" name="DateSent" value="@DateTime.Now.ToShortDateString()" />
+                                <input style="display:none" type="time" id="TimeSent" name="TimeSent" value="@DateTime.Now.ToShortTimeString()" />
+                                <input style="display:none" type="text" id="MesseageLocation" name="MesseageLocation" value="Inbox" />
+                                <input style="display:none" type="text" id="SentFrom" name="SentFrom" value="@User.Identity.Name" />
+                                <input style="display:none" type="text" id="MessageSentTo" name="MessageSentTo" value="@item.SentFrom" />
+                                <textarea placeholder="Enter Message" style="background-color:rgba(0,0,0,0.88);color:white" required rows="2" id="MessageBody" name="MessageBody"></textarea>
+
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-info"><i class="fa fa-check"></i> Send</button>
+                            </div>
+
+                        }
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <!--Sent table-->
+    <div id="sent">    
+        <table class="table table-sm   table-hover" style="border-radius:20px;width:800px">
+
+            @foreach (var item in Model.Where(x => x.SentFrom == User.Identity.Name))
+            {
+                <tr>
+                    <td class="text-info">
+                        <span style="color:white">Sent on </span>  @DateTime.Parse(item.DateSent.ToString()).DayOfWeek  <span style="color:white"> at </span> @DateTime.Parse(item.TimeSent.ToString()).ToShortTimeString()
+                    </td>
+                    <td style="color:white">
+                        <i class="fa fa-reply" aria-hidden="true"></i>
+                        <button class="btn" style="background-color:rgba(0,0,0,0)" id="sent-@item.MessageID" data-toggle="modal" data-target="#sent-modal-@item.MessageID">
+                         @item.MessageBody
+                        </button>
+                    </td>
+                </tr>
+            }
+        </table>
+        @foreach (var item in Model.Where(x => x.SentFrom == User.Identity.Name))
+        {
+            <div class="modal fade" id="sent-modal-@item.MessageID" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false" style="margin-left:-69px;margin-top:8%">
+
+                <div class="modal-dialog">
+
+                    <div class="modal-content" style="background-color:#1D2026;color:white;border-radius:15px;align-content:center">
+
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">Sent Message</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+
+                        <div class="modal-body">
+
+                            <p>Message sent at <span class="text-info">  @DateTime.Parse(item.TimeSent.ToString()).ToShortTimeString() </span> on <span class="text-info">  @DateTime.Parse(item.DateSent.ToString()).DayOfWeek.ToString()  </span> to <span class="text-info"> @item.MessageSentTo</span></p>
+                            <p class="text-info">@item.MessageBody</p>
+
+                        </div>
+
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+<!--Archived table-->
+<!--Section for javascript-->
+@section scripts
+{
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //first hide evrything
+            $("#sent").hide();
+
+            $('#sentbtn').on('click', function () {
+                $("#sent").show();
+                $("#inbox").hide();
+            });
+
+            $('#inboxbtn').on('click', function () {
+            $("#sent").hide();
+            $("#inbox").show();
+            });
+
+
+
+        });
+    </script>
+}

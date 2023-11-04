@@ -1,0 +1,184 @@
+﻿@model IEnumerable<Iserv.Models.ServiceRequestLine>
+
+@{
+    ViewBag.Title = "ServiceRequestsProvider";
+    Layout = "~/Views/Shared/_LayoutProvider.cshtml";
+}
+
+
+<div style="background-color:#1D2026;height:auto;width:auto;border-radius:30px;">
+    <div class="container text-dark" style="border-radius:20px;width:auto;float:left;">
+        <div class="form-horizontal">
+            <div class="mb-4">
+                <button class="btn btn-info" style="width:200px;border-radius:20px" id="recentbtn">Recent Requests</button>
+                <button class="btn btn-dark" style="width:200px;border-radius:20px" id="passedbtn">Past Requests </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="recent">
+    @if (Model.Where(x => x.ServiceRequest.ServiceRequest_Status_ID == 1).Count() != 0)
+    {
+        <h2 class="text-info">Recent  Requests</h2>
+        <div class="row" style="height:100%;margin-left:-5%">
+            <br />
+            @foreach (var item in Model.Where(x => x.ServiceRequest.ServiceRequest_Status_ID == 1))
+            {
+        <div class="card " style="width:450px;height:auto;border:1px solid;border-radius:10px;padding:10px;background-color:rgba(0,0,0,1);margin-left:-2%;margin-top:50px">
+            <p class="card-text" style="color:white">Sent on <strong class="text-info"> @DateTime.Parse(item.ServiceRequest.datecreated.ToString()).ToShortDateString()</strong></p>
+            @if (item.ServiceRequest.ImagePath == null || item.ServiceRequest.ImagePath.IsEmpty())
+            {
+                <img class="card-img-top" src="~/Content/Pictures/empty.png" style="width:60%;height:40%;border-radius:60px">
+            }
+            else
+            {
+                <img src="@Url.Content(item.ServiceRequest.ImagePath)" class="rounded-circle z-depth-1-half" alt="example placeholder avatar" style="width: 150px;">
+            }
+        <div class="card-body">
+            <h4 class="card-title text-info" style="color:white">From :<strong>  @item.ServiceRequest.Consumer.Name  @item.ServiceRequest.Consumer.Surname</strong> </h4>
+            <p class="card-text text-info"> Category  :<strong> @item.Service.Category.Name</strong></p>
+            <p class="card-text text-info"> Service :<strong> @item.Service.Name</strong></p>
+            <p class="card-text text-info"> Sent on :<strong> @item.ServiceRequest.datecreated</strong></p>
+            <p class="card-text text-info">Description :<strong>  @item.ServiceRequest.Service_Description</strong></p>
+            <p class="card-text text-info"> Address :<strong> @item.ServiceRequest.Address.StreetNumber , @item.ServiceRequest.Address.StreetName</strong></p>
+            <p class="card-text text-info"> Location :<strong> @item.ServiceRequest.Address.City.Name , @item.ServiceRequest.Address.City.Province.Name</strong></p>
+            <p class="card-text text-info"> Service Date :<strong> @DateTime.Parse(item.ServiceRequest.Date.ToString()).DayOfWeek  @DateTime.Parse(item.ServiceRequest.Date.ToString()).Day of the  @DateTime.Parse(item.ServiceRequest.Date.ToString()).Month 2020  </strong></p>
+            <p class="card-text text-info"> Service Time :<strong> @item.ServiceRequest.Time.StartTime </strong></p>
+
+
+            <button class="btn btn-info btn-sm" type="submit" onclick="window.location.href='@Url.Action("Create", "ServiceQuotes", new { id = item.ServiceRequestID })'">Quote</button>
+            <!--Inplement the enable /disable fature here -->
+            <button class="btn btn-dark btn-sm" type="submit" id="@item.ServiceRequest.ConsumerID" data-toggle="modal" data-target="#modal-@item.ServiceRequest.ConsumerID">Message</button>
+            <br />
+        </div>
+            <div class="modal fade" id="modal-@item.ServiceRequest.ConsumerID" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false" style="margin-left:-69px;margin-top:8%">
+
+                <div class="modal-dialog">
+
+                    <div class="modal-content" style="background-color:#1D2026;color:white;border-radius:15px;align-content:center">
+
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">Send Message </h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        @using (Html.BeginForm("Create", "Messages", FormMethod.Post))
+                        {
+                            <div class="modal-body">
+                                <!--Below are inputs-->
+                                <input style="display: none" type="datetime" id="DateSent" name="DateSent" value="@DateTime.Now.ToShortDateString()" />
+                                <input style="display:none" type="time" id="TimeSent" name="TimeSent" value="@DateTime.Now.ToShortTimeString()" />
+                                <input style="display:none" type="text" id="MesseageLocation" name="MesseageLocation" value="Inbox" />
+                                <input style="display:none" type="text" id="SentFrom" name="SentFrom" value="@User.Identity.Name" />
+                                <input style="display:none" type="text" id="MessageSentTo" name="MessageSentTo" value="@item.ServiceRequest.Consumer.Name" />
+                                <textarea placeholder="Enter Message" style="background-color:rgba(0,0,0,0.88);color:white" required rows="2" id="MessageBody" name="MessageBody"></textarea>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-info"><i class="fa fa-check"></i> Send</button>
+                            </div>
+
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+            }
+        </div>
+    }
+    else
+    {
+        <h2 class="text-info">No Recent Requests Found</h2>
+    }
+</div>
+<div id="Passed">
+    @if (Model.Where(x => x.ServiceRequest.ServiceRequest_Status_ID != 1).Count() != 0)
+    {
+        <h2 class="text-info">Past  Requests</h2>
+        <div class="row" style="height:100%;margin-left:-5%">
+            <br />
+            @foreach (var item in Model.Where(x => x.ServiceRequest.ServiceRequest_Status_ID != 1))
+            {
+                <div class="card " style="width:450px;height:auto;border:1px solid;border-radius:10px;padding:10px;background-color:rgba(0,0,0,1);margin-left:-2%;margin-top:50px">
+                    <p class="card-text" style="color:white">Sent on <strong class="text-info"> @DateTime.Parse(item.ServiceRequest.datecreated.ToString()).ToShortDateString()</strong></p>
+                    @if (item.ServiceRequest.ImagePath == null || item.ServiceRequest.ImagePath.IsEmpty())
+                    {
+                        <img class="card-img-top" src="~/Content/Pictures/empty.png" style="width:60%;height:40%;border-radius:60px">
+                    }
+                    else
+                    {
+                        <img src="@Url.Content(item.ServiceRequest.ImagePath)" class="rounded-circle z-depth-1-half" alt="example placeholder avatar" style="width: 150px;">
+                    }
+                    <div class="card-body">
+                        <h4 class="card-title text-info" style="color:white">From :<strong>  @item.ServiceRequest.Consumer.Name  @item.ServiceRequest.Consumer.Surname</strong> </h4>
+                        <p class="card-text text-info"> Category  :<strong> @item.Service.Category.Name</strong></p>
+                        <p class="card-text text-info"> Service :<strong> @item.Service.Name</strong></p>
+                        <p class="card-text text-info"> Sent on :<strong> @item.ServiceRequest.datecreated</strong></p>
+                        <p class="card-text text-info">Description :<strong>  @item.ServiceRequest.Service_Description</strong></p>
+                        <p class="card-text text-info"> Address :<strong> @item.ServiceRequest.Address.StreetNumber , @item.ServiceRequest.Address.StreetName</strong></p>
+                        <p class="card-text text-info"> Location :<strong> @item.ServiceRequest.Address.City.Name , @item.ServiceRequest.Address.City.Province.Name</strong></p>
+                        <p class="card-text text-info"> Service Date :<strong> @DateTime.Parse(item.ServiceRequest.Date.ToString()).DayOfWeek  @DateTime.Parse(item.ServiceRequest.Date.ToString()).Day of the  @DateTime.Parse(item.ServiceRequest.Date.ToString()).Month 2020  </strong></p>
+                        <p class="card-text text-info"> Service Time :<strong> @item.ServiceRequest.Time.StartTime </strong></p>
+                        <button class="btn btn-dark btn-sm" type="submit" id="@item.ServiceRequest.ConsumerID" data-toggle="modal" data-target="#modal-@item.ServiceRequest.ConsumerID">Message</button>
+                        <br />
+                    </div>
+                    <div class="modal fade" id="modal-@item.ServiceRequest.ConsumerID" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false" style="margin-left:-69px;margin-top:8%">
+
+                        <div class="modal-dialog">
+
+                            <div class="modal-content" style="background-color:#1D2026;color:white;border-radius:15px;align-content:center">
+
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="myModalLabel">Send Message </h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                </div>
+                                @using (Html.BeginForm("Create", "Messages", FormMethod.Post))
+                                {
+                                    <div class="modal-body">
+                                        <!--Below are inputs-->
+                                        <input style="display: none" type="datetime" id="DateSent" name="DateSent" value="@DateTime.Now.ToShortDateString()" />
+                                        <input style="display:none" type="time" id="TimeSent" name="TimeSent" value="@DateTime.Now.ToShortTimeString()" />
+                                        <input style="display:none" type="text" id="MesseageLocation" name="MesseageLocation" value="Inbox" />
+                                        <input style="display:none" type="text" id="SentFrom" name="SentFrom" value="@User.Identity.Name" />
+                                        <input style="display:none" type="text" id="MessageSentTo" name="MessageSentTo" value="@item.ServiceRequest.Consumer.Name" />
+                                        <textarea placeholder="Enter Message" style="background-color:rgba(0,0,0,0.88);color:white" required rows="2" id="MessageBody" name="MessageBody"></textarea>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-info"><i class="fa fa-check"></i> Send</button>
+                                    </div>
+
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <h2 class="text-info">No Past Requests Found</h2>
+    }
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#recent").show();
+            $("#Passed").hide();;
+            $('#recentbtn').on('click', function () {
+                $("#Passed").hide()
+                $("#recent").show();
+            });
+            $('#passedbtn').on('click', function () {
+                $("#Passed").show()
+                $("#recent").hide();
+            
+            });
+        });
+    </script>
+}

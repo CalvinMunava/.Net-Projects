@@ -1,0 +1,49 @@
+﻿@model IEnumerable<practiceViewModels.Models.Dogs>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+    <div>
+        <h2>the dogs list</h2>
+
+        <p>@ViewBag.Message</p>
+
+        <button type="submit" id="btn" class="btn btn-success btn-lg" onclick="window.location.href='@Url.Action("CreateDog", "Home")'">
+
+        <i class="glyphicon  glyphicon-plus"></i>
+        
+            Create New Dog
+
+        <i class="glyphicon  glyphicon-asterisk"></i>
+
+        </button>
+ 
+
+        <table>   
+            <tr>
+                <!-- first row with the headings-->
+                <th>Name of dog:</th>
+                <th>bread of dog:</th>
+                <th>Age of dog:</th>
+                <th></th>
+            </tr>
+            @foreach (var Dogs in Model)
+            {
+
+                <tr>
+                    <td>@Dogs.NameOfDog<td>
+                    <td>@Dogs.Bread</td>
+                    <td>@Dogs.Age</td>
+                    <td>
+                      <div class="btn-group">
+                          <button id="btnEdit" class="btn btn-primary btn-sm" onclick="window.location.href='@Url.Action("EditDog", "Home",new { Id = Dogs.ID })'"><i class="glyphicon  glyphicon-pencil"></i></button>
+                          <button id="btnDelete" class="btn btn-danger btn-sm" onclick="window.location.href='@Url.Action("DeleteDog", "Home",new { Id = Dogs.ID })'"><i class="glyphicon  glyphicon-trash"></i> </button>
+                      </div>
+                    </td>
+                </tr>
+                }
+        </table>
+    </div>
+
+
+

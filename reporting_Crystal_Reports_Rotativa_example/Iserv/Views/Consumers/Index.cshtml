@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Iserv.Models.Consumer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<p>
+    @using (Html.BeginForm("Index", "Consumers", FormMethod.Get))
+    {
+
+        @Html.RadioButton("searchBy", "Name", true)
+        <h2 style="color:white">Search by Name </h2>
+
+        <input type="text" class="form-control" style="border-radius:20px;width:300px" required/>
+        <br />
+        <button class="btn btn-dark" type="submit" id="search" name="search" style="width:300px">Search</button>
+        <br />
+    }
+</p>
+
+<div class="row" style="height:100%;">
+
+@if (Model.Count() == 0)
+{
+    <div class="jumbotron">
+        <h1>No Consumers Found !</h1>
+
+    </div>
+}
+else
+{
+    foreach (var item in Model)
+    {
+        <div class="card " style="width:320px;border:1px solid;border-radius:10px;padding:10px;background-color:rgba(0,0,0,0.88);margin-left:5px;margin-top:10px">
+
+
+            <div class="card-body">
+                <h4 class="card-title" style="color:white">@item.Name  @item.Surname  </h4>
+                <p class="card-text"><strong> Age : @item.Age</strong></p>
+                <p class="card-text"><strong> Gender : @item.Gender</strong></p>
+                <p class="card-text"><strong> Email : @item.Email</strong></p>
+
+                <div class="btn-group">
+                    <button class="btn btn-dark btn-sm" type="submit" onclick="window.location.href='@Url.Action("Details", "Consumers", new { id = item.ConsumerID })'">View</button>
+                    <button style="display:none" class="btn btn-danger btn-sm" type="submit" onclick="window.location.href='@Url.Action("Delete", "Consumers", new { id = item.ConsumerID })'">Remove</button>
+                </div>
+
+            </div>
+            <br />
+        </div>
+    }
+}
+</div>

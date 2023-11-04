@@ -1,0 +1,14 @@
+﻿@model OOP_Poly_Tut.Models.Playstation
+
+@{
+    ViewBag.Title = "DeletePs";
+}
+
+<h2>DeletePs</h2>
+
+<h3>Are you sure you want to delete   @Html.DisplayNameFor(model => model.Name)  ?</h3>
+
+<button type="submit" value="Delete" class="btn btn-danger"  onclick="window.location.href = '@Url.Action("DeletePsInList","Store", new { Id = Model.ID })'" ></button> |
+<button type="submit" value="No " class="btn btn-primary" onclick="window.location.href = '@Url.Action("PsIndex","Store")"></button>
+
+

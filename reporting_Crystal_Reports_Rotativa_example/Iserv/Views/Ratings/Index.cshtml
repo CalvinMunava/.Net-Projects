@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Iserv.Models.Rating>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";}
+
+<h2 style="color:white">Ratings</h2>
+<hr />
+
+<button class="btn btn-dark" style="border-radius:20px" onclick="window.location.href ='@Url.Action("Create","Ratings")'">
+    Add New +
+</button>
+
+
+
+<div class="row" style="height:100%;">
+    @foreach (var item in Model)
+    {
+        <div class="card " style="width:320px;height:250px;border:1px solid;border-radius:10px;padding:10px;background-color:rgba(0,0,0,0.88);margin-left:5px;margin-top:10px">
+            <div class="card-body" style="height:100px">
+                <h4 class="card-title" style="color:white"> Rating : @item.Rate    </h4>
+                <p class="card-text"><strong> Comment : @item.Comment</strong></p>
+
+                <div class="btn-group">
+                    <button class="btn btn-info btn-sm" type="submit" onclick="window.location.href='@Url.Action("Edit", "Ratings", new { id=item.RatingID })'">Modify</button>
+                    <button class="btn btn-dark btn-sm" type="submit" onclick="window.location.href='@Url.Action("Details", "Ratings", new { id=item.RatingID })'">View</button>
+                    <button class="btn btn-danger btn-sm" type="submit" onclick="window.location.href='@Url.Action("Delete", "Ratings", new { id=item.RatingID })'">Remove</button>
+                </div>
+
+            </div>
+            <br />
+        </div>
+    }
+</div>

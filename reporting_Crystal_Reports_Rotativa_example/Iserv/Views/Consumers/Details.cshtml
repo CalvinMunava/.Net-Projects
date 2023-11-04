@@ -1,0 +1,30 @@
+﻿@model Iserv.Models.Consumer
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<h2>Consumer</h2>
+
+<div class="row" style="height:100%;">
+
+
+    <div class="card " style="width:320px;height:auto;border:1px solid;border-radius:10px;padding:10px;background-color:rgba(0,0,0,0.88);margin-left:5px;margin-top:10px">
+        <div class="card-body" >
+            <h4 class="card-title" style="color:white"> Name: @Model.Name @Model.Surname   </h4>
+            <p class="card-text"><strong> Age : @Model.Age</strong></p>
+            <p class="card-text"><strong> Gender : @Model.Gender</strong></p>
+            <p class="card-text"><strong> Email : @Model.Email</strong></p>
+
+            <div class="btn-group">
+                <button style="display:none" class="btn btn-info btn-sm" type="submit" onclick="window.location.href='@Url.Action("Edit", "Consumers", new { id = Model.ConsumerID })'">Modify</button>
+                <button style="display:none" class="btn btn-dark btn-sm" type="submit" onclick="window.location.href='@Url.Action("Index", "Consumers")'">Back</button>
+            </div>
+
+        </div>
+        <br />
+    </div>
+
+</div>

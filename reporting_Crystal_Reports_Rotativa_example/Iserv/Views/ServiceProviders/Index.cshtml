@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Iserv.Models.ServiceProvider>
+
+@{
+    Layout = null;
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+}
+
+<h2 style="color:white">Service Providers</h2>
+<hr />
+
+<div class="row" style="height:100%;">
+    @foreach (var item in Model)
+    {
+
+        <div class="card " style="width:320px;height:auto;border:1px solid;border-radius:10px;padding:10px;background-color:rgba(0,0,0,0.88);margin-left:5px;margin-top:10px">
+
+            <img class="card-img-top" src="@Url.Content(item.User.ImagePath)" style="width:60%;height:40%;border-radius:80px">
+
+            <div class="card-body">
+                <h4 class="card-title" style="color:white"> @item.Name  @item.Surname  </h4>
+                <p class="card-text"><strong><span style="color:cornflowerblue"> Gender :     </span> @item.Gender.Name</strong></p>
+                <p class="card-text"><strong><span style="color:cornflowerblue"> Address :       </span> @item.Address.StreetNumber @item.Address.StreetName </strong></p>
+                <p class="card-text"><strong><span style="color:cornflowerblue"> City :    </span> @item.Address.City.Name , @item.Address.City.Province.Name</strong></p>
+                <p class="card-text"><strong><span style="color:cornflowerblue"> ID No:      </span>  @item.ID_Number </strong></p>
+
+                <div class="btn-group">
+                    <button class="btn btn-dark btn-sm" type="submit" id="@item.ServiceProvider_ID" data-toggle="modal" data-target="#modal-@item.ServiceProvider_ID">Message</button>
+                </div>
+
+            </div>
+            <br />
+        </div>
+        <div class="modal fade" id="modal-@item.ServiceProvider_ID" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false" style="margin-left:-69px;margin-top:8%">
+
+            <div class="modal-dialog">
+
+                <div class="modal-content" style="background-color:#1D2026;color:white;border-radius:15px;align-content:center">
+
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">Send Message </h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    @using (Html.BeginForm("Create", "Messages", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="modal-body">
+                            <!--Below are inputs-->
+                            <input style="display: none" type="datetime" id="DateSent" name="DateSent" value="@DateTime.Now.ToShortDateString()" />
+                            <input style="display:none" type="time" id="TimeSent" name="TimeSent" value="@DateTime.Now.ToShortTimeString()" />
+                            <input style="display:none" type="text" id="MessageLocation" name="MessageLocation" value="Inbox" />
+                            <input style="display:none" type="text" id="SentFrom" name="SentFrom" value="@User.Identity.Name" />
+                            <input style="display:none" type="text" id="MessageSentTo" name="MessageSentTo" value="@item.Name" />
+                            <textarea placeholder="Enter Message" style="background-color:rgba(0,0,0,0.88);color:white" required rows="2" id="MessageBody" name="MessageBody"></textarea>
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-info"><i class="fa fa-check"></i> Send</button>
+                        </div>
+
+                    }
+
+                </div>
+            </div>
+        </div>
+
+    }
+</div>

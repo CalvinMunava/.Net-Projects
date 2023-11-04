@@ -1,0 +1,1471 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="InternetServicesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="InternetServicesEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="InternetServicesModel.C__MigrationHistory" />
+    <EntitySet Name="Addresses" EntityType="InternetServicesModel.Address" />
+    <EntitySet Name="Admins" EntityType="InternetServicesModel.Admin" />
+    <EntitySet Name="AspNetRoles" EntityType="InternetServicesModel.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="InternetServicesModel.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="InternetServicesModel.AspNetUserLogin" />
+    <EntitySet Name="AspNetUsers" EntityType="InternetServicesModel.AspNetUser" />
+    <EntitySet Name="Categories" EntityType="InternetServicesModel.Category" />
+    <EntitySet Name="Cities" EntityType="InternetServicesModel.City" />
+    <EntitySet Name="Consumers" EntityType="InternetServicesModel.Consumer" />
+    <EntitySet Name="Genders" EntityType="InternetServicesModel.Gender" />
+    <EntitySet Name="Invoices" EntityType="InternetServicesModel.Invoice" />
+    <EntitySet Name="Messages" EntityType="InternetServicesModel.Message" />
+    <EntitySet Name="PaymentMethods" EntityType="InternetServicesModel.PaymentMethod" />
+    <EntitySet Name="ProviderAppointments" EntityType="InternetServicesModel.ProviderAppointment" />
+    <EntitySet Name="Provinces" EntityType="InternetServicesModel.Province" />
+    <EntitySet Name="Ratings" EntityType="InternetServicesModel.Rating" />
+    <EntitySet Name="Schedules" EntityType="InternetServicesModel.Schedule" />
+    <EntitySet Name="ScheduleAppoitnments" EntityType="InternetServicesModel.ScheduleAppoitnment" />
+    <EntitySet Name="Services" EntityType="InternetServicesModel.Service" />
+    <EntitySet Name="Service_Provider_Application" EntityType="InternetServicesModel.Service_Provider_Application" />
+    <EntitySet Name="Service_Provider_Application_Status" EntityType="InternetServicesModel.Service_Provider_Application_Status" />
+    <EntitySet Name="ServiceOrders" EntityType="InternetServicesModel.ServiceOrder" />
+    <EntitySet Name="ServiceOrder_Status" EntityType="InternetServicesModel.ServiceOrder_Status" />
+    <EntitySet Name="ServiceOrderLines" EntityType="InternetServicesModel.ServiceOrderLine" />
+    <EntitySet Name="ServiceProviders" EntityType="InternetServicesModel.ServiceProvider" />
+    <EntitySet Name="ServiceProvider_ServiceRequest" EntityType="InternetServicesModel.ServiceProvider_ServiceRequest" />
+    <EntitySet Name="ServiceProvider_Status" EntityType="InternetServicesModel.ServiceProvider_Status" />
+    <EntitySet Name="ServiceProviderServices" EntityType="InternetServicesModel.ServiceProviderService" />
+    <EntitySet Name="ServiceQuotes" EntityType="InternetServicesModel.ServiceQuote" />
+    <EntitySet Name="ServiceQuoteLines" EntityType="InternetServicesModel.ServiceQuoteLine" />
+    <EntitySet Name="ServiceQuoteStatus" EntityType="InternetServicesModel.ServiceQuoteStatu" />
+    <EntitySet Name="ServiceRequests" EntityType="InternetServicesModel.ServiceRequest" />
+    <EntitySet Name="ServiceRequest_Status" EntityType="InternetServicesModel.ServiceRequest_Status" />
+    <EntitySet Name="ServiceRequestLines" EntityType="InternetServicesModel.ServiceRequestLine" />
+    <EntitySet Name="Times" EntityType="InternetServicesModel.Time" />
+    <EntitySet Name="Users" EntityType="InternetServicesModel.User" />
+    <EntitySet Name="ServiceOrder_Rating" EntityType="InternetServicesModel.ServiceOrder_Rating" />
+    <AssociationSet Name="Address_and_Consumer" Association="InternetServicesModel.Address_and_Consumer">
+      <End Role="Address" EntitySet="Addresses" />
+      <End Role="Consumer" EntitySet="Consumers" />
+    </AssociationSet>
+    <AssociationSet Name="Address_and_Service_Provider" Association="InternetServicesModel.Address_and_Service_Provider">
+      <End Role="Address" EntitySet="Addresses" />
+      <End Role="ServiceProvider" EntitySet="ServiceProviders" />
+    </AssociationSet>
+    <AssociationSet Name="City_and_Address" Association="InternetServicesModel.City_and_Address">
+      <End Role="City" EntitySet="Cities" />
+      <End Role="Address" EntitySet="Addresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Admin_Address" Association="InternetServicesModel.FK_Admin_Address">
+      <End Role="Address" EntitySet="Addresses" />
+      <End Role="Admin" EntitySet="Admins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceRequest_Address" Association="InternetServicesModel.FK_ServiceRequest_Address">
+      <End Role="Address" EntitySet="Addresses" />
+      <End Role="ServiceRequest" EntitySet="ServiceRequests" />
+    </AssociationSet>
+    <AssociationSet Name="Province_and_Address" Association="InternetServicesModel.Province_and_Address">
+      <End Role="Province" EntitySet="Provinces" />
+      <End Role="Address" EntitySet="Addresses" />
+    </AssociationSet>
+    <AssociationSet Name="User_and_Address" Association="InternetServicesModel.User_and_Address">
+      <End Role="Address" EntitySet="Addresses" />
+      <End Role="Address1" EntitySet="Addresses" />
+    </AssociationSet>
+    <AssociationSet Name="Admin_and_Gender" Association="InternetServicesModel.Admin_and_Gender">
+      <End Role="Gender" EntitySet="Genders" />
+      <End Role="Admin" EntitySet="Admins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Admin_User" Association="InternetServicesModel.FK_Admin_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Admin" EntitySet="Admins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="InternetServicesModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="InternetServicesModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="User_and_AspNetUsers" Association="InternetServicesModel.User_and_AspNetUsers">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="Category_and_Service" Association="InternetServicesModel.Category_and_Service">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Service" EntitySet="Services" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceProviderService_Category" Association="InternetServicesModel.FK_ServiceProviderService_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="ServiceProviderService" EntitySet="ServiceProviderServices" />
+    </AssociationSet>
+    <AssociationSet Name="City_and_Application" Association="InternetServicesModel.City_and_Application">
+      <End Role="City" EntitySet="Cities" />
+      <End Role="Service_Provider_Application" EntitySet="Service_Provider_Application" />
+    </AssociationSet>
+    <AssociationSet Name="Province_and_City" Association="InternetServicesModel.Province_and_City">
+      <End Role="Province" EntitySet="Provinces" />
+      <End Role="City" EntitySet="Cities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Consumer_Gender" Association="InternetServicesModel.FK_Consumer_Gender">
+      <End Role="Gender" EntitySet="Genders" />
+      <End Role="Consumer" EntitySet="Consumers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Consumer_User" Association="InternetServicesModel.FK_Consumer_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Consumer" EntitySet="Consumers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Invoice_Consumer" Association="InternetServicesModel.FK_Invoice_Consumer">
+      <End Role="Consumer" EntitySet="Consumers" />
+      <End Role="Invoice" EntitySet="Invoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceQuote_Consumer" Association="InternetServicesModel.FK_ServiceQuote_Consumer">
+      <End Role="Consumer" EntitySet="Consumers" />
+      <End Role="ServiceQuote" EntitySet="ServiceQuotes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceRequest_Consumer" Association="InternetServicesModel.FK_ServiceRequest_Consumer">
+      <End Role="Consumer" EntitySet="Consumers" />
+      <End Role="ServiceRequest" EntitySet="ServiceRequests" />
+    </AssociationSet>
+    <AssociationSet Name="SO_and_CN" Association="InternetServicesModel.SO_and_CN">
+      <End Role="Consumer" EntitySet="Consumers" />
+      <End Role="ServiceOrder" EntitySet="ServiceOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceProvider_Gender" Association="InternetServicesModel.FK_ServiceProvider_Gender">
+      <End Role="Gender" EntitySet="Genders" />
+      <End Role="ServiceProvider" EntitySet="ServiceProviders" />
+    </AssociationSet>
+    <AssociationSet Name="Gender_and_Application" Association="InternetServicesModel.Gender_and_Application">
+      <End Role="Gender" EntitySet="Genders" />
+      <End Role="Service_Provider_Application" EntitySet="Service_Provider_Application" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Invoice_PaymentMethod" Association="InternetServicesModel.FK_Invoice_PaymentMethod">
+      <End Role="PaymentMethod" EntitySet="PaymentMethods" />
+      <End Role="Invoice" EntitySet="Invoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Invoice_ServiceProvider" Association="InternetServicesModel.FK_Invoice_ServiceProvider">
+      <End Role="ServiceProvider" EntitySet="ServiceProviders" />
+      <End Role="Invoice" EntitySet="Invoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Invoice_ServiceQuoteStatus" Association="InternetServicesModel.FK_Invoice_ServiceQuoteStatus">
+      <End Role="ServiceQuoteStatu" EntitySet="ServiceQuoteStatus" />
+      <End Role="Invoice" EntitySet="Invoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Invoice_ServiceRequest" Association="InternetServicesModel.FK_Invoice_ServiceRequest">
+      <End Role="ServiceRequest" EntitySet="ServiceRequests" />
+      <End Role="Invoice" EntitySet="Invoices" />
+    </AssociationSet>
+    <AssociationSet Name="PaymentMethod_and_ServiceQuote" Association="InternetServicesModel.PaymentMethod_and_ServiceQuote">
+      <End Role="PaymentMethod" EntitySet="PaymentMethods" />
+      <End Role="ServiceQuote" EntitySet="ServiceQuotes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProviderAppointment_ServiceProvider" Association="InternetServicesModel.FK_ProviderAppointment_ServiceProvider">
+      <End Role="ServiceProvider" EntitySet="ServiceProviders" />
+      <End Role="ProviderAppointment" EntitySet="ProviderAppointments" />
+    </AssociationSet>
+    <AssociationSet Name="Province_and_Application" Association="InternetServicesModel.Province_and_Application">
+      <End Role="Province" EntitySet="Provinces" />
+      <End Role="Service_Provider_Application" EntitySet="Service_Provider_Application" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ScheduleAppoitnment_Service_Provider_Application" Association="InternetServicesModel.FK_ScheduleAppoitnment_Service_Provider_Application">
+      <End Role="Service_Provider_Application" EntitySet="Service_Provider_Application" />
+      <End Role="ScheduleAppoitnment" EntitySet="ScheduleAppoitnments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceOrderLine_Service" Association="InternetServicesModel.FK_ServiceOrderLine_Service">
+      <End Role="Service" EntitySet="Services" />
+      <End Role="ServiceOrderLine" EntitySet="ServiceOrderLines" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceProviderService_Service" Association="InternetServicesModel.FK_ServiceProviderService_Service">
+      <End Role="Service" EntitySet="Services" />
+      <End Role="ServiceProviderService" EntitySet="ServiceProviderServices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceRequest_Service" Association="InternetServicesModel.FK_ServiceRequest_Service">
+      <End Role="Service" EntitySet="Services" />
+      <End Role="ServiceRequest" EntitySet="ServiceRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceRequestLine_Service" Association="InternetServicesModel.FK_ServiceRequestLine_Service">
+      <End Role="Service" EntitySet="Services" />
+      <End Role="ServiceRequestLine" EntitySet="ServiceRequestLines" />
+    </AssociationSet>
+    <AssociationSet Name="Service_and__SOL" Association="InternetServicesModel.Service_and__SOL">
+      <End Role="Service" EntitySet="Services" />
+      <End Role="ServiceOrderLine" EntitySet="ServiceOrderLines" />
+    </AssociationSet>
+    <AssociationSet Name="SPA_Status_and_ServiceProvider_Applicaation" Association="InternetServicesModel.SPA_Status_and_ServiceProvider_Applicaation">
+      <End Role="Service_Provider_Application_Status" EntitySet="Service_Provider_Application_Status" />
+      <End Role="Service_Provider_Application" EntitySet="Service_Provider_Application" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceOrder_Rating_ServiceOrder" Association="InternetServicesModel.FK_ServiceOrder_Rating_ServiceOrder">
+      <End Role="ServiceOrder" EntitySet="ServiceOrders" />
+      <End Role="ServiceOrder_Rating" EntitySet="ServiceOrder_Rating" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceOrderLine_ServiceOrder" Association="InternetServicesModel.FK_ServiceOrderLine_ServiceOrder">
+      <End Role="ServiceOrder" EntitySet="ServiceOrders" />
+      <End Role="ServiceOrderLine" EntitySet="ServiceOrderLines" />
+    </AssociationSet>
+    <AssociationSet Name="Service_order_and_service_order_status" Association="InternetServicesModel.Service_order_and_service_order_status">
+      <End Role="ServiceOrder_Status" EntitySet="ServiceOrder_Status" />
+      <End Role="ServiceOrder" EntitySet="ServiceOrders" />
+    </AssociationSet>
+    <AssociationSet Name="Service_Qoute_and_Service_Order" Association="InternetServicesModel.Service_Qoute_and_Service_Order">
+      <End Role="ServiceQuote" EntitySet="ServiceQuotes" />
+      <End Role="ServiceOrder" EntitySet="ServiceOrders" />
+    </AssociationSet>
+    <AssociationSet Name="SO_AND_SP" Association="InternetServicesModel.SO_AND_SP">
+      <End Role="ServiceProvider" EntitySet="ServiceProviders" />
+      <End Role="ServiceOrder" EntitySet="ServiceOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceOrderLine_ServiceQuote" Association="InternetServicesModel.FK_ServiceOrderLine_ServiceQuote">
+      <End Role="ServiceQuote" EntitySet="ServiceQuotes" />
+      <End Role="ServiceOrderLine" EntitySet="ServiceOrderLines" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceProvider_ServiceRequest_ServiceProvider" Association="InternetServicesModel.FK_ServiceProvider_ServiceRequest_ServiceProvider">
+      <End Role="ServiceProvider" EntitySet="ServiceProviders" />
+      <End Role="ServiceProvider_ServiceRequest" EntitySet="ServiceProvider_ServiceRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceProvider_User" Association="InternetServicesModel.FK_ServiceProvider_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="ServiceProvider" EntitySet="ServiceProviders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceProviderService_ServiceProvider" Association="InternetServicesModel.FK_ServiceProviderService_ServiceProvider">
+      <End Role="ServiceProvider" EntitySet="ServiceProviders" />
+      <End Role="ServiceProviderService" EntitySet="ServiceProviderServices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceQuote_ServiceProvider" Association="InternetServicesModel.FK_ServiceQuote_ServiceProvider">
+      <End Role="ServiceProvider" EntitySet="ServiceProviders" />
+      <End Role="ServiceQuote" EntitySet="ServiceQuotes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceRequestLine_ServiceProvider" Association="InternetServicesModel.FK_ServiceRequestLine_ServiceProvider">
+      <End Role="ServiceProvider" EntitySet="ServiceProviders" />
+      <End Role="ServiceRequestLine" EntitySet="ServiceRequestLines" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceProvider_ServiceRequest_ServiceQuote" Association="InternetServicesModel.FK_ServiceProvider_ServiceRequest_ServiceQuote">
+      <End Role="ServiceQuote" EntitySet="ServiceQuotes" />
+      <End Role="ServiceProvider_ServiceRequest" EntitySet="ServiceProvider_ServiceRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceQuote_ServiceQuoteStatus" Association="InternetServicesModel.FK_ServiceQuote_ServiceQuoteStatus">
+      <End Role="ServiceQuoteStatu" EntitySet="ServiceQuoteStatus" />
+      <End Role="ServiceQuote" EntitySet="ServiceQuotes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceQuote_ServiceRequest" Association="InternetServicesModel.FK_ServiceQuote_ServiceRequest">
+      <End Role="ServiceRequest" EntitySet="ServiceRequests" />
+      <End Role="ServiceQuote" EntitySet="ServiceQuotes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceQuoteLine_ServiceQuote" Association="InternetServicesModel.FK_ServiceQuoteLine_ServiceQuote">
+      <End Role="ServiceQuote" EntitySet="ServiceQuotes" />
+      <End Role="ServiceQuoteLine" EntitySet="ServiceQuoteLines" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceRequest_Time" Association="InternetServicesModel.FK_ServiceRequest_Time">
+      <End Role="Time" EntitySet="Times" />
+      <End Role="ServiceRequest" EntitySet="ServiceRequests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceRequestLine_ServiceRequest" Association="InternetServicesModel.FK_ServiceRequestLine_ServiceRequest">
+      <End Role="ServiceRequest" EntitySet="ServiceRequests" />
+      <End Role="ServiceRequestLine" EntitySet="ServiceRequestLines" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="InternetServicesModel.AspNetUserRoles">
+      <End Role="AspNetRole" EntitySet="AspNetRoles" />
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Invoice_ServiceQuote" Association="InternetServicesModel.FK_Invoice_ServiceQuote">
+      <End Role="ServiceQuote" EntitySet="ServiceQuotes" />
+      <End Role="Invoice" EntitySet="Invoices" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="AddressID" />
+    </Key>
+    <Property Name="AddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StreetNumber" Type="Int32" />
+    <Property Name="StreetName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CityID" Type="Int32" />
+    <Property Name="ProvinceID" Type="Int32" />
+    <Property Name="UserID" Type="Int32" />
+    <NavigationProperty Name="Consumers" Relationship="InternetServicesModel.Address_and_Consumer" FromRole="Address" ToRole="Consumer" />
+    <NavigationProperty Name="ServiceProviders" Relationship="InternetServicesModel.Address_and_Service_Provider" FromRole="Address" ToRole="ServiceProvider" />
+    <NavigationProperty Name="City" Relationship="InternetServicesModel.City_and_Address" FromRole="Address" ToRole="City" />
+    <NavigationProperty Name="Admins" Relationship="InternetServicesModel.FK_Admin_Address" FromRole="Address" ToRole="Admin" />
+    <NavigationProperty Name="ServiceRequests" Relationship="InternetServicesModel.FK_ServiceRequest_Address" FromRole="Address" ToRole="ServiceRequest" />
+    <NavigationProperty Name="Province" Relationship="InternetServicesModel.Province_and_Address" FromRole="Address" ToRole="Province" />
+    <NavigationProperty Name="Address1" Relationship="InternetServicesModel.User_and_Address" FromRole="Address" ToRole="Address1" />
+    <NavigationProperty Name="Address2" Relationship="InternetServicesModel.User_and_Address" FromRole="Address1" ToRole="Address" />
+  </EntityType>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="AdminID" />
+    </Key>
+    <Property Name="AdminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Age" Type="Int32" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ID_Number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Cell_Number" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="AddressID" Type="Int32" />
+    <Property Name="GenderID" Type="Int32" />
+    <NavigationProperty Name="Address" Relationship="InternetServicesModel.FK_Admin_Address" FromRole="Admin" ToRole="Address" />
+    <NavigationProperty Name="Gender" Relationship="InternetServicesModel.Admin_and_Gender" FromRole="Admin" ToRole="Gender" />
+    <NavigationProperty Name="User" Relationship="InternetServicesModel.FK_Admin_User" FromRole="Admin" ToRole="User" />
+  </EntityType>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="InternetServicesModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="InternetServicesModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="InternetServicesModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="InternetServicesModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="InternetServicesModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+    <NavigationProperty Name="Users" Relationship="InternetServicesModel.User_and_AspNetUsers" FromRole="AspNetUser" ToRole="User" />
+    <NavigationProperty Name="AspNetRoles" Relationship="InternetServicesModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Services" Relationship="InternetServicesModel.Category_and_Service" FromRole="Category" ToRole="Service" />
+    <NavigationProperty Name="ServiceProviderServices" Relationship="InternetServicesModel.FK_ServiceProviderService_Category" FromRole="Category" ToRole="ServiceProviderService" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="CityID" />
+    </Key>
+    <Property Name="CityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ProvinceID" Type="Int32" />
+    <NavigationProperty Name="Addresses" Relationship="InternetServicesModel.City_and_Address" FromRole="City" ToRole="Address" />
+    <NavigationProperty Name="Service_Provider_Application" Relationship="InternetServicesModel.City_and_Application" FromRole="City" ToRole="Service_Provider_Application" />
+    <NavigationProperty Name="Province" Relationship="InternetServicesModel.Province_and_City" FromRole="City" ToRole="Province" />
+  </EntityType>
+  <EntityType Name="Consumer">
+    <Key>
+      <PropertyRef Name="ConsumerID" />
+    </Key>
+    <Property Name="ConsumerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Age" Type="Int32" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ID_Number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Cell_Number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="AddressID" Type="Int32" />
+    <Property Name="GenderID" Type="Int32" />
+    <NavigationProperty Name="Address" Relationship="InternetServicesModel.Address_and_Consumer" FromRole="Consumer" ToRole="Address" />
+    <NavigationProperty Name="Gender" Relationship="InternetServicesModel.FK_Consumer_Gender" FromRole="Consumer" ToRole="Gender" />
+    <NavigationProperty Name="User" Relationship="InternetServicesModel.FK_Consumer_User" FromRole="Consumer" ToRole="User" />
+    <NavigationProperty Name="Invoices" Relationship="InternetServicesModel.FK_Invoice_Consumer" FromRole="Consumer" ToRole="Invoice" />
+    <NavigationProperty Name="ServiceQuotes" Relationship="InternetServicesModel.FK_ServiceQuote_Consumer" FromRole="Consumer" ToRole="ServiceQuote" />
+    <NavigationProperty Name="ServiceRequests" Relationship="InternetServicesModel.FK_ServiceRequest_Consumer" FromRole="Consumer" ToRole="ServiceRequest" />
+    <NavigationProperty Name="ServiceOrders" Relationship="InternetServicesModel.SO_and_CN" FromRole="Consumer" ToRole="ServiceOrder" />
+  </EntityType>
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="GenderID" />
+    </Key>
+    <Property Name="GenderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Admins" Relationship="InternetServicesModel.Admin_and_Gender" FromRole="Gender" ToRole="Admin" />
+    <NavigationProperty Name="Consumers" Relationship="InternetServicesModel.FK_Consumer_Gender" FromRole="Gender" ToRole="Consumer" />
+    <NavigationProperty Name="ServiceProviders" Relationship="InternetServicesModel.FK_ServiceProvider_Gender" FromRole="Gender" ToRole="ServiceProvider" />
+    <NavigationProperty Name="Service_Provider_Application" Relationship="InternetServicesModel.Gender_and_Application" FromRole="Gender" ToRole="Service_Provider_Application" />
+  </EntityType>
+  <EntityType Name="Invoice">
+    <Key>
+      <PropertyRef Name="InvoiceID" />
+    </Key>
+    <Property Name="InvoiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Total" Type="Double" />
+    <Property Name="PaymentMethod_ID" Type="Int32" />
+    <Property Name="ServiceQuote_Status_ID" Type="Int32" />
+    <Property Name="ConsumerID" Type="Int32" />
+    <Property Name="ServiceProvider_ID" Type="Int32" />
+    <Property Name="ServiceRequestID" Type="Int32" />
+    <Property Name="ValidUntil" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Consumer" Relationship="InternetServicesModel.FK_Invoice_Consumer" FromRole="Invoice" ToRole="Consumer" />
+    <NavigationProperty Name="PaymentMethod" Relationship="InternetServicesModel.FK_Invoice_PaymentMethod" FromRole="Invoice" ToRole="PaymentMethod" />
+    <NavigationProperty Name="ServiceProvider" Relationship="InternetServicesModel.FK_Invoice_ServiceProvider" FromRole="Invoice" ToRole="ServiceProvider" />
+    <NavigationProperty Name="ServiceQuoteStatu" Relationship="InternetServicesModel.FK_Invoice_ServiceQuoteStatus" FromRole="Invoice" ToRole="ServiceQuoteStatu" />
+    <NavigationProperty Name="ServiceRequest" Relationship="InternetServicesModel.FK_Invoice_ServiceRequest" FromRole="Invoice" ToRole="ServiceRequest" />
+    <Property Name="ServiceQuoteID" Type="Int32" />
+    <NavigationProperty Name="ServiceQuote" Relationship="InternetServicesModel.FK_Invoice_ServiceQuote" FromRole="Invoice" ToRole="ServiceQuote" />
+  </EntityType>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="MessageID" />
+    </Key>
+    <Property Name="MessageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DateSent" Type="DateTime" Precision="0" />
+    <Property Name="TimeSent" Type="Time" Precision="7" />
+    <Property Name="MessageBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SentFrom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MesseageLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MessageSentTo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PaymentMethod">
+    <Key>
+      <PropertyRef Name="PaymentMethodID" />
+    </Key>
+    <Property Name="PaymentMethodID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Invoices" Relationship="InternetServicesModel.FK_Invoice_PaymentMethod" FromRole="PaymentMethod" ToRole="Invoice" />
+    <NavigationProperty Name="ServiceQuotes" Relationship="InternetServicesModel.PaymentMethod_and_ServiceQuote" FromRole="PaymentMethod" ToRole="ServiceQuote" />
+  </EntityType>
+  <EntityType Name="ProviderAppointment">
+    <Key>
+      <PropertyRef Name="ProviderAppointmentID" />
+    </Key>
+    <Property Name="ProviderAppointmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="schedule_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="themecolor" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="isFullDay" Type="Boolean" />
+    <Property Name="scheduleStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Start" Type="DateTime" Precision="3" />
+    <Property Name="End" Type="DateTime" Precision="3" />
+    <Property Name="ServiceProvider_ID" Type="Int32" />
+    <NavigationProperty Name="ServiceProvider" Relationship="InternetServicesModel.FK_ProviderAppointment_ServiceProvider" FromRole="ProviderAppointment" ToRole="ServiceProvider" />
+  </EntityType>
+  <EntityType Name="Province">
+    <Key>
+      <PropertyRef Name="ProvinceID" />
+    </Key>
+    <Property Name="ProvinceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Addresses" Relationship="InternetServicesModel.Province_and_Address" FromRole="Province" ToRole="Address" />
+    <NavigationProperty Name="Cities" Relationship="InternetServicesModel.Province_and_City" FromRole="Province" ToRole="City" />
+    <NavigationProperty Name="Service_Provider_Application" Relationship="InternetServicesModel.Province_and_Application" FromRole="Province" ToRole="Service_Provider_Application" />
+  </EntityType>
+  <EntityType Name="Rating">
+    <Key>
+      <PropertyRef Name="RatingID" />
+    </Key>
+    <Property Name="RatingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Rate" Type="Int32" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Schedule">
+    <Key>
+      <PropertyRef Name="schedule_ID" />
+    </Key>
+    <Property Name="schedule_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="schedule_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="themecolor" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="isFullDay" Type="Boolean" />
+    <Property Name="scheduleStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Start" Type="DateTime" Precision="3" />
+    <Property Name="End" Type="DateTime" Precision="3" />
+    <Property Name="Meetinglink" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ApplicantName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ScheduleAppoitnment">
+    <Key>
+      <PropertyRef Name="ScheduleappoitnmentID" />
+    </Key>
+    <Property Name="ScheduleappoitnmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="Time" Type="Time" Precision="7" />
+    <Property Name="Questions" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ZoomName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SPA_ID" Type="Int32" />
+    <NavigationProperty Name="Service_Provider_Application" Relationship="InternetServicesModel.FK_ScheduleAppoitnment_Service_Provider_Application" FromRole="ScheduleAppoitnment" ToRole="Service_Provider_Application" />
+  </EntityType>
+  <EntityType Name="Service">
+    <Key>
+      <PropertyRef Name="ServiceID" />
+    </Key>
+    <Property Name="ServiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CategoryID" Type="Int32" />
+    <NavigationProperty Name="Category" Relationship="InternetServicesModel.Category_and_Service" FromRole="Service" ToRole="Category" />
+    <NavigationProperty Name="ServiceOrderLines" Relationship="InternetServicesModel.FK_ServiceOrderLine_Service" FromRole="Service" ToRole="ServiceOrderLine" />
+    <NavigationProperty Name="ServiceProviderServices" Relationship="InternetServicesModel.FK_ServiceProviderService_Service" FromRole="Service" ToRole="ServiceProviderService" />
+    <NavigationProperty Name="ServiceRequests" Relationship="InternetServicesModel.FK_ServiceRequest_Service" FromRole="Service" ToRole="ServiceRequest" />
+    <NavigationProperty Name="ServiceRequestLines" Relationship="InternetServicesModel.FK_ServiceRequestLine_Service" FromRole="Service" ToRole="ServiceRequestLine" />
+    <NavigationProperty Name="ServiceOrderLines1" Relationship="InternetServicesModel.Service_and__SOL" FromRole="Service" ToRole="ServiceOrderLine" />
+  </EntityType>
+  <EntityType Name="Service_Provider_Application">
+    <Key>
+      <PropertyRef Name="SPA_ID" />
+    </Key>
+    <Property Name="SPA_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ldimage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SPA_Status_ID" Type="Int32" />
+    <Property Name="ServiceID" Type="Int32" />
+    <Property Name="Surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IdNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="GenderID" Type="Int32" />
+    <Property Name="BusinessName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="VatNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="StreetName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="StreetNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ProvinceID" Type="Int32" />
+    <Property Name="CityID" Type="Int32" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CellNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="City" Relationship="InternetServicesModel.City_and_Application" FromRole="Service_Provider_Application" ToRole="City" />
+    <NavigationProperty Name="Gender" Relationship="InternetServicesModel.Gender_and_Application" FromRole="Service_Provider_Application" ToRole="Gender" />
+    <NavigationProperty Name="Province" Relationship="InternetServicesModel.Province_and_Application" FromRole="Service_Provider_Application" ToRole="Province" />
+    <NavigationProperty Name="ScheduleAppoitnments" Relationship="InternetServicesModel.FK_ScheduleAppoitnment_Service_Provider_Application" FromRole="Service_Provider_Application" ToRole="ScheduleAppoitnment" />
+    <NavigationProperty Name="Service_Provider_Application_Status" Relationship="InternetServicesModel.SPA_Status_and_ServiceProvider_Applicaation" FromRole="Service_Provider_Application" ToRole="Service_Provider_Application_Status" />
+  </EntityType>
+  <EntityType Name="Service_Provider_Application_Status">
+    <Key>
+      <PropertyRef Name="SPA_Status_ID" />
+    </Key>
+    <Property Name="SPA_Status_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Service_Provider_Application" Relationship="InternetServicesModel.SPA_Status_and_ServiceProvider_Applicaation" FromRole="Service_Provider_Application_Status" ToRole="Service_Provider_Application" />
+  </EntityType>
+  <EntityType Name="ServiceOrder">
+    <Key>
+      <PropertyRef Name="ServiceOrderID" />
+    </Key>
+    <Property Name="ServiceOrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Service_Order_Status_ID" Type="Int32" />
+    <Property Name="ServiceQuoteID" Type="Int32" />
+    <Property Name="ServiceProvider_ID" Type="Int32" />
+    <Property Name="ConsumerID" Type="Int32" />
+    <Property Name="datecompleted" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Consumer" Relationship="InternetServicesModel.SO_and_CN" FromRole="ServiceOrder" ToRole="Consumer" />
+    <NavigationProperty Name="ServiceOrder_Rating" Relationship="InternetServicesModel.FK_ServiceOrder_Rating_ServiceOrder" FromRole="ServiceOrder" ToRole="ServiceOrder_Rating" />
+    <NavigationProperty Name="ServiceOrderLines" Relationship="InternetServicesModel.FK_ServiceOrderLine_ServiceOrder" FromRole="ServiceOrder" ToRole="ServiceOrderLine" />
+    <NavigationProperty Name="ServiceOrder_Status" Relationship="InternetServicesModel.Service_order_and_service_order_status" FromRole="ServiceOrder" ToRole="ServiceOrder_Status" />
+    <NavigationProperty Name="ServiceQuote" Relationship="InternetServicesModel.Service_Qoute_and_Service_Order" FromRole="ServiceOrder" ToRole="ServiceQuote" />
+    <NavigationProperty Name="ServiceProvider" Relationship="InternetServicesModel.SO_AND_SP" FromRole="ServiceOrder" ToRole="ServiceProvider" />
+  </EntityType>
+  <EntityType Name="ServiceOrder_Status">
+    <Key>
+      <PropertyRef Name="Service_Order_Status_ID" />
+    </Key>
+    <Property Name="Service_Order_Status_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ServiceOrders" Relationship="InternetServicesModel.Service_order_and_service_order_status" FromRole="ServiceOrder_Status" ToRole="ServiceOrder" />
+  </EntityType>
+  <EntityType Name="ServiceOrderLine">
+    <Key>
+      <PropertyRef Name="ServiceOrderLineID" />
+    </Key>
+    <Property Name="ServiceOrderLineID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SericeOrderID" Type="Int32" />
+    <Property Name="Service_ID" Type="Int32" />
+    <Property Name="ServiceQuote_ID" Type="Int32" />
+    <Property Name="ServiceQuoteLine_ID" Type="Int32" />
+    <NavigationProperty Name="Service" Relationship="InternetServicesModel.FK_ServiceOrderLine_Service" FromRole="ServiceOrderLine" ToRole="Service" />
+    <NavigationProperty Name="Service1" Relationship="InternetServicesModel.Service_and__SOL" FromRole="ServiceOrderLine" ToRole="Service" />
+    <NavigationProperty Name="ServiceOrder" Relationship="InternetServicesModel.FK_ServiceOrderLine_ServiceOrder" FromRole="ServiceOrderLine" ToRole="ServiceOrder" />
+    <NavigationProperty Name="ServiceQuote" Relationship="InternetServicesModel.FK_ServiceOrderLine_ServiceQuote" FromRole="ServiceOrderLine" ToRole="ServiceQuote" />
+  </EntityType>
+  <EntityType Name="ServiceProvider">
+    <Key>
+      <PropertyRef Name="ServiceProvider_ID" />
+    </Key>
+    <Property Name="ServiceProvider_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="BusinessName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="AverageRating" Type="Int32" />
+    <Property Name="ID_Number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="AddressID" Type="Int32" />
+    <Property Name="GenderID" Type="Int32" />
+    <NavigationProperty Name="Address" Relationship="InternetServicesModel.Address_and_Service_Provider" FromRole="ServiceProvider" ToRole="Address" />
+    <NavigationProperty Name="Gender" Relationship="InternetServicesModel.FK_ServiceProvider_Gender" FromRole="ServiceProvider" ToRole="Gender" />
+    <NavigationProperty Name="Invoices" Relationship="InternetServicesModel.FK_Invoice_ServiceProvider" FromRole="ServiceProvider" ToRole="Invoice" />
+    <NavigationProperty Name="ProviderAppointments" Relationship="InternetServicesModel.FK_ProviderAppointment_ServiceProvider" FromRole="ServiceProvider" ToRole="ProviderAppointment" />
+    <NavigationProperty Name="ServiceOrders" Relationship="InternetServicesModel.SO_AND_SP" FromRole="ServiceProvider" ToRole="ServiceOrder" />
+    <NavigationProperty Name="ServiceProvider_ServiceRequest" Relationship="InternetServicesModel.FK_ServiceProvider_ServiceRequest_ServiceProvider" FromRole="ServiceProvider" ToRole="ServiceProvider_ServiceRequest" />
+    <NavigationProperty Name="User" Relationship="InternetServicesModel.FK_ServiceProvider_User" FromRole="ServiceProvider" ToRole="User" />
+    <NavigationProperty Name="ServiceProviderServices" Relationship="InternetServicesModel.FK_ServiceProviderService_ServiceProvider" FromRole="ServiceProvider" ToRole="ServiceProviderService" />
+    <NavigationProperty Name="ServiceQuotes" Relationship="InternetServicesModel.FK_ServiceQuote_ServiceProvider" FromRole="ServiceProvider" ToRole="ServiceQuote" />
+    <NavigationProperty Name="ServiceRequestLines" Relationship="InternetServicesModel.FK_ServiceRequestLine_ServiceProvider" FromRole="ServiceProvider" ToRole="ServiceRequestLine" />
+  </EntityType>
+  <EntityType Name="ServiceProvider_ServiceRequest">
+    <Key>
+      <PropertyRef Name="SP_SR_ID" />
+    </Key>
+    <Property Name="SP_SR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ServiceProvider_ID" Type="Int32" />
+    <Property Name="ServiceRequestID" Type="Int32" />
+    <Property Name="ServiceQuoteID" Type="Int32" />
+    <NavigationProperty Name="ServiceProvider" Relationship="InternetServicesModel.FK_ServiceProvider_ServiceRequest_ServiceProvider" FromRole="ServiceProvider_ServiceRequest" ToRole="ServiceProvider" />
+    <NavigationProperty Name="ServiceQuote" Relationship="InternetServicesModel.FK_ServiceProvider_ServiceRequest_ServiceQuote" FromRole="ServiceProvider_ServiceRequest" ToRole="ServiceQuote" />
+  </EntityType>
+  <EntityType Name="ServiceProvider_Status">
+    <Key>
+      <PropertyRef Name="ServiceProvider_Status_ID" />
+    </Key>
+    <Property Name="ServiceProvider_Status_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ServiceProviderService">
+    <Key>
+      <PropertyRef Name="ServiceProviderServiceID" />
+    </Key>
+    <Property Name="ServiceProviderServiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ServiceProvider_ID" Type="Int32" />
+    <Property Name="ServiceID" Type="Int32" />
+    <Property Name="CategoryID" Type="Int32" />
+    <NavigationProperty Name="Category" Relationship="InternetServicesModel.FK_ServiceProviderService_Category" FromRole="ServiceProviderService" ToRole="Category" />
+    <NavigationProperty Name="Service" Relationship="InternetServicesModel.FK_ServiceProviderService_Service" FromRole="ServiceProviderService" ToRole="Service" />
+    <NavigationProperty Name="ServiceProvider" Relationship="InternetServicesModel.FK_ServiceProviderService_ServiceProvider" FromRole="ServiceProviderService" ToRole="ServiceProvider" />
+  </EntityType>
+  <EntityType Name="ServiceQuote">
+    <Key>
+      <PropertyRef Name="ServiceQuoteID" />
+    </Key>
+    <Property Name="ServiceQuoteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Total" Type="Double" />
+    <Property Name="PaymentMethod_ID" Type="Int32" />
+    <Property Name="ServiceQuote_Status_ID" Type="Int32" />
+    <Property Name="ConsumerID" Type="Int32" />
+    <Property Name="ServiceProvider_ID" Type="Int32" />
+    <Property Name="ServiceRequestID" Type="Int32" />
+    <Property Name="ValidUntil" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Consumer" Relationship="InternetServicesModel.FK_ServiceQuote_Consumer" FromRole="ServiceQuote" ToRole="Consumer" />
+    <NavigationProperty Name="PaymentMethod" Relationship="InternetServicesModel.PaymentMethod_and_ServiceQuote" FromRole="ServiceQuote" ToRole="PaymentMethod" />
+    <NavigationProperty Name="ServiceOrders" Relationship="InternetServicesModel.Service_Qoute_and_Service_Order" FromRole="ServiceQuote" ToRole="ServiceOrder" />
+    <NavigationProperty Name="ServiceOrderLines" Relationship="InternetServicesModel.FK_ServiceOrderLine_ServiceQuote" FromRole="ServiceQuote" ToRole="ServiceOrderLine" />
+    <NavigationProperty Name="ServiceProvider" Relationship="InternetServicesModel.FK_ServiceQuote_ServiceProvider" FromRole="ServiceQuote" ToRole="ServiceProvider" />
+    <NavigationProperty Name="ServiceProvider_ServiceRequest" Relationship="InternetServicesModel.FK_ServiceProvider_ServiceRequest_ServiceQuote" FromRole="ServiceQuote" ToRole="ServiceProvider_ServiceRequest" />
+    <NavigationProperty Name="ServiceQuoteStatu" Relationship="InternetServicesModel.FK_ServiceQuote_ServiceQuoteStatus" FromRole="ServiceQuote" ToRole="ServiceQuoteStatu" />
+    <NavigationProperty Name="ServiceRequest" Relationship="InternetServicesModel.FK_ServiceQuote_ServiceRequest" FromRole="ServiceQuote" ToRole="ServiceRequest" />
+    <NavigationProperty Name="ServiceQuoteLines" Relationship="InternetServicesModel.FK_ServiceQuoteLine_ServiceQuote" FromRole="ServiceQuote" ToRole="ServiceQuoteLine" />
+    <NavigationProperty Name="Invoices" Relationship="InternetServicesModel.FK_Invoice_ServiceQuote" FromRole="ServiceQuote" ToRole="Invoice" />
+  </EntityType>
+  <EntityType Name="ServiceQuoteLine">
+    <Key>
+      <PropertyRef Name="ServiceQuoteLine_ID" />
+    </Key>
+    <Property Name="ServiceQuoteLine_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ServiceQuoteID" Type="Int32" />
+    <Property Name="ItemDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="ItemPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ItemTotal" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="ServiceQuote" Relationship="InternetServicesModel.FK_ServiceQuoteLine_ServiceQuote" FromRole="ServiceQuoteLine" ToRole="ServiceQuote" />
+  </EntityType>
+  <EntityType Name="ServiceQuoteStatu">
+    <Key>
+      <PropertyRef Name="ServiceQuote_Status_ID" />
+    </Key>
+    <Property Name="ServiceQuote_Status_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Invoices" Relationship="InternetServicesModel.FK_Invoice_ServiceQuoteStatus" FromRole="ServiceQuoteStatu" ToRole="Invoice" />
+    <NavigationProperty Name="ServiceQuotes" Relationship="InternetServicesModel.FK_ServiceQuote_ServiceQuoteStatus" FromRole="ServiceQuoteStatu" ToRole="ServiceQuote" />
+  </EntityType>
+  <EntityType Name="ServiceRequest">
+    <Key>
+      <PropertyRef Name="ServiceRequestID" />
+    </Key>
+    <Property Name="ServiceRequestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Service_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="Address_ID" Type="Int32" />
+    <Property Name="ConsumerID" Type="Int32" />
+    <Property Name="ServiceID" Type="Int32" />
+    <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="datecreated" Type="DateTime" Precision="3" />
+    <Property Name="TimeID" Type="Int32" />
+    <Property Name="ServiceRequest_Status_ID" Type="Int32" />
+    <NavigationProperty Name="Address" Relationship="InternetServicesModel.FK_ServiceRequest_Address" FromRole="ServiceRequest" ToRole="Address" />
+    <NavigationProperty Name="Consumer" Relationship="InternetServicesModel.FK_ServiceRequest_Consumer" FromRole="ServiceRequest" ToRole="Consumer" />
+    <NavigationProperty Name="Invoices" Relationship="InternetServicesModel.FK_Invoice_ServiceRequest" FromRole="ServiceRequest" ToRole="Invoice" />
+    <NavigationProperty Name="Service" Relationship="InternetServicesModel.FK_ServiceRequest_Service" FromRole="ServiceRequest" ToRole="Service" />
+    <NavigationProperty Name="ServiceQuotes" Relationship="InternetServicesModel.FK_ServiceQuote_ServiceRequest" FromRole="ServiceRequest" ToRole="ServiceQuote" />
+    <NavigationProperty Name="Time" Relationship="InternetServicesModel.FK_ServiceRequest_Time" FromRole="ServiceRequest" ToRole="Time" />
+    <NavigationProperty Name="ServiceRequestLines" Relationship="InternetServicesModel.FK_ServiceRequestLine_ServiceRequest" FromRole="ServiceRequest" ToRole="ServiceRequestLine" />
+  </EntityType>
+  <EntityType Name="ServiceRequest_Status">
+    <Key>
+      <PropertyRef Name="ServiceRequest_Status_ID" />
+    </Key>
+    <Property Name="ServiceRequest_Status_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ServiceRequestLine">
+    <Key>
+      <PropertyRef Name="ServiceRequestLine_ID" />
+    </Key>
+    <Property Name="ServiceRequestLine_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ServiceID" Type="Int32" />
+    <Property Name="ServiceRequestID" Type="Int32" />
+    <Property Name="ServiceProvider_ID" Type="Int32" />
+    <NavigationProperty Name="Service" Relationship="InternetServicesModel.FK_ServiceRequestLine_Service" FromRole="ServiceRequestLine" ToRole="Service" />
+    <NavigationProperty Name="ServiceProvider" Relationship="InternetServicesModel.FK_ServiceRequestLine_ServiceProvider" FromRole="ServiceRequestLine" ToRole="ServiceProvider" />
+    <NavigationProperty Name="ServiceRequest" Relationship="InternetServicesModel.FK_ServiceRequestLine_ServiceRequest" FromRole="ServiceRequestLine" ToRole="ServiceRequest" />
+  </EntityType>
+  <EntityType Name="Time">
+    <Key>
+      <PropertyRef Name="TimeID" />
+    </Key>
+    <Property Name="TimeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StartTime" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="EndTime" Type="Time" Nullable="false" Precision="7" />
+    <NavigationProperty Name="ServiceRequests" Relationship="InternetServicesModel.FK_ServiceRequest_Time" FromRole="Time" ToRole="ServiceRequest" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="AspNetID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="datejoined" Type="DateTime" Precision="0" />
+    <Property Name="Activity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Admins" Relationship="InternetServicesModel.FK_Admin_User" FromRole="User" ToRole="Admin" />
+    <NavigationProperty Name="AspNetUser" Relationship="InternetServicesModel.User_and_AspNetUsers" FromRole="User" ToRole="AspNetUser" />
+    <NavigationProperty Name="Consumers" Relationship="InternetServicesModel.FK_Consumer_User" FromRole="User" ToRole="Consumer" />
+    <NavigationProperty Name="ServiceProviders" Relationship="InternetServicesModel.FK_ServiceProvider_User" FromRole="User" ToRole="ServiceProvider" />
+  </EntityType>
+  <EntityType Name="ServiceOrder_Rating">
+    <Key>
+      <PropertyRef Name="RatingID" />
+      <PropertyRef Name="ServiceOrderID" />
+    </Key>
+    <Property Name="RatingID" Type="Int32" Nullable="false" />
+    <Property Name="ServiceOrderID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ServiceOrder" Relationship="InternetServicesModel.FK_ServiceOrder_Rating_ServiceOrder" FromRole="ServiceOrder_Rating" ToRole="ServiceOrder" />
+  </EntityType>
+  <Association Name="Address_and_Consumer">
+    <End Type="InternetServicesModel.Address" Role="Address" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.Consumer" Role="Consumer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="AddressID" />
+      </Principal>
+      <Dependent Role="Consumer">
+        <PropertyRef Name="AddressID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Address_and_Service_Provider">
+    <End Type="InternetServicesModel.Address" Role="Address" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.ServiceProvider" Role="ServiceProvider" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="AddressID" />
+      </Principal>
+      <Dependent Role="ServiceProvider">
+        <PropertyRef Name="AddressID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="City_and_Address">
+    <End Type="InternetServicesModel.City" Role="City" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.Address" Role="Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="CityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Admin_Address">
+    <End Type="InternetServicesModel.Address" Role="Address" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.Admin" Role="Admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="AddressID" />
+      </Principal>
+      <Dependent Role="Admin">
+        <PropertyRef Name="AddressID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceRequest_Address">
+    <End Type="InternetServicesModel.Address" Role="Address" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.ServiceRequest" Role="ServiceRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="AddressID" />
+      </Principal>
+      <Dependent Role="ServiceRequest">
+        <PropertyRef Name="Address_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Province_and_Address">
+    <End Type="InternetServicesModel.Province" Role="Province" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.Address" Role="Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Province">
+        <PropertyRef Name="ProvinceID" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="ProvinceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="User_and_Address">
+    <End Type="InternetServicesModel.Address" Role="Address" Multiplicity="1" />
+    <End Type="InternetServicesModel.Address" Role="Address1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="AddressID" />
+      </Principal>
+      <Dependent Role="Address1">
+        <PropertyRef Name="AddressID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Admin_and_Gender">
+    <End Type="InternetServicesModel.Gender" Role="Gender" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.Admin" Role="Admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="GenderID" />
+      </Principal>
+      <Dependent Role="Admin">
+        <PropertyRef Name="GenderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Admin_User">
+    <End Type="InternetServicesModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.Admin" Role="Admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Admin">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Type="InternetServicesModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="InternetServicesModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaim">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Type="InternetServicesModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="InternetServicesModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogin">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="User_and_AspNetUsers">
+    <End Type="InternetServicesModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="AspNetID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Category_and_Service">
+    <End Type="InternetServicesModel.Category" Role="Category" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="InternetServicesModel.Service" Role="Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="Service">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceProviderService_Category">
+    <End Type="InternetServicesModel.Category" Role="Category" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.ServiceProviderService" Role="ServiceProviderService" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="ServiceProviderService">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="City_and_Application">
+    <End Type="InternetServicesModel.City" Role="City" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.Service_Provider_Application" Role="Service_Provider_Application" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="Service_Provider_Application">
+        <PropertyRef Name="CityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Province_and_City">
+    <End Type="InternetServicesModel.Province" Role="Province" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.City" Role="City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Province">
+        <PropertyRef Name="ProvinceID" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="ProvinceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Consumer_Gender">
+    <End Type="InternetServicesModel.Gender" Role="Gender" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.Consumer" Role="Consumer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="GenderID" />
+      </Principal>
+      <Dependent Role="Consumer">
+        <PropertyRef Name="GenderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Consumer_User">
+    <End Type="InternetServicesModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.Consumer" Role="Consumer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Consumer">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Invoice_Consumer">
+    <End Type="InternetServicesModel.Consumer" Role="Consumer" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.Invoice" Role="Invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consumer">
+        <PropertyRef Name="ConsumerID" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="ConsumerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceQuote_Consumer">
+    <End Type="InternetServicesModel.Consumer" Role="Consumer" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.ServiceQuote" Role="ServiceQuote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consumer">
+        <PropertyRef Name="ConsumerID" />
+      </Principal>
+      <Dependent Role="ServiceQuote">
+        <PropertyRef Name="ConsumerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceRequest_Consumer">
+    <End Type="InternetServicesModel.Consumer" Role="Consumer" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.ServiceRequest" Role="ServiceRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consumer">
+        <PropertyRef Name="ConsumerID" />
+      </Principal>
+      <Dependent Role="ServiceRequest">
+        <PropertyRef Name="ConsumerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SO_and_CN">
+    <End Type="InternetServicesModel.Consumer" Role="Consumer" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.ServiceOrder" Role="ServiceOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consumer">
+        <PropertyRef Name="ConsumerID" />
+      </Principal>
+      <Dependent Role="ServiceOrder">
+        <PropertyRef Name="ConsumerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceProvider_Gender">
+    <End Type="InternetServicesModel.Gender" Role="Gender" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.ServiceProvider" Role="ServiceProvider" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="GenderID" />
+      </Principal>
+      <Dependent Role="ServiceProvider">
+        <PropertyRef Name="GenderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Gender_and_Application">
+    <End Type="InternetServicesModel.Gender" Role="Gender" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.Service_Provider_Application" Role="Service_Provider_Application" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="GenderID" />
+      </Principal>
+      <Dependent Role="Service_Provider_Application">
+        <PropertyRef Name="GenderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Invoice_PaymentMethod">
+    <End Type="InternetServicesModel.PaymentMethod" Role="PaymentMethod" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.Invoice" Role="Invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentMethod">
+        <PropertyRef Name="PaymentMethodID" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="PaymentMethod_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Invoice_ServiceProvider">
+    <End Type="InternetServicesModel.ServiceProvider" Role="ServiceProvider" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.Invoice" Role="Invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceProvider">
+        <PropertyRef Name="ServiceProvider_ID" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="ServiceProvider_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Invoice_ServiceQuoteStatus">
+    <End Type="InternetServicesModel.ServiceQuoteStatu" Role="ServiceQuoteStatu" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.Invoice" Role="Invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceQuoteStatu">
+        <PropertyRef Name="ServiceQuote_Status_ID" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="ServiceQuote_Status_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Invoice_ServiceRequest">
+    <End Type="InternetServicesModel.ServiceRequest" Role="ServiceRequest" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.Invoice" Role="Invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceRequest">
+        <PropertyRef Name="ServiceRequestID" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="ServiceRequestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PaymentMethod_and_ServiceQuote">
+    <End Type="InternetServicesModel.PaymentMethod" Role="PaymentMethod" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.ServiceQuote" Role="ServiceQuote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentMethod">
+        <PropertyRef Name="PaymentMethodID" />
+      </Principal>
+      <Dependent Role="ServiceQuote">
+        <PropertyRef Name="PaymentMethod_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProviderAppointment_ServiceProvider">
+    <End Type="InternetServicesModel.ServiceProvider" Role="ServiceProvider" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.ProviderAppointment" Role="ProviderAppointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceProvider">
+        <PropertyRef Name="ServiceProvider_ID" />
+      </Principal>
+      <Dependent Role="ProviderAppointment">
+        <PropertyRef Name="ServiceProvider_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Province_and_Application">
+    <End Type="InternetServicesModel.Province" Role="Province" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.Service_Provider_Application" Role="Service_Provider_Application" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Province">
+        <PropertyRef Name="ProvinceID" />
+      </Principal>
+      <Dependent Role="Service_Provider_Application">
+        <PropertyRef Name="ProvinceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ScheduleAppoitnment_Service_Provider_Application">
+    <End Type="InternetServicesModel.Service_Provider_Application" Role="Service_Provider_Application" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.ScheduleAppoitnment" Role="ScheduleAppoitnment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service_Provider_Application">
+        <PropertyRef Name="SPA_ID" />
+      </Principal>
+      <Dependent Role="ScheduleAppoitnment">
+        <PropertyRef Name="SPA_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceOrderLine_Service">
+    <End Type="InternetServicesModel.Service" Role="Service" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.ServiceOrderLine" Role="ServiceOrderLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="ServiceID" />
+      </Principal>
+      <Dependent Role="ServiceOrderLine">
+        <PropertyRef Name="Service_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceProviderService_Service">
+    <End Type="InternetServicesModel.Service" Role="Service" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.ServiceProviderService" Role="ServiceProviderService" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="ServiceID" />
+      </Principal>
+      <Dependent Role="ServiceProviderService">
+        <PropertyRef Name="ServiceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceRequest_Service">
+    <End Type="InternetServicesModel.Service" Role="Service" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.ServiceRequest" Role="ServiceRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="ServiceID" />
+      </Principal>
+      <Dependent Role="ServiceRequest">
+        <PropertyRef Name="ServiceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceRequestLine_Service">
+    <End Type="InternetServicesModel.Service" Role="Service" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.ServiceRequestLine" Role="ServiceRequestLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="ServiceID" />
+      </Principal>
+      <Dependent Role="ServiceRequestLine">
+        <PropertyRef Name="ServiceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Service_and__SOL">
+    <End Type="InternetServicesModel.Service" Role="Service" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.ServiceOrderLine" Role="ServiceOrderLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="ServiceID" />
+      </Principal>
+      <Dependent Role="ServiceOrderLine">
+        <PropertyRef Name="Service_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SPA_Status_and_ServiceProvider_Applicaation">
+    <End Type="InternetServicesModel.Service_Provider_Application_Status" Role="Service_Provider_Application_Status" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.Service_Provider_Application" Role="Service_Provider_Application" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service_Provider_Application_Status">
+        <PropertyRef Name="SPA_Status_ID" />
+      </Principal>
+      <Dependent Role="Service_Provider_Application">
+        <PropertyRef Name="SPA_Status_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceOrder_Rating_ServiceOrder">
+    <End Type="InternetServicesModel.ServiceOrder" Role="ServiceOrder" Multiplicity="1" />
+    <End Type="InternetServicesModel.ServiceOrder_Rating" Role="ServiceOrder_Rating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceOrder">
+        <PropertyRef Name="ServiceOrderID" />
+      </Principal>
+      <Dependent Role="ServiceOrder_Rating">
+        <PropertyRef Name="ServiceOrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceOrderLine_ServiceOrder">
+    <End Type="InternetServicesModel.ServiceOrder" Role="ServiceOrder" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.ServiceOrderLine" Role="ServiceOrderLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceOrder">
+        <PropertyRef Name="ServiceOrderID" />
+      </Principal>
+      <Dependent Role="ServiceOrderLine">
+        <PropertyRef Name="SericeOrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Service_order_and_service_order_status">
+    <End Type="InternetServicesModel.ServiceOrder_Status" Role="ServiceOrder_Status" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.ServiceOrder" Role="ServiceOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceOrder_Status">
+        <PropertyRef Name="Service_Order_Status_ID" />
+      </Principal>
+      <Dependent Role="ServiceOrder">
+        <PropertyRef Name="Service_Order_Status_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Service_Qoute_and_Service_Order">
+    <End Type="InternetServicesModel.ServiceQuote" Role="ServiceQuote" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.ServiceOrder" Role="ServiceOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceQuote">
+        <PropertyRef Name="ServiceQuoteID" />
+      </Principal>
+      <Dependent Role="ServiceOrder">
+        <PropertyRef Name="ServiceQuoteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SO_AND_SP">
+    <End Type="InternetServicesModel.ServiceProvider" Role="ServiceProvider" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.ServiceOrder" Role="ServiceOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceProvider">
+        <PropertyRef Name="ServiceProvider_ID" />
+      </Principal>
+      <Dependent Role="ServiceOrder">
+        <PropertyRef Name="ServiceProvider_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceOrderLine_ServiceQuote">
+    <End Type="InternetServicesModel.ServiceQuote" Role="ServiceQuote" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.ServiceOrderLine" Role="ServiceOrderLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceQuote">
+        <PropertyRef Name="ServiceQuoteID" />
+      </Principal>
+      <Dependent Role="ServiceOrderLine">
+        <PropertyRef Name="ServiceQuote_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceProvider_ServiceRequest_ServiceProvider">
+    <End Type="InternetServicesModel.ServiceProvider" Role="ServiceProvider" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.ServiceProvider_ServiceRequest" Role="ServiceProvider_ServiceRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceProvider">
+        <PropertyRef Name="ServiceProvider_ID" />
+      </Principal>
+      <Dependent Role="ServiceProvider_ServiceRequest">
+        <PropertyRef Name="ServiceProvider_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceProvider_User">
+    <End Type="InternetServicesModel.User" Role="User" Multiplicity="1" />
+    <End Type="InternetServicesModel.ServiceProvider" Role="ServiceProvider" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="ServiceProvider">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceProviderService_ServiceProvider">
+    <End Type="InternetServicesModel.ServiceProvider" Role="ServiceProvider" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.ServiceProviderService" Role="ServiceProviderService" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceProvider">
+        <PropertyRef Name="ServiceProvider_ID" />
+      </Principal>
+      <Dependent Role="ServiceProviderService">
+        <PropertyRef Name="ServiceProvider_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceQuote_ServiceProvider">
+    <End Type="InternetServicesModel.ServiceProvider" Role="ServiceProvider" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.ServiceQuote" Role="ServiceQuote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceProvider">
+        <PropertyRef Name="ServiceProvider_ID" />
+      </Principal>
+      <Dependent Role="ServiceQuote">
+        <PropertyRef Name="ServiceProvider_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceRequestLine_ServiceProvider">
+    <End Type="InternetServicesModel.ServiceProvider" Role="ServiceProvider" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.ServiceRequestLine" Role="ServiceRequestLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceProvider">
+        <PropertyRef Name="ServiceProvider_ID" />
+      </Principal>
+      <Dependent Role="ServiceRequestLine">
+        <PropertyRef Name="ServiceProvider_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceProvider_ServiceRequest_ServiceQuote">
+    <End Type="InternetServicesModel.ServiceQuote" Role="ServiceQuote" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.ServiceProvider_ServiceRequest" Role="ServiceProvider_ServiceRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceQuote">
+        <PropertyRef Name="ServiceQuoteID" />
+      </Principal>
+      <Dependent Role="ServiceProvider_ServiceRequest">
+        <PropertyRef Name="ServiceQuoteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceQuote_ServiceQuoteStatus">
+    <End Type="InternetServicesModel.ServiceQuoteStatu" Role="ServiceQuoteStatu" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.ServiceQuote" Role="ServiceQuote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceQuoteStatu">
+        <PropertyRef Name="ServiceQuote_Status_ID" />
+      </Principal>
+      <Dependent Role="ServiceQuote">
+        <PropertyRef Name="ServiceQuote_Status_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceQuote_ServiceRequest">
+    <End Type="InternetServicesModel.ServiceRequest" Role="ServiceRequest" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.ServiceQuote" Role="ServiceQuote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceRequest">
+        <PropertyRef Name="ServiceRequestID" />
+      </Principal>
+      <Dependent Role="ServiceQuote">
+        <PropertyRef Name="ServiceRequestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceQuoteLine_ServiceQuote">
+    <End Type="InternetServicesModel.ServiceQuote" Role="ServiceQuote" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.ServiceQuoteLine" Role="ServiceQuoteLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceQuote">
+        <PropertyRef Name="ServiceQuoteID" />
+      </Principal>
+      <Dependent Role="ServiceQuoteLine">
+        <PropertyRef Name="ServiceQuoteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceRequest_Time">
+    <End Type="InternetServicesModel.Time" Role="Time" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.ServiceRequest" Role="ServiceRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Time">
+        <PropertyRef Name="TimeID" />
+      </Principal>
+      <Dependent Role="ServiceRequest">
+        <PropertyRef Name="TimeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceRequestLine_ServiceRequest">
+    <End Type="InternetServicesModel.ServiceRequest" Role="ServiceRequest" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.ServiceRequestLine" Role="ServiceRequestLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceRequest">
+        <PropertyRef Name="ServiceRequestID" />
+      </Principal>
+      <Dependent Role="ServiceRequestLine">
+        <PropertyRef Name="ServiceRequestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Type="InternetServicesModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+    <End Type="InternetServicesModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Invoice_ServiceQuote">
+    <End Type="InternetServicesModel.ServiceQuote" Role="ServiceQuote" Multiplicity="0..1" />
+    <End Type="InternetServicesModel.Invoice" Role="Invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceQuote">
+        <PropertyRef Name="ServiceQuoteID" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="ServiceQuoteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Iserv.Models.AspNetUser>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<br />
+<button class="btn btn-dark" style="border-radius:20px" onclick="window.location.href ='@Url.Action("Create","AspNetUsers")'">
+    Add New +
+</button>
+
+<br />
+<div class="row" style="height:100%;">
+    @foreach (var item in Model)
+    {
+        <div class="card " style="width:320px;height:180px;border:1px solid;border-radius:10px;padding:10px;background-color:rgba(0,0,0,0.88);margin-left:5px;margin-top:10px">
+            <div class="card-body" style="height:100px">
+                <h4 class="card-title" style="color:white"> Name : @item.UserName</h4>
+                <p class="card-text"><strong> Email : @item.Email</strong></p>
+                <div class="btn-group">
+                    <button class="btn btn-info btn-sm" type="submit" onclick="window.location.href='@Url.Action("Edit", "AspNetUser", new { id = item.Id })'">Modify</button>
+                    <button class="btn btn-dark btn-sm" type="submit" onclick="window.location.href='@Url.Action("Details", "AspNetUser", new { id = item.Id })'">View</button>
+                    <button class="btn btn-danger btn-sm" type="submit" onclick="window.location.href='@Url.Action("Delete", "AspNetUser", new { id = item.Id})'">Remove</button>
+                </div>
+
+            </div>
+            <br />
+        </div>
+    }
+</div>

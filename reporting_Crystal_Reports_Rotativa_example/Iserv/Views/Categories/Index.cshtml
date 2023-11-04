@@ -1,0 +1,39 @@
+@model IEnumerable<Iserv.Models.Category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="color:white">Service Categories</h2>
+<br />
+
+
+<button class="btn btn-dark" style="border-radius:20px" onclick="window.location.href ='@Url.Action("Create","Categories")'">
+    Add New Category
+</button>
+<br />
+
+
+
+
+<div class="row" style="height:100%;">
+    @foreach (var item in Model)
+    {
+        <div class="card " style="width:320px;height:250px;border:1px solid;border-radius:10px;padding:10px;background-color:rgba(0,0,0,0.88);margin-left:5px;margin-top:10px">
+            <div class="card-body" style="height:100px">
+                <h4 class="card-title" style="color:white"> Name : @item.Name    </h4>
+                <p class="card-text" style="color:white"><strong> Description : @item.Description</strong></p> 
+              <!--  <p class="card-text"><strong> ImagePath : @item.ImagePath</strong></p> -->
+
+                <div class="btn-group">
+                    <button class="btn btn-info btn-sm" type="submit" onclick="window.location.href='@Url.Action("Edit", "Categories", new { id=item.CategoryID })'">Modify</button>
+                    <button class="btn btn-dark btn-sm" type="submit" onclick="window.location.href='@Url.Action("Details", "Categories", new { id=item.CategoryID })'">View</button>
+                    <button class="btn btn-danger btn-sm" type="submit" onclick="window.location.href='@Url.Action("Delete", "Categories", new { id=item.CategoryID })'">Remove</button>
+                </div>
+
+            </div>
+            <br />
+        </div>
+    }
+</div>

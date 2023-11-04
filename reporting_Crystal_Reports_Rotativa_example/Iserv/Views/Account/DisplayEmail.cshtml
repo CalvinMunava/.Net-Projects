@@ -1,0 +1,238 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Display Email";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Iservz</title>
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/dist/css/style.css">
+    <script src="https://unpkg.com/animejs@3.0.1/lib/anime.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <!--ID-->
+
+
+    <style>
+
+        #debug {
+            color: red;
+            display: none;
+        }
+        /*Below is login*/
+        input.form-control, input.form-control:focus {
+            background-color: lightsteelblue;
+            color: #fff;
+            border-radius: 20px;
+        }
+
+            input.form-control:focus {
+                box-shadow: none;
+            }
+
+        button[type=submit].btn {
+            border-radius: 20px;
+            background-color: lightskyblue;
+            color: #fff;
+        }
+
+        div.form-group label:not(.text-danger) {
+            align-self: center;
+            font-weight: 700;
+        }
+
+        div.form-group.required > label:first-child:after {
+            content: '*';
+            color: #fff;
+            padding-left: 5px;
+        }
+
+        #toast-container > div {
+            opacity: 1;
+        }
+
+        .wrapper {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .wrapped-div {
+            -webkit-border-radius: 10px 10px 10px 10px;
+            border-radius: 20px;
+            background: white;
+            padding: 30px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            padding: 0px;
+            -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+            box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+        }
+
+        /* Tabs */
+        .tab-header {
+            text-align: center;
+        }
+
+            .tab-header h2.active {
+                color: lightblue;
+                border-bottom: 4px solid #fff;
+            }
+
+            .tab-header h2 {
+                text-align: center;
+                font-size: 18px;
+                font-weight: 600;
+                display: inline-block;
+                padding: 30px 40px 10px 40px;
+                cursor: pointer;
+                color: #545d6a;
+                border-bottom: 2px solid #545d6a;
+            }
+
+                .tab-header h2:focus {
+                    outline: none;
+                }
+
+        form {
+            margin: 0px 16px;
+        }
+
+        div.form-group input.invalid {
+            border: 1px solid lightcoral;
+        }
+
+        div.form-group label:first-child {
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .jumbotron {
+            padding-top: 0px;
+            background: #fff;
+        }
+
+        .form-control, .input-group-text {
+            border: 1px solid #0080ff;
+        }
+
+        table.table-hover tbody tr:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="is-boxed has-animations">
+    <nav class="navbar navbar-expand-lg " style="background-color:#1D2026">
+        <button class="button button-dark button-sm" style=" border-radius:80px;margin-left:3%" onclick="window.location.href='@Url.Action("Landing","Home")'">
+
+            <i style="color:white" class="fa fa-backward"> Return </i>
+
+        </button>
+    </nav>
+    <div class="body-wrap">
+        <header class="site-header">
+            <div class="container">
+                <div class="site-header-inner">
+                    <div class="brand header-brand">
+                        <h1 class="m-0">
+                            <a href="#">
+                                <img class="header-logo-image" src="~/Content/Site/login.png" alt="Logo">
+                            </a>
+                        </h1>
+                    </div>
+                    <div class="wrapper content">
+                        <div class="wrapped-div" style="background-color:#1D2026;margin-top:-50px;width:auto;">
+                            <div class="row">
+                                <h2 style="margin-left:9%">Registration Successful</h2>
+                                <div class="row">
+                                    <div class="col-md-10 offset-md-1">
+                                        <!-- Login Form -->
+                                        <img src="~/Content/Site/complete.png" class="mx-auto d-block" style="height:200px;width:200px;margin-left:27%">
+                                        <div class="form-row" >
+                                            <p style="color: lightskyblue;margin-left: 10px;">Open Email to Confirm Account</p>
+                                            <h6 style="color: seagreen;margin-left: 15%;">*Also check SPAM folder*</h6>
+                                        </div>
+                                        <div>
+                                            <button style="margin-left:40%;border-radius:20px;background-color:rgba(0,0,0,0.3)" class="button button-sm" onclick="window.location.href = 'https://www.google.com'">Open Mail</button>
+                                        </div>
+                                        <br />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="container">
+                    <div class="hero-inner">
+                        <div class="hero-copy">
+                            <h1 class="hero-title mt-0">@DateTime.Now.ToShortTimeString()</h1>
+                            <div class="hero-cta">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-figure anime-element">
+                        <svg class="placeholder" width="528" height="396" viewBox="0 0 528 396">
+                            <rect width="528" height="396" style="fill:transparent;" />
+                        </svg>
+                        <div class="hero-figure-box hero-figure-box-01" data-rotation="45deg"></div>
+                        <div class="hero-figure-box hero-figure-box-02" data-rotation="-45deg"></div>
+                        <div class="hero-figure-box hero-figure-box-03" data-rotation="0deg"></div>
+                        <div class="hero-figure-box hero-figure-box-04" data-rotation="-135deg"></div>
+                        <div class="hero-figure-box hero-figure-box-05"></div>
+                        <div class="hero-figure-box hero-figure-box-06"></div>
+                        <div class="hero-figure-box hero-figure-box-07"></div>
+                        <div class="hero-figure-box hero-figure-box-08" data-rotation="-22deg"></div>
+                        <div class="hero-figure-box hero-figure-box-09" data-rotation="-52deg"></div>
+                        <div class="hero-figure-box hero-figure-box-10" data-rotation="-50deg"></div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="site-footer-inner">
+                    <div class="brand footer-brand">
+                        <a href="#">
+                        </a>
+                    </div>
+
+                    <div class="footer-copyright">&copy; 2020 By Iserv</div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!--Scripts-->
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.0.min.js" type="text/javascript">
+    </script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/jquery-ui.min.js" type="text/javascript">
+    </script>
+    <script type="text/javascript" src="https://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js">
+    </script>
+    <script src="~/Content/dist/js/main.min.js">
+
+    </script>
+
+</body>
+</html>
+

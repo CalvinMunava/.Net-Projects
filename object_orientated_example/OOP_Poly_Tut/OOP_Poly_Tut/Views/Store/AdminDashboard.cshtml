@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "AdminDashboard";
+}
+
+<h2>AdminDashboard</h2>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6">
+            <img src="~/Content/Images/StoreImages/pslogo.png" height="100" width="100" />
+            <button class="btn btn-primary" onclick="window.location.href = '@Url.Action("PsIndex","Store")'"  >Playstation DB</button>
+        </div>
+        <div class="col-lg-6">
+            <img src="~/Content/Images/StoreImages/xbox.png" height="100" width="100" />
+            <button class="btn btn-success" onclick="window.location.href = '@Url.Action("XbIndex","Store")'"   >Xbox DB</button>
+        </div>
+    </div>
+</div>
+

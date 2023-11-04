@@ -1,0 +1,112 @@
+﻿@using EagerSample.Models
+@model SearchModel
+<link href="~/Content/Site.css" rel="stylesheet" />
+
+@using (Html.BeginForm("Index", "Search", FormMethod.Post))
+    {
+    <div class="row g-2">
+        <div class="col-auto">
+            @Html.DropDownListFor(m => m.SelectedCriteria, new SelectList(Model.Criteria), new { @class = "form-select" })
+        </div>
+        <div class="col-auto">
+            @Html.TextBoxFor(m => m.SearchText, new { id = "searchBox", @class = "form-control" })
+        </div>
+        <div class="col-auto">
+            <input type="submit" value="Search" id="searchButton" class="btn btn-primary" />
+        </div>
+        <div class="col-auto">
+            <button type="button" id="clearButton" class="btn btn-secondary">Clear</button>
+        </div>
+    </div>
+    }
+<hr />
+<table id="resultsTable" class="table">
+    <thead>
+        <tr>
+            <th>Customer ID</th>
+            <th>Company Name</th>
+            <th>Contact Name</th>
+            <th>OrderID</th>
+            <th>Product Name</th>
+        </tr>
+    </thead>
+    @foreach (var customer in Model.Results)
+        {
+        <tr>
+            <td>@customer.CustomerID</td>
+            <td>@customer.CompanyName</td>
+            <td>@customer.ContactName</td>
+            <td>
+                @if (customer.Orders.Any())
+                    {
+                    var firstOrder = customer.Orders.FirstOrDefault();
+                    if (firstOrder != null)
+                        {
+                        @firstOrder.OrderID
+                        }
+                    }
+            </td>
+            <td>
+                @if (customer.Orders.Any())
+                    {
+                    var firstOrder = customer.Orders.FirstOrDefault();
+                    if (firstOrder.Order_Details.Any())
+                        {
+                        var firstOrderDetail = firstOrder.Order_Details.FirstOrDefault();
+                        if (firstOrderDetail.Products != null)
+                            {
+                            @firstOrderDetail.Products.ProductName
+                            }
+                        }
+                    }
+            </td>
+        </tr>
+        }
+</table>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        var searchButton = $("#searchButton");
+        var searchBox = $("#searchBox");
+        var clearButton = $("#clearButton");
+        var resultsTable = $("#resultsTable");
+
+        // Disable button until there is text in the textbox
+        // -----------------------------------------------------
+        searchButton.prop("disabled", true);
+
+        // Enable button when there is text in the textbox
+        // -----------------------------------------------------
+        searchBox.on("input", function () {
+            if ($(this).val().trim() !== "") {
+                searchButton.prop("disabled", false);
+            } else {
+                searchButton.prop("disabled", true);
+            }
+        });
+
+        $("form").submit(function () {
+
+            // Disable button after search button is clicked
+            // -------------------------------------------------
+            searchButton.prop("disabled", true);
+        });
+
+        // Clear button functionality
+        // -----------------------------------------------------
+        clearButton.click(function () {
+            searchBox.prop("disabled", false);
+
+            // Clear the textbox
+            // -------------------------------------------------
+            searchBox.val("");
+            searchBox.focus();
+            searchButton.prop("disabled", true);
+
+            // Clear the table content
+            // -------------------------------------------------
+            resultsTable.empty();
+        });
+    });
+</script>

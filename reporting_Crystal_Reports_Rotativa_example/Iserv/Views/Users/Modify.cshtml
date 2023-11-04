@@ -1,0 +1,177 @@
+﻿@model Iserv.Models.User
+
+@{
+    ViewBag.Title = "Modify";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="color:white">Modify -  @Model.UserName</h2>
+
+
+<div class="form-horizontal">
+    <hr />
+    <input style="display:none" id="UserID" name="UserID" value="@Model.UserID" />
+    <div class="card " style="width:500px;height:auto;border:1px solid;border-radius:30px;padding:10px;background-color:rgba(0,0,0,1);margin-left:22%;margin-top:10px">
+        @if (Model.ImagePath == null || Model.ImagePath.IsEmpty() == true || Model.ImagePath == "")
+        {
+            <img class="card-img-top" src="~/Content/Pictures/empty.png" style="width:60%;height:40%;border-radius:80px;margin-left:20%">
+        }
+        else
+        {
+            <img class="card-img-top" src="@Url.Content(Model.ImagePath)" style="width:60%;height:40%;border-radius:80px;margin-left:20%">
+        }
+        <div class="card-body">
+
+            <p style="text-align:right;color:dodgerblue">@Model.Role</p>
+
+
+
+            <h4 class="card-title" style="color:white"> @Model.UserName</h4>
+            <p class="card-text"><strong> @Model.description  </strong></p>
+            <div class="btn-group">
+                @if (Model.Role == "ServiceProvider")
+                {
+                    if (Model.Activity == "Enabled")
+                    {
+                        <!--Inplement the enable /disable fature here -->
+                        <button class="btn btn-info btn-sm" type="submit" onclick="window.location.href='@Url.Action("ManageServices","ServiceProviders", new { id=Model.UserID, Pname = Model.UserName })'">Manage Services</button>
+                        <button class="btn btn-dark btn-sm" type="submit" id="@Model.UserID" data-toggle="modal" data-target="#modal">Message</button>
+                        <button class="btn btn-danger btn-sm" type="submit" id="btnDisable">Disable</button>
+                    }
+                    else if (Model.Activity == "Disabled")
+                    {
+                        <button class="btn btn-success btn-sm" type="submit" id="btnEnable">Enable</button>
+                    }
+                }
+                else
+                {
+                    if (Model.Activity == "Enabled")
+                    {
+                        <!--Inplement the enable /disable fature here -->
+                        <button class="btn btn-dark btn-sm" type="submit" id="@Model.UserID" data-toggle="modal" data-target="#modal">Message</button>
+                        <button class="btn btn-danger btn-sm" type="submit" id="btnDisable">Disable</button>
+                    }
+                    else if (Model.Activity == "Disabled")
+                    {
+                        <button class="btn btn-success btn-sm" type="submit" id="btnEnable">Enable</button>
+                    }
+                }
+
+
+
+            </div>
+        </div>
+        <br />
+    </div>
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false" style="margin-left:-69px;margin-top:8%">
+
+        <div class="modal-dialog">
+
+            <div class="modal-content" style="background-color:#1D2026;color:white;border-radius:15px;align-content:center">
+
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Send Message </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                @using (Html.BeginForm("Create", "Messages", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="modal-body">
+                        <!--Below are inputs-->
+                        <input style="display: none" type="datetime" id="DateSent" name="DateSent" value="@DateTime.Now.ToShortDateString()" />
+                        <input style="display:none" type="time" id="TimeSent" name="TimeSent" value="@DateTime.Now.ToShortTimeString()" />
+                        <input style="display:none" type="text" id="SendTo" name="SendTo" value="Inbox" />
+                        <input style="display:none" type="text" id="SentFrom" name="SentFrom" value="@User.Identity.Name" />
+                        <input style="display:none" type="text" id="SentTo" name="SentTo" value="@Model.UserName    " />
+                        <textarea placeholder="Enter Message" style="background-color:rgba(0,0,0,0.88);color:white" required rows="2" id="MessageBody" name="MessageBody"></textarea>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-info"><i class="fa fa-check"></i> Send</button>
+                    </div>
+
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <!--Scripts-->
+
+    <script>
+        $(document).ready(function () {
+        $('body').on('click', '#btnDisable', function () {
+            var User = $("#UserID").val();
+            $.ajax({
+                url: "/Users/DisableUser",
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({
+                    "UserID": User
+                }),
+                success: function (data) {
+                    debugger
+                    Swal.fire({
+                        position: 'top',
+                        type: 'success',
+                        title: '<span style="color:gray">User Has been Disabled',
+                        showConfirmButton: false,
+                        timer:2000 
+                    });
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    Swal.fire({
+                        type: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                    });
+                }
+            }).done(
+                setTimeout(function () {
+                    window.history.go(-2)
+                }, 3000)
+            );
+        });
+        $('body').on('click', '#btnEnable', function () {
+                var User = $("#UserID").val();
+                $.ajax({
+                    url: "/Users/EnableUserAsync",
+                    type: "POST",
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify({
+                        "UserID": User
+                    }),
+                    success: function (data) {
+                        debugger
+                        Swal.fire({
+                            position: 'top',
+                            type: 'success',
+                            title: '<span style="color:gray">User Has been Enabled',
+                            showConfirmButton: false,
+                            timer: 2000
+                        });
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        Swal.fire({
+                            type: 'error',
+                            title: 'Oops...',
+                            text: 'Something went wrong!',
+                        });
+                    }
+                }).done(
+                    setTimeout(function () {
+                        window.history.go(-2)
+                    }, 3000)
+                );
+            });
+     });
+    </script>
+
+
+}

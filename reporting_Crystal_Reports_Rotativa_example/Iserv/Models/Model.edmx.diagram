@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dd1ced1b755d4650869dc32b07957383" Name="Diagram1">
+        <EntityTypeShape EntityType="InternetServicesModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="InternetServicesModel.Address" Width="1.5" PointX="0.75" PointY="37" />
+        <EntityTypeShape EntityType="InternetServicesModel.Admin" Width="1.5" PointX="3" PointY="24.75" />
+        <EntityTypeShape EntityType="InternetServicesModel.AspNetRole" Width="1.5" PointX="1.5" PointY="34.375" />
+        <EntityTypeShape EntityType="InternetServicesModel.AspNetUserClaim" Width="1.5" PointX="3.75" PointY="35.5" />
+        <EntityTypeShape EntityType="InternetServicesModel.AspNetUserLogin" Width="1.5" PointX="3.75" PointY="33" />
+        <EntityTypeShape EntityType="InternetServicesModel.AspNetUser" Width="1.5" PointX="1.5" PointY="29.125" />
+        <EntityTypeShape EntityType="InternetServicesModel.Category" Width="1.5" PointX="3.75" PointY="29.625" />
+        <EntityTypeShape EntityType="InternetServicesModel.City" Width="1.5" PointX="0.75" PointY="15.5" />
+        <EntityTypeShape EntityType="InternetServicesModel.Consumer" Width="1.5" PointX="3" PointY="19.375" />
+        <EntityTypeShape EntityType="InternetServicesModel.Gender" Width="1.5" PointX="0.75" PointY="20.375" />
+        <EntityTypeShape EntityType="InternetServicesModel.Invoice" Width="1.5" PointX="10.5" PointY="18.75" />
+        <EntityTypeShape EntityType="InternetServicesModel.Message" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="InternetServicesModel.PaymentMethod" Width="1.5" PointX="8.25" PointY="14.375" />
+        <EntityTypeShape EntityType="InternetServicesModel.ProviderAppointment" Width="1.5" PointX="8.25" PointY="23.125" />
+        <EntityTypeShape EntityType="InternetServicesModel.Province" Width="1.5" PointX="1.5" PointY="9.625" />
+        <EntityTypeShape EntityType="InternetServicesModel.Rating" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="InternetServicesModel.Schedule" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="InternetServicesModel.ScheduleAppoitnment" Width="1.5" PointX="5.25" PointY="14.25" />
+        <EntityTypeShape EntityType="InternetServicesModel.Service" Width="1.5" PointX="6" PointY="29.125" />
+        <EntityTypeShape EntityType="InternetServicesModel.Service_Provider_Application" Width="1.5" PointX="3" PointY="12.875" />
+        <EntityTypeShape EntityType="InternetServicesModel.Service_Provider_Application_Status" Width="1.5" PointX="0.75" PointY="13.25" />
+        <EntityTypeShape EntityType="InternetServicesModel.ServiceOrder" Width="1.5" PointX="18.75" PointY="19.5" />
+        <EntityTypeShape EntityType="InternetServicesModel.ServiceOrder_Status" Width="1.5" PointX="16.5" PointY="17.25" />
+        <EntityTypeShape EntityType="InternetServicesModel.ServiceOrderLine" Width="1.5" PointX="21" PointY="19.25" />
+        <EntityTypeShape EntityType="InternetServicesModel.ServiceProvider" Width="1.5" PointX="6" PointY="19.125" />
+        <EntityTypeShape EntityType="InternetServicesModel.ServiceProvider_ServiceRequest" Width="1.5" PointX="15.75" PointY="20" />
+        <EntityTypeShape EntityType="InternetServicesModel.ServiceProvider_Status" Width="1.5" PointX="2.75" PointY="4.75" />
+        <EntityTypeShape EntityType="InternetServicesModel.ServiceProviderService" Width="1.5" PointX="11.25" PointY="23.25" />
+        <EntityTypeShape EntityType="InternetServicesModel.ServiceQuote" Width="1.5" PointX="13.5" PointY="18.375" />
+        <EntityTypeShape EntityType="InternetServicesModel.ServiceQuoteLine" Width="1.5" PointX="15.75" PointY="26.375" />
+        <EntityTypeShape EntityType="InternetServicesModel.ServiceQuoteStatu" Width="1.5" PointX="8.25" PointY="26.875" />
+        <EntityTypeShape EntityType="InternetServicesModel.ServiceRequest" Width="1.5" PointX="8.25" PointY="17.375" />
+        <EntityTypeShape EntityType="InternetServicesModel.ServiceRequest_Status" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="InternetServicesModel.ServiceRequestLine" Width="1.5" PointX="10.5" PointY="15.375" />
+        <EntityTypeShape EntityType="InternetServicesModel.Time" Width="1.5" PointX="6" PointY="11.625" />
+        <EntityTypeShape EntityType="InternetServicesModel.User" Width="1.5" PointX="0.75" PointY="24.5" />
+        <EntityTypeShape EntityType="InternetServicesModel.ServiceOrder_Rating" Width="1.5" PointX="21" PointY="23.75" />
+        <AssociationConnector Association="InternetServicesModel.Address_and_Consumer" />
+        <AssociationConnector Association="InternetServicesModel.Address_and_Service_Provider" />
+        <AssociationConnector Association="InternetServicesModel.City_and_Address" />
+        <AssociationConnector Association="InternetServicesModel.FK_Admin_Address" />
+        <AssociationConnector Association="InternetServicesModel.FK_ServiceRequest_Address" />
+        <AssociationConnector Association="InternetServicesModel.Province_and_Address" />
+        <AssociationConnector Association="InternetServicesModel.User_and_Address" />
+        <AssociationConnector Association="InternetServicesModel.Admin_and_Gender" />
+        <AssociationConnector Association="InternetServicesModel.FK_Admin_User" />
+        <AssociationConnector Association="InternetServicesModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="InternetServicesModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="InternetServicesModel.User_and_AspNetUsers" />
+        <AssociationConnector Association="InternetServicesModel.Category_and_Service" />
+        <AssociationConnector Association="InternetServicesModel.FK_ServiceProviderService_Category" />
+        <AssociationConnector Association="InternetServicesModel.City_and_Application" />
+        <AssociationConnector Association="InternetServicesModel.Province_and_City" />
+        <AssociationConnector Association="InternetServicesModel.FK_Consumer_Gender" />
+        <AssociationConnector Association="InternetServicesModel.FK_Consumer_User" />
+        <AssociationConnector Association="InternetServicesModel.FK_Invoice_Consumer" />
+        <AssociationConnector Association="InternetServicesModel.FK_ServiceQuote_Consumer" />
+        <AssociationConnector Association="InternetServicesModel.FK_ServiceRequest_Consumer" />
+        <AssociationConnector Association="InternetServicesModel.SO_and_CN" />
+        <AssociationConnector Association="InternetServicesModel.FK_ServiceProvider_Gender" />
+        <AssociationConnector Association="InternetServicesModel.Gender_and_Application" />
+        <AssociationConnector Association="InternetServicesModel.FK_Invoice_PaymentMethod" />
+        <AssociationConnector Association="InternetServicesModel.FK_Invoice_ServiceProvider" />
+        <AssociationConnector Association="InternetServicesModel.FK_Invoice_ServiceQuoteStatus" />
+        <AssociationConnector Association="InternetServicesModel.FK_Invoice_ServiceRequest" />
+        <AssociationConnector Association="InternetServicesModel.PaymentMethod_and_ServiceQuote" />
+        <AssociationConnector Association="InternetServicesModel.FK_ProviderAppointment_ServiceProvider" />
+        <AssociationConnector Association="InternetServicesModel.Province_and_Application" />
+        <AssociationConnector Association="InternetServicesModel.FK_ScheduleAppoitnment_Service_Provider_Application" />
+        <AssociationConnector Association="InternetServicesModel.FK_ServiceOrderLine_Service" />
+        <AssociationConnector Association="InternetServicesModel.FK_ServiceProviderService_Service" />
+        <AssociationConnector Association="InternetServicesModel.FK_ServiceRequest_Service" />
+        <AssociationConnector Association="InternetServicesModel.FK_ServiceRequestLine_Service" />
+        <AssociationConnector Association="InternetServicesModel.Service_and__SOL" />
+        <AssociationConnector Association="InternetServicesModel.SPA_Status_and_ServiceProvider_Applicaation" />
+        <AssociationConnector Association="InternetServicesModel.FK_ServiceOrder_Rating_ServiceOrder" />
+        <AssociationConnector Association="InternetServicesModel.FK_ServiceOrderLine_ServiceOrder" />
+        <AssociationConnector Association="InternetServicesModel.Service_order_and_service_order_status" />
+        <AssociationConnector Association="InternetServicesModel.Service_Qoute_and_Service_Order" />
+        <AssociationConnector Association="InternetServicesModel.SO_AND_SP" />
+        <AssociationConnector Association="InternetServicesModel.FK_ServiceOrderLine_ServiceQuote" />
+        <AssociationConnector Association="InternetServicesModel.FK_ServiceProvider_ServiceRequest_ServiceProvider" />
+        <AssociationConnector Association="InternetServicesModel.FK_ServiceProvider_User" />
+        <AssociationConnector Association="InternetServicesModel.FK_ServiceProviderService_ServiceProvider" />
+        <AssociationConnector Association="InternetServicesModel.FK_ServiceQuote_ServiceProvider" />
+        <AssociationConnector Association="InternetServicesModel.FK_ServiceRequestLine_ServiceProvider" />
+        <AssociationConnector Association="InternetServicesModel.FK_ServiceProvider_ServiceRequest_ServiceQuote" />
+        <AssociationConnector Association="InternetServicesModel.FK_ServiceQuote_ServiceQuoteStatus" />
+        <AssociationConnector Association="InternetServicesModel.FK_ServiceQuote_ServiceRequest" />
+        <AssociationConnector Association="InternetServicesModel.FK_ServiceQuoteLine_ServiceQuote" />
+        <AssociationConnector Association="InternetServicesModel.FK_ServiceRequest_Time" />
+        <AssociationConnector Association="InternetServicesModel.FK_ServiceRequestLine_ServiceRequest" />
+        <AssociationConnector Association="InternetServicesModel.AspNetUserRoles" />
+        <AssociationConnector Association="InternetServicesModel.FK_Invoice_ServiceQuote" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

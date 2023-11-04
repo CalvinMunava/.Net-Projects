@@ -1,0 +1,42 @@
+@model IEnumerable<Iserv.Models.ServiceOrder>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+<h2 class="text-info">Service Orders</h2>
+<hr />
+
+<div class="row" style="height:100%;">
+    @foreach (var item in Model)
+    {
+        <div class="card " style="width:320px;height:auto;border:1px solid;border-radius:10px;padding:10px;background-color:rgba(0,0,0,0.88);margin-left:5px;margin-top:10px">
+
+            <img src="@Url.Content(item.ServiceQuote.ServiceProvider.User.ImagePath)" class="rounded-circle z-depth-1-half" alt="example placeholder avatar" style="width: 150px;">
+
+            <div class="card-body">
+
+                <h4 class="card-title" style="color:white"> Ordered from <span class="text-info">@item.ServiceQuote.ServiceProvider.Name  </span> </h4>
+
+                <p class="card-text" style="color:white"> Category : <span class="text-info"> @item.ServiceQuote.ServiceRequest.Service.Category.Name </span></p>
+
+                <p class="card-text" style="color:white"> Service : <span class="text-info"> @item.ServiceQuote.ServiceRequest.Service.Name </span></p>
+
+                <p class="card-text" style="color:white"> Total Order Price R:<span class="text-info"> @item.ServiceQuote.Total  </span></p>
+
+                <p class="card-text" style="color:white"> Pay Method: <span class="text-info"> @item.ServiceQuote.PaymentMethod.Name</span></p>
+
+                <p class="card-text" style="color:white"> Company : <span class="text-info"> @item.ServiceQuote.ServiceProvider.BusinessName  </span></p>
+
+            </div>
+            <br />
+        </div>
+    }
+</div>
+
+
+
+
+
+

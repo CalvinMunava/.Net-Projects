@@ -1,0 +1,49 @@
+﻿@model List<booksapp.Models.Publication>
+
+@{
+    ViewBag.Title = "Home";
+}
+
+<br />
+
+<div class="container">
+    <div class="row">
+        @foreach (var publication in Model)
+        {
+           <div class="col-lg-4">
+                <div class="panel panel-default">
+                    <img src="@publication._Url" class="card-img-top" height="200" width="200">
+                    <div class="panel-body">
+                        <p class="card-text"> @publication.GetType().ToString().Substring(16)</p>
+                        <!--
+                            This a method i am using to cut the first 16 characters of booksapp.Model.Article so i only show Article
+                            my article class is located here : booksapp.Model.Article
+                            yours will be different so cut whatever characters you need to 
+                        -->
+                        <br />
+                        <p>@publication._Title</p>
+                        <br />
+                        <!--Add your Author Here -->
+                        <p>By Author Here </p>
+                        <br />
+                        <p>@publication._Summary</p>
+                        <br />
+                        <a href="@publication._Url">Read More</a>
+                        <br />
+
+
+                        @if (publication.GetType() == typeof(booksapp.Models.Article))
+                        {
+                            <p> @(((booksapp.Models.Article)publication).articleData())</p>
+                        }
+                        @if (publication.GetType() == typeof(booksapp.Models.Book))
+                        {
+                            <p> @(((booksapp.Models.Book)publication).bookData())</p>
+                        }
+                        <!-- !!!!!!!!!!!!!!!!!!!!!!!!! -->
+                    </div>
+                </div>
+            </div>
+        }
+        </div>
+</div>

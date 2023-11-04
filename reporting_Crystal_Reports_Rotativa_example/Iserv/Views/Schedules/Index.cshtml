@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Iserv.Models.Schedule>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="color:white">All Appointments</h2>
+<br />
+<br />
+
+<div id="holdingdiv" style="border-radius:20px;background-color:#1D2026 ;width:350px">
+    <br />
+    <div id="name" style="margin-left:90px">
+        <!--This For Min an Max-->
+        @using (Html.BeginForm("Index", "Schedules"))
+        {
+            @Html.ValidationSummary(true, "", new { @class = "text-danger", @style = "color:darkred" })
+            <div class="form-group">
+                <label style="color:white">Search Date and Time</label>
+
+                <div class="input-group date" id="dtp1">
+
+                    <input type="text" id="Date" name="Date" class="form-control" />
+
+                    <span class="input-group-addon" style="background-color:black;border:none;">
+                        <span class="glyphicon glyphicon-calendar">
+                        </span>
+                    </span>
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit" style="border-radius:35px">Search</button>
+            <br />
+            <br />
+        }
+    </div>
+</div>
+<div class="row" style="height:100%">
+    <!--Implement the search here -->
+    <br />
+    <br />
+    @if(Model == null )
+    {
+        <h1 style="color:white">No Meetings Found !</h1>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            <div class="card " style="width:200px;height:auto;border:1px solid;border-radius:10px;padding:10px;background-color:rgba(0,0,0,0.88);margin-left:5px;margin-top:10px">
+                <div class="card-body">
+                    <div style="background-color:white;border-radius:20px;color:black">
+                        <span style="font-size:25px;font-family:'Berlin Sans FB';margin-left:28%">   @DateTime.Parse(item.Start.ToString()).DayOfWeek.ToString()</span><br />
+
+                        <span style="font-family:'Berlin Sans FB';margin-left:20%;" class="text-info">the @DateTime.Parse(item.Start.ToString()).Day.ToString()  of the   @DateTime.Parse(item.Start.ToString()).Month.ToString()</span>
+
+                    </div>
+                    <br />
+                    <h4 class="card-title" style="color:white"> Time  @DateTime.Parse(item.Start.ToString()).ToShortTimeString() - @DateTime.Parse(item.End.ToString()).ToShortTimeString()</h4>
+                    <p class="card-text"><span class="text-info"> Reason : </span><strong> @item.schedule_Description</strong></p>
+                    <p class="card-text"><span class="text-info"> Subject : </span><strong>@item.Subject</strong></p>
+                </div>
+                <br />
+            </div>
+        }
+    }
+</div>
+
+<!--Scripts-->
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+@section scripts
+{
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <script>
+        $('#dtp1').datetimepicker({
+            format: 'MM/DD/YYYY HH:mm A',
+            icons: {
+                time: "fa fa-clock-o",
+                date: "fa fa-calendar",
+                up: "fa fa-arrow-up",
+                down: "fa fa-arrow-down"
+            }
+        });
+
+    </script>
+}

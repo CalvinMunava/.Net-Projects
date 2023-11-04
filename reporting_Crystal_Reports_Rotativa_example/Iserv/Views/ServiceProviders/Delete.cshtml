@@ -1,0 +1,31 @@
+﻿@model Iserv.Models.ServiceProvider
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="color:white">Delete Service Provider</h2>
+<hr />
+<h3 style="color:white">Are you sure you want to delete this Service Provider?</h3>
+<hr />
+<div class="row" style="height:100%;">
+
+    <div class="card " style="width:320px;height:250px;border:1px solid;border-radius:10px;padding:10px;background-color:rgba(0,0,0,0.88);margin-left:5px;margin-top:10px">
+        <div class="card-body" style="height:100px">
+            <h4 class="card-title" style="color:white"> Name : @Model.Name @Model.Surname   </h4>
+            <p class="card-text"><strong> Service : @Model.Service.Name</strong></p>
+            <p class="card-text"><strong> Average Rating : @Model.AverageRating</strong></p>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-actions no-color">
+                    <button class="btn btn-danger btn-sm" type="submit">Remove</button>
+
+                </div>
+            }
+
+        </div>
+        <br />
+    </div>
+</div>

@@ -1,0 +1,167 @@
+﻿@model IEnumerable<Iserv.Models.ServiceProvider>
+
+@{
+    ViewBag.Title = "IndexConsumer";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+<h2 class="text-info">Our Service Providers</h2>
+<hr />
+
+<h4 for="sel1" style="color:white">Search Service Providers by :</h4>
+
+<select class="form-control btn btn-dark" id="sel1" style="border-radius:20px;width:150px">
+
+    <option value="choose">--Choose Filter--</option>
+
+    <option value="name">Name</option>
+
+    <option value="BusinessName">Business Name</option>
+</select>
+
+<div id="holdingdiv" style="border-radius:20px;background-color:#1D2026 ;">
+    <br />
+    <div id="name" style="margin-left:90px">
+        <!--This For Min an Max-->
+        @using (Html.BeginForm("IndexConsumer", "ServiceProviders"))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger", @style = "color:darkred" })
+
+            <label style="color:white">User Name</label>
+            <input style="display:none" id="searchBy" name="searchby" value="Name" />
+            <input style="color: white;background-color:#1D2026 ; border-radius: 20px;width:150px" type="text" id="name" name="name" required />
+            <button class="btn btn-primary" type="submit" style="margin-left:165px;border-radius:35px">Search</button>
+            <br />
+            <br />
+        }
+    </div>
+</div>
+
+<div id="holdingdiv1" style="border-radius:20px;background-color:#1D2026 ;">
+    <br />
+    <div id="businessname" style="margin-left:90px">
+        <!--This For Min an Max-->
+        @using (Html.BeginForm("IndexConsumer", "ServiceProviders"))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger", @style = "color:darkred" })
+
+            <label style="color:white">Business Name</label>
+            <input style="display:none" id="searchBy" name="searchby" value="BusinessName" />
+            <input style="color: white;background-color:#1D2026 ; border-radius: 20px;width:150px" type="text" id="BusinessName" name="BusinessName" required />
+            <button class="btn btn-primary" type="submit" style="margin-left:165px;border-radius:35px">Search</button>
+            <br />
+            <br />
+        }
+    </div>
+</div>
+
+<div class="row" >
+    @foreach (var item in Model)
+    {
+        <div class="card" style="width: 500px; height: auto;border:1px solid; border-radius: 10px; padding: 10px; background-color: rgba(0,0,0,0.88); margin-left: 5px; margin-top: 10px">
+
+            <img  src="@Url.Content(item.User.ImagePath)" class="rounded-circle z-depth-1-half" alt="example placeholder avatar" style="width: 150px;">
+
+            <div class="card-body">
+                <h4 class="card-title" style="color:white"><span class="text-info"> @item.Name  @item.Surname   </span> </h4>
+                <p class="card-text"><strong> Gender : <span class="text-info">@item.Gender.Name </span> </strong></p>
+                <p class="card-text"><strong> Address : <span class="text-info">  @item.Address.StreetNumber @item.Address.StreetName </span></strong></p>
+                <p class="card-text"><strong> City : <span class="text-info">  @item.Address.City.Name , @item.Address.City.Province.Name</span></strong></p>
+                <p class="card-text"><strong> Business Name : <span class="text-info"> @item.BusinessName</span> @item.BusinessName</strong></p>
+                <p class="card-text"><strong>Services Offered</strong></p>
+                @foreach (var service in item.ServiceProviderServices)
+                {
+                    <p class="card-text" style="color:white"> Offers <span class="text-info"> @service.Service.Name </span> in <span class="text-info">@service.Category.Name  </span></p>
+                }
+
+                <div class="btn-group">
+                    <button class="btn btn-dark btn-sm" type="submit" id="@item.ServiceProvider_ID" data-toggle="modal" data-target="#modal-@item.ServiceProvider_ID">Message</button>
+                </div>
+
+            </div>
+            <br />
+        </div>
+        <div class="modal fade" id="modal-@item.ServiceProvider_ID" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false" style="margin-left:-69px;margin-top:8%">
+
+            <div class="modal-dialog">
+
+                <div class="modal-content" style="background-color:#1D2026;color:white;border-radius:15px;align-content:center">
+
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">Send Message </h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    @using (Html.BeginForm("Create", "Messages", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="modal-body">
+                            <!--Below are inputs-->
+                            <input style="display: none" type="datetime" id="DateSent" name="DateSent" value="@DateTime.Now.ToShortDateString()" />
+                            <input style="display:none" type="time" id="TimeSent" name="TimeSent" value="@DateTime.Now.ToShortTimeString()" />
+                            <input style="display:none" type="text" id="MesseageLocation" name="MesseageLocation" value="Inbox" />
+                            <input style="display:none" type="text" id="SentFrom" name="SentFrom" value="@User.Identity.Name" />
+                            <input style="display:none" type="text" id="MessageSentTo" name="MessageSentTo" value="@item.Name" />
+                            <textarea placeholder="Enter Message" style="background-color:rgba(0,0,0,0.88);color:white" required rows="2" id="MessageBody" name="MessageBody"></textarea>
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-info"><i class="fa fa-check"></i> Send</button>
+                        </div>
+
+                    }
+
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section scripts
+{
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //first hide evrything
+            $("#holdingdiv").hide();
+
+
+            $("#holdingdiv1").hide();
+
+            $("#name").hide();
+
+            $("#businessname").hide();
+
+            $('#sel1').change().val('choose');
+            $('#sel1').on('change', function () {
+
+                if (this.value == 'choose') {
+                    $("#holdingdiv").hide();
+                    $("#holdingdiv1").hide();
+                }
+
+                if (this.value == 'name') {
+                    $("#holdingdiv").show();
+
+                    $("#name").show();
+
+                    $("#businessname").hide();
+
+                    $("#holdingdiv1").hide();
+                }
+                if (this.value == 'BusinessName') {
+
+                    $("#holdingdiv1").show();
+
+                    $("#businessname").show();
+
+                    $("#name").hide();
+
+                    $("#holdingdiv").hide();
+                }
+            });
+        });
+    </script>
+}

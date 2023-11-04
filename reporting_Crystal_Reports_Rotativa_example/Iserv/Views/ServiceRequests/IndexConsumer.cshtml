@@ -1,0 +1,154 @@
+﻿@model IEnumerable<Iserv.Models.ServiceRequestLine>
+
+@{
+    ViewBag.Title = "IndexConsumer";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+<button class="btn btn-dark" style="border-radius:20px" onclick="window.location.href='@Url.Action("Create","ServiceRequests")'">New Request</button>
+<br />
+<br />
+<div style="background-color:#1D2026;height:auto;width:auto;border-radius:30px;">
+    <div class="container text-dark" style="border-radius:20px;width:auto;float:left;">
+        <div class="form-horizontal">
+            <div class="mb-4">
+                <button class="btn btn-info" style="width:200px;border-radius:20px" id="recentbtn">Recent Requests</button>
+                <button class="btn btn-dark" style="width:200px;border-radius:20px" id="acceptedbtn">Accepted </button>
+                <button class="btn btn-info" style="width:200px;border-radius:20px" id="cancelledbtn" > Cancelled</button>              
+        </div>
+    </div>
+ </div>
+</div>
+<div id="recentsent">
+    @if (Model.Where(x => x.ServiceRequest.ServiceRequest_Status_ID == 1).Count() != 0)
+    {
+        <h2 class="text-info">Recently Sent Requests</h2>
+        <div class="row" style="height:100%;margin-left:-5%">
+            <br />
+            @foreach (var line in Model.Where(x => x.ServiceRequest.ServiceRequest_Status_ID == 1).GroupBy(x => x.ServiceRequestID))
+            {
+                    <div class="card " style="width:450px;height:auto;border:1px solid;border-radius:10px;padding:10px;background-color:rgba(0,0,0,1);margin-left:-2%;margin-top:50px">
+                        <p class="card-text" style="color:white">Sent on <strong class="text-info"> @DateTime.Parse(line.First().ServiceRequest.datecreated.ToString()).ToShortDateString()</strong></p>
+                        @if (line.First().ServiceRequest.ImagePath == null || line.First().ServiceRequest.ImagePath.IsEmpty())
+                        {
+                            <img class="card-img-top" src="~/Content/Pictures/empty.png" style="width:60%;height:40%;border-radius:60px">
+                            
+                        }
+                        else
+                        {
+                            <img src="@Url.Content(line.First().ServiceRequest.ImagePath)" class="rounded-circle z-depth-1-half" alt="example placeholder avatar" style="width: 150px;">
+                        }
+                    <div class="card-body">
+                        <span style="color:white">Sent To:</span>
+                        @foreach (var provider in line)
+                        {
+                            <p class="card-text text-info"><strong>Provider:</strong>  @provider.ServiceProvider.Name <strong> Company:</strong> @provider.ServiceProvider.BusinessName </p>
+                        }
+
+                        <div class="btn btn-group">
+                            <button class="btn btn-dark btn-sm" type="submit" onclick="window.location.href='@Url.Action("Details", "ServiceRequests", new { id = line.First().ServiceRequestID, servicerequestid = line.First().ServiceProvider_ID })'">View</button>
+                            <button class="btn btn-danger btn-sm" type="submit" onclick="window.location.href='@Url.Action("Cancel", "ServiceRequests", new { id = line.First().ServiceRequestID, providerid = line.First().ServiceProvider_ID })'">Cancel</button>
+                        </div>
+                    </div>
+                    </div>              
+             }
+        </div>
+    }
+    else
+    {
+        <h2 class="text-info">No Recently Sent Requests</h2>
+    }
+</div>
+<div id="accepted">
+    @if (Model.Where(x => x.ServiceRequest.ServiceRequest_Status_ID == 2).Count() != 0)
+    {
+        <h2 class="text-info">Accepted Requests</h2>
+        <div class="row" style="height:100%;margin-left:-5%">
+            <br />
+            @foreach (var line in Model.Where(x => x.ServiceRequest.ServiceRequest_Status_ID == 2).GroupBy(x => x.ServiceRequestID))
+            {
+                <div class="card " style="width:450px;height:auto;border:1px solid;border-radius:10px;padding:10px;background-color:rgba(0,0,0,1);margin-left:-2%;margin-top:50px">
+                    <p class="card-text" style="color:white">Sent on <strong class="text-info"> @DateTime.Parse(line.First().ServiceRequest.datecreated.ToString()).ToShortDateString()</strong></p>
+                    @if (line.First().ServiceRequest.ImagePath == null || line.First().ServiceRequest.ImagePath.IsEmpty())
+                    {
+                        <img class="card-img-top" src="~/Content/Pictures/empty.png" style="width:60%;height:40%;border-radius:60px">
+
+                    }
+                    else
+                    {
+                        <img src="@Url.Content(line.First().ServiceRequest.ImagePath)" class="rounded-circle z-depth-1-half" alt="example placeholder avatar" style="width: 150px;">
+                    }
+                    <div class="card-body">
+                        <div class="btn btn-group">
+                            <p class="card-text" style="color:white"> Date:  <strong class="text-info"> @DateTime.Parse(line.First().ServiceRequest.Date.ToString()).ToShortDateString()</strong></p>
+                            <button class="btn btn-dark btn-sm" type="submit" onclick="window.location.href='@Url.Action("Details", "ServiceRequests", new { id = line.First().ServiceRequestID })'">View</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <h2 class="text-info">No Accepted Requests Found</h2>
+    }
+</div>
+<div id="cancelled">
+    @if (Model.Where(x => x.ServiceRequest.ServiceRequest_Status_ID == 4).Count() != 0)
+    {
+        <h2 class="text-info">Accepted Requests</h2>
+        <div class="row" style="height:100%;margin-left:-5%">
+            <br />
+            @foreach (var line in Model.Where(x => x.ServiceRequest.ServiceRequest_Status_ID == 4).GroupBy(x => x.ServiceRequestID))
+            {
+                <div class="card " style="width:450px;height:auto;border:1px solid;border-radius:10px;padding:10px;background-color:rgba(0,0,0,1);margin-left:-2%;margin-top:50px">
+                    <p class="card-text" style="color:white">Sent on <strong class="text-info"> @DateTime.Parse(line.First().ServiceRequest.datecreated.ToString()).ToShortDateString()</strong></p>
+                    @if (line.First().ServiceRequest.ImagePath == null || line.First().ServiceRequest.ImagePath.IsEmpty())
+                    {
+                        <img class="card-img-top" src="~/Content/Pictures/empty.png" style="width:60%;height:40%;border-radius:60px">
+
+                    }
+                    else
+                    {
+                        <img src="@Url.Content(line.First().ServiceRequest.ImagePath)" class="rounded-circle z-depth-1-half" alt="example placeholder avatar" style="width: 150px;">
+                    }
+                    <div class="card-body">
+                        <div class="btn btn-group">
+                            <p class="card-text" style="color:white"> Date:  <strong class="text-info"> @DateTime.Parse(line.First().ServiceRequest.Date.ToString()).ToShortDateString()</strong></p>
+                            <button class="btn btn-dark btn-sm" type="submit" onclick="window.location.href='@Url.Action("Details", "ServiceRequests", new { id = line.First().ServiceRequestID })'">View</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <h2 class="text-info">No Cancelled Requests Found</h2>
+    }
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#recentsent").show();
+            $("#accepted").hide();;
+            $("#cancelled").hide();
+            $('#recentbtn').on('click', function () {
+                $("#recentsent").show()
+                $("#accepted").hide();;
+                $("#cancelled").hide();
+            });
+            $('#acceptedbtn').on('click', function () {
+                $("#recentsent").hide()
+                $("#accepted").show();;
+                $("#cancelled").hide();
+
+            });
+            $('#cancelledbtn').on('click', function () {
+                $("#recentsent").hide()
+                $("#accepted").hide();;
+                $("#cancelled").show();;
+            });
+        });
+    </script>
+}

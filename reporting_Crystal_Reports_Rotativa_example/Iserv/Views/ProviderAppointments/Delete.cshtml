@@ -1,0 +1,89 @@
+﻿@model Iserv.Models.ProviderAppointment
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutProvider.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ProviderAppointment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.schedule_Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.schedule_Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.themecolor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.themecolor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isFullDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isFullDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.scheduleStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.scheduleStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Subject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Subject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Start)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Start)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.End)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.End)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceProvider.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceProvider.Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

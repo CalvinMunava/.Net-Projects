@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Modify Category";
+}
+
+@using (Html.BeginForm("Edit","Category"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <h4>Modify Category</h4>
+
+        <hr />
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <input id="catID" name="catID" style="display:none" value="@ViewBag.catID" />
+
+            <label>Name of Category</label>
+            <input id="catame" name="catName" style="color:black;border-radius:20px" value="@ViewBag.catName" required />
+        </div>
+        <div class="btn btn-group" style="margin-left:50px;">
+            <input type="submit" value="Back" class="btn btn-danger" onclick="window.history.go(-1)" />
+            <input type="submit" value="Modify" class="btn btn-primary" />
+        </div>
+    </div>
+}
+
+

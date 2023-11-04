@@ -1,0 +1,57 @@
+﻿@model IEnumerable<JulyProgram.Models.User>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<button class="btn btn-primary" onclick="window.location.href='/Users/Create'">
+    Add New User
+</button>
+<hr />
+@if (Model.Count() == 0)
+{
+    <div class="jumbotron">
+        <h1 >No Items In List</h1>
+    </div>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentDegree)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var cyril in Model)
+        {
+    <tr>
+        <td>
+            <img src="@Url.Content(cyril.StudentImage)" height="60" width="60" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => cyril.StudentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => cyril.StudentDegree)
+        </td>
+        <td>
+            @Html.ActionLink("Update", "Edit", new { studentId= cyril.StudentId }) |
+            @Html.ActionLink("Delete", "Delete", new { studentId = cyril.StudentId })
+        </td>
+    </tr>
+        }
+
+    </table>
+}
+
+
+
+

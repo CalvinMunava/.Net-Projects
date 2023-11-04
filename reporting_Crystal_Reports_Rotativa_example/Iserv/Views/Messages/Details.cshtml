@@ -1,0 +1,75 @@
+﻿@model Iserv.Models.Message
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Message</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DateSent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateSent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeSent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeSent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MessageBody)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MessageBody)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SendTo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SendTo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SentFrom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SentFrom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SentTo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SentTo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.UserName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MessageID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,37 @@
+﻿@model Demo1_20.Models.ItemModel
+
+@{
+    ViewBag.Title = "Add Item";
+}
+
+@using (Html.BeginForm("Create1", "Item"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <br />
+        <h4>Add new Item</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <input id="catID" name="catID" style="display:none" value="@ViewBag.catID" />
+        </div>
+
+        <div class="form-group" style="border-radius:20px">
+            <label>Item ID</label>
+            <input id="itemID" name="itemID" style="color:black;border-radius:20px" required />
+        </div>
+
+        <div class="form-group" >
+            <label>Name of Item</label>
+            <input id="itemName" name="itemName" style="color:black;border-radius:20px" required  />
+        </div>
+        <div class="btn btn-group" style="margin-left:50px;">
+            <input type="submit" value="Back" class="btn btn-danger" onclick="window.history.go(-1)" />
+            <input type="submit" value="Add new item" class="btn btn-primary" />
+        </div>
+        </div>
+
+}
+

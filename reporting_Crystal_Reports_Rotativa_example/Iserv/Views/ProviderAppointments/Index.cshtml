@@ -1,0 +1,448 @@
+﻿@model IEnumerable<Iserv.Models.ProviderAppointment>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutProvider.cshtml";
+}
+<!--Calander and stuff below-->
+<div id="myModal" class="modal fade" role="dialog" data-backdrop="false">
+    <div class="modal-dialog">
+        <div class="modal-content" style="background-color:#1D2026;color:white;border-radius:15px;align-content:center">
+            <div class="modal-header">
+                <h4 class="modal-title"><span id="eventTitle"></span></h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+
+                <p id="pDetails"></p>
+                <br />
+            </div>
+            <div class="modal-footer">
+                <button id="btnEdit" class="btn btn-primary btn-sm pull-left" style="margin-left:-10%;"><span class="fa fa-pencil"></span> Edit</button>
+                <button id="btnDelete" class="btn btn-danger btn-sm pull-right"><span class="fa fa-remove"></span> Remove</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="myModalSave" class="modal fade" role="dialog" data-backdrop="false">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content" style="background-color:#1D2026;color:white;border-radius:15px;align-content:center;padding:20px">
+            <div class="modal-header">
+                <h4 class="modal-title">Save Event</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+
+                <form class="col-md-12 form-horizontal">
+
+                    <input type="hidden" id="hdEventID" value="0" />
+                    <div class="form-group">
+                        <label>Subject</label>
+                        <input type="text" id="txtSubject" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Start</label>
+
+                        <div class="input-group date" id="dtp1">
+
+                            <input type="text" id="txtStart" class="form-control" />
+
+                            <span class="input-group-addon" style="background-color:black;border:none;">
+
+                                <span class="glyphicon glyphicon-calendar">
+
+                                </span>
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group" style="display:none">
+                        <div class="checkbox">
+                            <label><input type="checkbox" id="chkIsFullDay" checked="checked" />  Is Full Day event</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="divEndDate">
+
+                        <label>End</label>
+                        <div class="input-group date" id="dtp2">
+
+                            <input type="text" id="txtEnd" class="form-control" />
+
+                            <span class="input-group-addon" style="background-color:black;border:none;">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="txtDescription" rows="3" class="form-control" style="background-color:black;color:white;border-color:dodgerblue"></textarea>
+                    </div>
+
+                    <div class="form-group" style="display:none">
+                        <label>Theme Color</label>
+                        <select id="ddThemeColor" class="form-control">
+                            <option value="">Blue</option>
+                            <option value="red">Red</option>
+                            <option value="blue">Blue</option>
+                            <option value="black">Black</option>
+                            <option value="green">Green</option>
+                        </select>
+                    </div>
+
+                    <button type="button" id="btnSave" style="border-radius:20px" class="btn btn-success">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Div Holder-->
+<div id="meetings">
+    <h2 style="color:white">Calander Events</h2>
+    <div class="container text-dark" style="border-radius:20px;width:auto;float:left;">
+        <div class="form-horizontal">
+            <div class="btn-group">
+                <button class="btn btn-info btn-sm" id="AddNew" data-toggle="modal" data-target="#myModalSave"> Add New Event</button>
+                <button class="btn btn-dark btn-sm" id="ViewAll" onclick="window.location.href='@Url.Action("IndexMake","ProviderAppointments")'"> View All Events</button><br />
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <div id="calender" style="background-color:rgba(0,0,0,0.88);color:white;border-radius:20px"></div>
+
+</div>
+
+
+<!--scripts etc-->
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<link href='~/Content/fullcalender/core/main.css' rel='stylesheet' />
+<link href='~/Content/fullcalendar/list/main.css' rel='stylesheet' />
+<link href='~/Content/fullcalendar/daygrid/main.css' rel='stylesheet' />
+<link href='~/Content/fullcalendar/timegrid/main.css' rel='stylesheet' />
+<link href='~/Content/fullcalendar/bootstrap/main.css' rel='stylesheet' />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+@section scripts
+{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var events = [];
+            var selectedEvent = null;
+            FetchEventAndRenderCalendar();
+            function FetchEventAndRenderCalendar() {
+                events = [];
+                $.ajax({
+                    type: "GET",
+                    url: "/ProviderAppointments/GetSchedules",
+                    success: function (data) {
+                        $.each(data, function (i, v) {
+                            events.push({
+                                eventID: v.ProviderAppointmentID,
+                                title: v.Subject,
+                                description: v.Description,
+                                start: moment(v.Start),
+                                end:  moment(v.End),
+                                color: v.ThemeColor,
+                            });
+                        })
+                        console.log(events);
+                        GenerateCalender(events);
+                    },
+                    error: function (error) {
+                        alert('failed');
+                    }
+                })
+            }
+
+            function GenerateCalender(events) {
+                $('#calender').fullCalendar('destroy');
+                $('#calender').fullCalendar({
+                    contentHeight: 650,
+                    defaultDate: new Date(),
+                    timeFormat: 'h(:mm)a',
+                    header: {
+                        left: 'prev,next',
+                        center: 'title',
+                        right: 'month,basicWeek,basicDay,agenda'
+                    },
+                    buttonText: {
+                        prev: '<-',
+                        next: '->'
+                    },
+                    noEventsMessage: "No Meetings to Display",
+                    eventLimit: true,
+                    nowIndicator: true,
+                    now: true,
+                    slotDuration: '0:60:00',
+                    slotLabelInterval: 60,
+                    slotMinutes: 60,
+                    eventTextColor: 'white',
+                    events: events,
+                    eventClick: function (calEvent, jsEvent, view) {
+                        selectedEvent = calEvent;
+                        $('#myModal #eventTitle').text(calEvent.title);
+
+                        var $description = $('<div/>');
+
+                        $description.append($('<p/>').html('<b> Meeting Date : </b>' + calEvent.start.format("DD-MMM-YYYY")));
+
+                        $description.append($('<p/>').html('<b> Meeting Starts at : </b>' + calEvent.start.format(" DD-MMM-YYYY HH:mm a")));
+
+                        if (calEvent.end != null) {
+                            $description.append($('<p/>').html('<b> Meeting Ends at :</b>' + calEvent.end.format(" DD-MMM-YYYY HH:mm a")));
+                        }
+
+                        $description.append($('<p/>').html('<b>Meeting Agenda: </b>' + calEvent.description));
+
+
+
+                        $('#myModal #pDetails').empty().html($description);
+
+
+                        $('#myModal').modal();
+                        debugger
+                    },
+                    selectable: true,
+                    select: function (start, end) {
+                        selectedEvent = {
+                            eventID: 0,
+                            title: '',
+                            description: '',
+                            start: start,
+                            end: end,
+                            allDay: false,
+                            color: ''
+                        };
+                        openAddEditForm();
+                        $('#calendar').fullCalendar('unselect');
+                    },
+                    editable: true,
+                    eventDrop: function (event) {
+                        var data = {
+                            ProviderAppointmentID: event.eventID,
+                            Subject: event.title,
+                            Start: event.start.format('MM/DD/YYYY HH:mm A'),
+                            End: event.end.format('MM/DD/YYYY HH:mm A'),
+                            schedule_Description: event.description,
+                            themecolor: "blue",
+                            isFullDay: false,
+                            scheduleStatus: "Pending",
+                        };
+                        SaveEvent(data);
+                    }
+                })
+            }
+
+            $('#btnEdit').click(function () {
+                //Open modal dialog for edit event
+                openAddEditForm();
+            });
+
+            function openAddEditForm() {
+                debugger
+                if (selectedEvent != null) {
+                    $('#hdEventID').val(selectedEvent.eventID);
+                    $('#txtSubject').val(selectedEvent.title);
+                    $('#txtStart').val(selectedEvent.start.format('MM/DD/YYYY HH:mm A'));
+                    $('#txtEnd').val(selectedEvent.end.format('MM/DD/YYYY HH:mm A'));
+                    $('#txtDescription').val(selectedEvent.description);
+                }
+                $('#myModal').modal('hide');
+                debugger
+                $('#myModalSave').modal();
+            }
+
+            $('#dtp1').datetimepicker({
+                format: 'MM/DD/YYYY HH:mm A',
+                icons: {
+                    time: "fa fa-clock-o",
+                    date: "fa fa-calendar",
+                    up: "fa fa-arrow-up",
+                    down: "fa fa-arrow-down"
+                }
+            });
+            $('#dtp2').datetimepicker({
+                useCurrent: false, //Important! See issue #1075
+                format: 'MM/DD/YYYY HH:mm A',
+                icons: {
+                    time: "fa fa-clock-o",
+                    date: "fa fa-calendar",
+                    up: "fa fa-arrow-up",
+                    down: "fa fa-arrow-down"
+                }
+            });
+
+
+            $("#dtp1").on("dp.change", function (e) {
+                $('#dtp2').data("DateTimePicker").minDate(e.date);
+            });
+            $("#dtp2").on("dp.change", function (e) {
+                $('#dtp1').data("DateTimePicker").maxDate(e.date);
+            });
+
+
+            $('#btnDelete').click(function () {
+                if (selectedEvent != null) {
+                    Swal.fire({
+                        title: '<span style="color:black">Are you sure?',
+                        text: "You won't be able to revert this!",
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes, delete it!'
+                    }).then((result) => {
+                        if (result.value) {
+                            $.ajax({
+                                type: "POST",
+                                url: '/ProviderAppointments/DeleteSchedule',
+                                data: { 'scheduleID': selectedEvent.eventID },
+                                success: function (data) {
+                                    if (data.status) {
+                                        Swal.fire(
+                                            'Deleted!',
+                                            'Meeting Removed Successfully',
+                                            'success'
+                                        );
+                                        $('#myModal').modal('hide');
+                                        //Refresh the calender
+                                        FetchEventAndRenderCalendar();
+                                    }
+                                },
+                                error: function () {
+                                    Swal.fire({
+                                        type: 'error',
+                                        title: '<span style="color:black">Oops...',
+                                        text: 'Something went wrong!',
+                                    });
+                                }
+                            })
+                        }
+                    });
+                }
+            });
+
+
+            $('#btnSave').click(function () {
+                //Validation/
+                if ($('#txtSubject').val().trim() == "") {
+                    Swal.fire('Subject Required');
+                    return;
+                }
+                if ($('#txtStart').val().trim() == "") {
+                    Swal.fire('Start Date and Time Required');
+                    return;
+                }
+                if ($('#txtEnd').val().trim() == "") {
+                    Swal.fire('End Date and Time Required');
+                    return;
+                }
+                else {
+                    var startDate = moment($('#txtStart').val(), "MM/DD/YYYY HH:mm A").toDate();
+                    var endDate = moment($('#txtEnd').val(), "MM/DD/YYYY HH:mm A").toDate();
+                    if (startDate > endDate) {
+                        Swal.fire('Invalid Date and Time Selection');
+                        return;
+                    }
+                }
+
+                var data = {
+                    ProviderAppointmentID: $('#hdEventID').val(),
+                    Subject: $('#txtSubject').val().trim(),
+                    Start: $('#txtStart').val().trim(),
+                    End: $('#txtEnd').val().trim(),
+                    schedule_Description: $('#txtDescription').val().trim(),
+                    scheduleStatus: "Pending",
+                }
+                SaveEvent(data);
+                console.log(data);
+                // call function for submit data to the server
+            })
+
+            function SaveEvent(data) {
+                $.ajax({
+                    type: "POST",
+                    url: '/ProviderAppointments/AddSchedule',
+                    data: data,
+                    success: function (data) {
+                        if (data.status) {
+                            console.log(data);
+                            Swal.fire(
+                                'Great',
+                                'Appointment Saved Successfully',
+                                'success'
+                            );
+                            //Refresh the calender
+                            FetchEventAndRenderCalendar();
+                            $('#myModalSave').modal('hide');
+                        }
+                    },
+                    error: function () {
+                        alert('Failed');
+                    }
+                })
+            }
+
+
+        })
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            checkresponse();
+            //first hide evrything
+            //sweetAlert
+            function checkresponse() {
+                if ($("#response").val() == "") {
+                    return false;
+                }
+                else if ($("#response").val() == "Added") {
+                    Swal.fire(
+                        'Complete',
+                        'Appointment Added Successfully!',
+                        'success'
+                    )
+                    return true;
+                }
+                else if ($("#response").val() == "Remove") {
+                    Swal.fire(
+                        'Complete',
+                        'Removed Successfully',
+                        'success'
+                    )
+                    return true;
+                }
+                else if ($("#response").val() == "Updated") {
+                    Swal.fire(
+                        'Complete',
+                        'Update',
+                        'success'
+                    )
+                    return true;
+                }               
+                else {
+
+                    return false;
+                }
+            }
+
+        });
+    </script>
+
+}

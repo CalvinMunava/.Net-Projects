@@ -1,0 +1,49 @@
+﻿@model Iserv.Models.ServiceProviderService
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutProvider.cshtml";
+}
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Choose Service to Add</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group" style="display:none">
+            @Html.LabelFor(model => model.ServiceProvider_ID, "ServiceProvider_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" style="display:none">
+                @Html.DropDownList("ServiceProvider_ID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ServiceProvider_ID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label> Select Service to Provide</label>
+            <div class="col-md-10">
+                @Html.DropDownList("ServiceID", null, htmlAttributes: new { @class = "form-control", @style="width:200px;background-color:black;color:white;border-radius:20px" })
+                @Html.ValidationMessageFor(model => model.ServiceID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group"  style="display:none">
+            @Html.LabelFor(model => model.CategoryID, "CategoryID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("CategoryID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add" class="button-primary button-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+

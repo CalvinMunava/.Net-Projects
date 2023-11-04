@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Item Modify";
+}
+
+@using (Html.BeginForm("EditItem","Item", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <br />
+    <h4>Modify Item</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="form-group">
+
+    <input id="itemID" name="itemID" style="display:none" value="@ViewBag.itemID" />
+    <input id="catID" name="catID" style="display:none" value="@ViewBag.catID" />
+
+    <label>Name of Item</label>
+    <input id="itemName" name="itemName" style="color:black;border-radius:20px" value="@ViewBag.Name" required />
+</div>
+    <div class="btn btn-group" style="margin-left:50px;">
+        <input type="submit" value="Back" class="btn btn-danger" onclick="window.history.go(-1)" />
+        <input type="submit" value="Modify" class="btn btn-primary" />
+    </div>
+</div>
+}
+
+

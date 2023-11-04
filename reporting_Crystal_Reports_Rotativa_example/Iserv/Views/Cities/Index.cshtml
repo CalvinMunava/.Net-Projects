@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Iserv.Models.City>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="color:white">Cities</h2>
+<hr />
+
+<button class="btn btn-dark" style="border-radius:20px" onclick="window.location.href ='@Url.Action("Create","Cities")'">
+    Add New +
+</button>
+
+
+<div class="row" style="height:100%;">
+
+    @if (Model.Count() == 0)
+    {
+        <h1>No Cities Found !</h1>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+        <div class="card " style="width:320px;height:250px;border:1px solid;border-radius:10px;padding:10px;background-color:rgba(0,0,0,0.88);margin-left:5px;margin-top:10px">
+            <div class="card-body" style="height:100px">
+                <h4 class="card-title" style="color:white"> City : @item.Name    </h4>
+                <p class="card-text"><strong> Province : @item.Province.Name</strong></p>
+
+                <div class="btn-group">
+                    <button class="btn btn-info btn-sm" type="submit" onclick="window.location.href='@Url.Action("Edit", "Cities", new { id = item.CityID })'">Modify</button>
+                    <button class="btn btn-dark btn-sm" type="submit" onclick="window.location.href='@Url.Action("Details", "Cities", new { id = item.CityID })'">View</button>
+                    <button class="btn btn-danger btn-sm" type="submit" onclick="window.location.href='@Url.Action("Delete", "Cities", new { id = item.CityID })'">Remove</button>
+                </div>
+
+            </div>
+            <br />
+        </div>
+        }
+    }
+</div>

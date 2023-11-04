@@ -1,0 +1,50 @@
+﻿@model Iserv.Models.IndexViewModel
+@{
+    ViewBag.Title = "Manage";
+    Layout = "~/Views/Shared/_LayoutProvider.cshtml";
+}
+
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+<hr />
+<h2 style="color:white">Change Account Settings</h2>
+
+
+<div class="row" style="height:100%;">
+    <br />
+
+    <div class="card " style="width:500px;height:250px;border:1px solid;border-radius:10px;padding:10px;background-color:rgba(0,0,0,0.88);margin-left:5px;margin-top:10px">
+
+        <div class="card-body" style="height:100px">
+            <dl class="dl-horizontal">
+                <dt style="color:white">Password:</dt>
+                <dd>
+                    [
+                    @if (Model.HasPassword)
+                    {
+                        @Html.ActionLink("Change your password", "ChangePassword")
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Create", "SetPassword")
+                    }
+                    ]
+                </dd>
+            </dl>
+            <p style="color:white">
+                Phone Number: @(Model.PhoneNumber ?? "None") [
+                @if (Model.PhoneNumber != null)
+                {
+                    @Html.ActionLink("Change", "AddPhoneNumber")
+                    @: &nbsp;|&nbsp;
+                    @Html.ActionLink("Remove", "RemovePhoneNumber")
+                }
+                else
+                {
+                    @Html.ActionLink("Add", "AddPhoneNumber")
+                }
+                ]
+            </p>
+        </div>
+    </div>
+</div>

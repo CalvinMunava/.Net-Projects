@@ -1,0 +1,31 @@
+@model  IEnumerable<Iserv.Models.ServiceRequestLine>
+
+@{
+  ViewBag.Title = "Details";
+  Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+
+<h2 style="color:white">Service Request Details</h2>
+<hr />
+
+<div class="row" style="height:100%;">
+    <div class="card " style="width:450px;height:auto;border:1px solid;border-radius:10px;padding:10px;background-color:rgba(0,0,0,0.88);margin-left:5px;margin-top:10px">
+        <img class="card-img-top" src="@Url.Content(Model.First().ServiceRequest.ImagePath)" style="width:60%;height:40%;border-radius:80px">
+        <div class="card-body">
+            <h4 style="color:white">Request Sent To</h4>
+            @foreach (var serviceprovider in Model)
+            {
+        <p class="card-text text-info"><strong>Provider:</strong>  @serviceprovider.ServiceProvider.Name <strong> Company:</strong> @serviceprovider.ServiceProvider.BusinessName </p>
+            }
+            <p class="card-text" style="color:white">Service Description :<span class="text-info">  @Model.First().ServiceRequest.Service_Description</span></p>
+            <p class="card-text" style="color:white">Service :<span class="text-info">  @Model.First().Service.Name</span></p>
+            <p class="card-text" style="color:white">Requested on :<span class="text-info"> @DateTime.Parse(Model.First().ServiceRequest.Date.ToString()).ToShortDateString()</span></p>
+            <div class="btn-group">
+                <button class="btn btn-dark btn-sm" type="submit" onclick="window.location.href='@Url.Action("IndexConsumer", "ServiceRequests")'">Back</button>
+            </div>
+
+        </div>
+            <br />
+        </div>
+

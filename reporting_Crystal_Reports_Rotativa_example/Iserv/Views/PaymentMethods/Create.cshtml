@@ -1,0 +1,43 @@
+@model Iserv.Models.PaymentMethod
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+    <h2 style="margin-left:20%; color:white">Payment Method</h2>
+<hr />
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="jumbotron" style="background-color:rgba(0,0,0,0.85);border-radius:20px;width:500px;margin-left:27%">
+    <hr />
+
+    <div class="form-horizontal" style="margin-left:20%;">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label style="color:white" class="control-label">Payment Method:</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add Payment Method" class="btn" style="border-radius:20px;background-color:cornflowerblue;color:white" />
+            </div>
+        </div>
+    </div>
+    </div>
+    }
+
+<div>
+  <button class="button button-dark button-sm" style=" border-radius:80px;margin-left:3%" onclick="window.location.href='@Url.Action("Index","PaymentMethods")'">
+
+    <i style="color:white" class="fa fa-backward"> Back </i>
+
+  </button>
+</div>

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Iserv.Models.ServiceRequest>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+<h2>Service Requests</h2>
+<hr/>
+
+
+<div class="row" style="height:100%;">
+    @foreach (var item in Model)
+    {
+        <div class="card " style="width:320px;height:300px;border:1px solid;border-radius:10px;padding:10px;background-color:rgba(0,0,0,0.88);margin-left:5px;margin-top:10px">
+            <div class="card-body" style="height:100px">
+                <h4 class="card-title" style="color:white"> Consumer : @item.Consumer.Name  @item.Consumer.Surname  </h4>
+                <p class="card-text"><strong> Service : @item.Service.Name</strong></p>
+                <p class="card-text"><strong> Description : @item.Service_Description</strong></p>
+                <p class="card-text"><strong> Address : @item.Address.StreetNumber @item.Address.StreetName </strong></p>
+                <p class="card-text"><strong> City : @item.Address.City.Name , @item.Address.City.Province.Name</strong></p>
+
+              <!---  <div class="btn-group">
+                    <button class="btn btn-info btn-sm" type="submit" onclick="window.location.href='@Url.Action("Edit", "Consumers", new { id = item.ConsumerID })'">Modify</button>
+                    <button class="btn btn-dark btn-sm" type="submit" onclick="window.location.href='@Url.Action("Details", "Consumers", new { id = item.ConsumerID })'">View</button>
+                    <button class="btn btn-danger btn-sm" type="submit" onclick="window.location.href='@Url.Action("Delete", "Consumers", new { id = item.ConsumerID})'">Remove</button>
+                </div> -->
+
+            </div>
+            <br />
+        </div>
+    }
+</div>
+

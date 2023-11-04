@@ -1,0 +1,67 @@
+﻿@model Iserv.Models.ServiceQuote
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+<div style="background-color:black;border-radius:20px;height:auto;padding:10px">
+
+    <h2 style="margin-left:45%" class="text-info">Quotation</h2>
+    <div style="margin-left:35%">
+        <h3 style="color:white"> Quote to <span class="text-info"> @Model.Consumer.Name @Model.Consumer.Surname</span> </h3>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="form-group">
+        <h5 style="color:white"><span class="text-info">Company:</span>  @Model.ServiceProvider.BusinessName</h5>
+        <h5 style="color:white"><span class="text-info"> Address:</span> @Model.ServiceProvider.Address.StreetNumber ,@Model.ServiceProvider.Address.StreetName, @Model.ServiceProvider.Address.City.Name  </h5>
+        <label style="color:white" class="control-label"> <span class="text-info">Date: </span>  @DateTime.Now.ToShortDateString() </label><br />
+        <label style="color:white" class="control-label"><span class="text-info">Payment Method:</span>  @Model.PaymentMethod.Name</label>
+    </div>
+    <div class="form-group" style="float:right;margin-top:-12%">
+        <h5 style="color:white"><span class="text-info">Quote for Service: </span>@Model.ServiceRequest.Service.Name </h5>
+        <h5 style="color:white"><span class="text-info"> Proposed Date of Service: </span> @DateTime.Parse(Model.ServiceRequest.Date.ToString()).ToShortDateString() </h5>
+        <label style="color:white" class="control-label"> <span class="text-info">Proposed Time of Service : </span>   @DateTime.Parse(Model.ServiceRequest.Time.StartTime.ToString()).ToShortDateString()  </label><br />
+        <br />
+    </div>
+
+
+
+    <div id="main">
+        <table class="table table-striped" id="tbl-details">
+            <thead>
+                <tr>
+                    <th>Item Description</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Item Total</th>
+                </tr>
+            </thead>
+            <tbody class="Added" id="tablefadded" style="color:white">
+                @foreach (var quoteline in Model.ServiceQuoteLines)
+                {
+                    <tr>
+                        <td>@quoteline.ItemDescription</td>
+                        <td>@quoteline.Quantity</td>
+                        <td>R @quoteline.ItemPrice</td>
+                        <td>R @quoteline.ItemTotal</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br />
+        <div>
+            <span><label>Total :</label><input class="form-control" style="color:white;background-color:black;width:200px" disabled id="TotalVAT" name="TotalVAT" value="R @Model.Total" /></span>
+        </div>
+        <br />
+    </div>
+    <div class="btn btn-group" id="btnbtn">
+        <button class="btn btn-info" id="SaveQuotation" onclick="window.location.href='@Url.Action("Create","ServiceOrders" , new { id = Model.ServiceQuoteID , decision = "Accept"})'">Accept</button>
+        <button class="btn btn-dark" id="return" onclick="window.location.href='@Url.Action("Create","ServiceOrders" , new { id = Model.ServiceQuoteID , decision = "Reject"})'">Decline</button>
+    </div>
+</div>
+

@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Error";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+<div class="jumbotron text-center">
+    <h2> An Error has Occourred  </h2>
+    <hr />
+    <p class="text-danger">@ViewBag.Message</p>
+    <hr />
+    <br />
+    <button onclick="window.location.href='@Url.Action("Index","Users")'" class="btn btn-primary">Home</button>
+</div>
+

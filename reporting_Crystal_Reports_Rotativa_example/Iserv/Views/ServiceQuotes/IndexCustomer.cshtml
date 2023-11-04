@@ -1,0 +1,152 @@
+﻿@model IEnumerable<Iserv.Models.ServiceQuote>
+@{
+    ViewBag.Title = "IndexCustomer";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+<div style="background-color:#1D2026;height:auto;width:auto;border-radius:30px;">
+    <div class="container text-dark" style="border-radius:20px;width:auto;float:left;">
+        <div class="form-horizontal">
+            <div class="mb-4">
+                <button class="btn btn-info" style="width:200px;border-radius:20px" id="activebtn">Active Quotes</button>
+                <button class="btn btn-dark" style="width:200px;border-radius:20px" id="acceptedbtn">Accepted Quotes </button>
+                <button class="btn btn-info" style="width:200px;border-radius:20px" id="rejectedbtn"> Rejected Quotes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="Active">
+    @if (Model.Where(x => x.ServiceQuote_Status_ID == 2).Count() != 0)
+    {
+        <h2 class="text-info">Currently Active</h2>
+        <div class="row" style="height:100%;margin-left:-5%">
+            <br />
+            @foreach (var item in Model.Where(x => x.ServiceQuote_Status_ID == 2))
+            {
+        <div class="card " style="width:450px;height:auto;border:1px solid;border-radius:10px;padding:10px;background-color:rgba(0,0,0,1);margin-left:-2%;margin-top:50px">
+
+            <p class="card-text" style="color:white">Quote Valid Until <strong class="text-info"> @DateTime.Parse(item.ValidUntil.ToString()).ToShortDateString()</strong></p>
+            <img src="@Url.Content(item.ServiceProvider.User.ImagePath)" class="rounded-circle z-depth-1-half" alt="example placeholder avatar" style="width: 150px;">
+            <p style="text-align:right;color:white">Service Request accepted by <span class="text-info">@item.ServiceProvider.Name </span>  at  <span class="text-info">@item.ServiceProvider.BusinessName </span></p>
+            <div class="card-body">
+                <p class="card-title" style="color:white"> Total Amount: <span class="text-info"> @item.Total </span></p>
+                <button class="btn btn-dark btn-sm" type="submit" onclick="window.location.href='@Url.Action("Details", "ServiceQuotes", new { id = item.ServiceQuoteID })'">View Quotation</button>
+                <button class="btn btn-dark btn-sm" type="submit" id="@item.ServiceQuoteID" data-toggle="modal" data-target="#modal-@item.ServiceQuoteID">Message</button>
+            </div>
+            <div class="modal fade" id="modal-@item.ServiceQuoteID" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false" style="margin-left:-69px;margin-top:8%">
+
+                <div class="modal-dialog">
+
+                    <div class="modal-content" style="background-color:#1D2026;color:white;border-radius:15px;align-content:center">
+
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">Send Message </h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        @using (Html.BeginForm("Create", "Messages", FormMethod.Post))
+                        {
+                            <div class="modal-body">
+                                <!--Below are inputs-->
+                                <input style="display: none" type="datetime" id="DateSent" name="DateSent" value="@DateTime.Now.ToShortDateString()" />
+                                <input style="display:none" type="time" id="TimeSent" name="TimeSent" value="@DateTime.Now.ToShortTimeString()" />
+                                <input style="display:none" type="text" id="MesseageLocation" name="MesseageLocation" value="Inbox" />
+                                <input style="display:none" type="text" id="SentFrom" name="SentFrom" value="@User.Identity.Name" />
+                                <input style="display:none" type="text" id="MessageSentTo" name="MessageSentTo" value="@item.Consumer.Name" />
+                                <textarea placeholder="Enter Message" style="background-color:rgba(0,0,0,0.88);color:white" required rows="2" id="MessageBody" name="MessageBody"></textarea>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-info"><i class="fa fa-check"></i> Send</button>
+                            </div>
+
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+            }
+        </div>
+    }
+    else
+    {
+        <h2 class="text-info">No Active Quotes Found</h2>
+    }
+</div>
+<div id="PassedAccepted">
+    @if (Model.Where(x => x.ServiceQuote_Status_ID == 3).Count() != 0)
+    {
+        <h2 class="text-info">Accepted Quotes</h2>
+        <div class="row" style="height:100%;margin-left:-5%">
+            <br />
+            @foreach (var item in Model.Where(x => x.ServiceQuote_Status_ID == 3))
+            {
+                <div class="card " style="width:450px;height:auto;border:1px solid;border-radius:10px;padding:10px;background-color:rgba(0,0,0,1);margin-left:-2%;margin-top:50px">
+                    <img src="@Url.Content(item.ServiceProvider.User.ImagePath)" class="rounded-circle z-depth-1-half" alt="example placeholder avatar" style="width: 150px;">
+                    <p style="text-align:right;color:white">Service Request accepted by <span class="text-info">@item.ServiceProvider.Name </span>  at  <span class="text-info">@item.ServiceProvider.BusinessName </span></p>
+                    <div class="card-body">
+                        <p class="card-title" style="color:white"> Total Amount: <span class="text-info"> @item.Total </span></p>
+                        <button class="btn btn-dark btn-sm" type="submit" onclick="window.location.href='@Url.Action("PastDetails", "ServiceQuotes", new { id = item.ServiceQuoteID })'">View Quotation</button>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <h2 class="text-info">No Accepted Quotes Found</h2>
+    }
+</div>
+<div id="PassedRejected">
+    @if (Model.Where(x => x.ServiceQuote_Status_ID == 4).Count() != 0)
+    {
+        <h2 class="text-info">Rejected Quotes</h2>
+        <div class="row" style="height:100%;margin-left:-5%">
+            <br />
+            @foreach (var item in Model.Where(x => x.ServiceQuote_Status_ID == 4))
+            {
+                <div class="card " style="width:450px;height:auto;border:1px solid;border-radius:10px;padding:10px;background-color:rgba(0,0,0,1);margin-left:-2%;margin-top:50px">
+                    <img src="@Url.Content(item.ServiceProvider.User.ImagePath)" class="rounded-circle z-depth-1-half" alt="example placeholder avatar" style="width: 150px;">
+                    <p style="text-align:right;color:white">Service Request accepted by <span class="text-info">@item.ServiceProvider.Name </span>  at  <span class="text-info">@item.ServiceProvider.BusinessName </span></p>
+                    <div class="card-body">
+                        <p class="card-title" style="color:white"> Total Amount: <span class="text-info"> @item.Total </span></p>
+                        <button class="btn btn-dark btn-sm" type="submit" onclick="window.location.href='@Url.Action("PastDetails", "ServiceQuotes", new { id = item.ServiceQuoteID })'">View Quotation</button>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <h2 class="text-info">No Rejected Quotes Found</h2>
+    }
+</div>
+
+
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#Active").show();
+            $("#PassedAccepted").hide();
+            $("#PassedRejected").hide();
+
+            $('#activebtn').on('click', function () {
+                $("#Active").show();
+                $("#PassedAccepted").hide();
+                $("#PassedRejected").hide();
+            });
+            $('#acceptedbtn').on('click', function () {
+                $("#Active").hide();
+                $("#PassedAccepted").show();
+                $("#PassedRejected").hide();
+            });
+            $('#rejectedbtn').on('click', function () {
+                $("#Active").hide();
+                $("#PassedAccepted").hide();
+                $("#PassedRejected").show();
+            });
+        });
+    </script>
+}

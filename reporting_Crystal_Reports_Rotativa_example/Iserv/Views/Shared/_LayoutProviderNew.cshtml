@@ -1,0 +1,188 @@
+﻿@using Microsoft.AspNet.Identity
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Iservz</title>
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/dist/css/style.css">
+    <script src="https://unpkg.com/animejs@3.0.1/lib/anime.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <!--JS-->
+    <title>@ViewBag.Title - Admin</title>
+    <link rel="stylesheet" href="~/Content/Site/assets/css/main.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!--SweetAlert-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+    <!--Calander stuff-->
+    <!-- CSS Includes -->
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <!--Modals-->
+    <style>
+
+
+        /*Below is login*/
+        input.form-control, input.form-control:focus {
+            background-color: rgba(0,0,0,0.88);
+            color: #fff;
+            border-radius: 20px;
+        }
+
+            input.form-control:focus {
+                box-shadow: none;
+            }
+
+        button[type=submit].btn {
+            border-radius: 20px;
+            color: #fff;
+        }
+
+        div.form-group label:not(.text-danger) {
+            align-self: center;
+            font-weight: 700;
+        }
+
+        div.form-group.required > label:first-child:after {
+            content: '*';
+            color: #fff;
+            padding-left: 5px;
+        }
+
+        #toast-container > div {
+            opacity: 1;
+        }
+
+        .wrapper {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .wrapped-div {
+            -webkit-border-radius: 10px 10px 10px 10px;
+            border-radius: 20px;
+            background: white;
+            padding: 30px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            padding: 0px;
+            -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+            box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+        }
+
+        /* Tabs */
+        .tab-header {
+            text-align: center;
+        }
+
+            .tab-header h2.active {
+                color: lightblue;
+                border-bottom: 4px solid #fff;
+            }
+
+            .tab-header h2 {
+                text-align: center;
+                font-size: 18px;
+                font-weight: 600;
+                display: inline-block;
+                padding: 30px 40px 10px 40px;
+                cursor: pointer;
+                color: #545d6a;
+                border-bottom: 2px solid #545d6a;
+            }
+
+                .tab-header h2:focus {
+                    outline: none;
+                }
+
+        form {
+            margin: 0px 16px;
+        }
+
+        div.form-group input.invalid {
+            border: 1px solid lightcoral;
+        }
+
+        div.form-group label:first-child {
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .jumbotron {
+            padding-top: 0px;
+            background: #fff;
+        }
+
+        .form-control, .input-group-text {
+            border: 1px solid #0080ff;
+        }
+
+        table.table-hover tbody tr:hover {
+            cursor: pointer;
+        }
+    </style>
+
+    @Scripts.Render("~/Scripts/jquery-3.4.1.min.js")
+    @Scripts.Render("~/Scripts/Chart.min.js")
+    @Scripts.Render("~/Scripts/Common.js")
+</head>
+<body class="is-boxed has-animations" style=" width: auto;/* or whatever width you want */ margin-right: auto; margin-left: auto; ">
+    <nav class="navbar navbar-expand-lg " style="background-color:#1D2026">
+        <a class="navbar-brand btn btn-dark btn-lg" href="/Home/HomeProviderNew" style="color: white;border-radius:35px">Iservz </a>
+        <span style="margin-left:70%">
+            @Html.Partial("_LoginPartial")
+        </span>
+    </nav>
+    <div class="body-wrap">
+        <main>
+            <section class="hero">
+                <div class="container">
+                    @RenderBody()
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="site-footer-inner">
+                    <div class="brand footer-brand">
+                        <a href="#">
+                        </a>
+                    </div>
+                    <div class="footer-copyright">&copy; 2020 By Iserv</div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!--SCRIPTS BELOW-->
+    <script src="~/Content/dist/js/main.min.js"></script>
+    <script>
+        var loadFile = function (event) {
+            var image = document.getElementById('output');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
+    </script>
+    <!--normal-->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

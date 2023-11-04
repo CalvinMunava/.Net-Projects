@@ -1,0 +1,136 @@
+﻿@model IEnumerable<Iserv.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h4 for="sel1" style="color:white">Search Users by :</h4>
+
+<select class="form-control btn btn-dark" id="sel1" style="border-radius:20px;width:150px">
+
+    <option value="choose">--Choose Filter--</option>
+
+    <option value="name">Name</option>
+
+    <option value="date">Date Joined</option>
+</select>
+
+
+<div id="holdingdiv" style="border-radius:20px;background-color:#1D2026 ;">
+    <br />
+    <div id="name" style="margin-left:90px">
+        <!--This For Min an Max-->
+        @using (Html.BeginForm("Index", "Users"))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger", @style = "color:darkred" })
+
+            <label style="color:white">User Name</label>
+            <input style="display:none" id="searchBy" name="searchby" value="Name" />
+            <input style="color: white;background-color:#1D2026 ; border-radius: 20px;width:150px" type="text" id="name" name="name" required />
+            <button class="btn btn-primary" type="submit" style="margin-left:165px;border-radius:35px">Search</button>
+            <br />
+            <br />
+        }
+    </div>
+</div>
+
+<div id="holdingdiv1" style="border-radius:20px;background-color:#1D2026;">
+    <br />
+    <div id="date" style="margin-left:90px">
+        @using (Html.BeginForm("Index", "Users"))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger", @style = "color:darkred" })
+            <label style="color:white">Date Joined</label>
+            <input style="display:none" id="searchby" name="searchBy" value="Date" />
+            @Html.TextBox("date", DateTime.Now.ToString("yyyy-MM-dd"), new { @class = "form-control", @type = "date", max = DateTime.Now.ToString("yyyy-MM-dd"), @style = "color: white;border-radius:35px;width:150px", id ="date", name="date" })
+            <button class="btn btn-primary" type="submit" style="margin-left:160px;border-radius:35px">Search</button>
+            <br />
+            <br />
+        }
+    </div>
+</div>
+
+
+<br />
+<br />
+<br />
+<h3 style="color:white">Recently Joined </h3>
+
+<div class="row">
+
+    <br />
+    <br />
+
+    @if( Model.Count() == null || Model.Count() == 0)
+    {
+        <h1 style="color:darkred"> No Users Found</h1>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            <div class="card " style="width:250px;height:auto;border:1px solid;border-radius:10px;padding:10px;background-color:rgba(0,0,0,0.88);margin-left:5px;margin-top:10px">
+                @if (item.ImagePath == null || item.ImagePath.IsEmpty() == true || item.ImagePath == "")
+                {
+                    <img class="card-img-top" src="~/Content/Pictures/empty.png" style="width:60%;height:40%;border-radius:80px">
+                }
+                else
+                {
+                    <img class="card-img-top" src="@Url.Content(item.ImagePath)" style="width:60%;height:40%;border-radius:80px">
+                }
+                <div class="card-body">
+                    <p style="text-align:right;color:dodgerblue">@item.Role</p>
+                    <h4 class="card-title" style="color:white"> @item.UserName</h4>
+                    <p class="card-text"><strong> @item.description  </strong></p>
+                    <div class="btn-group">
+                        <button class="btn btn-info btn-sm" style="border-radius:60px" type="submit" onclick="window.location.href='@Url.Action("Modify", "Users", new { id = item.UserID})'">More</button>
+                    </div>
+                </div>
+                <br />
+            </div>
+        }
+    }
+
+</div>
+
+<hr style="background-color:white" />
+
+
+
+<!--Section for javascript-->
+@section scripts
+{
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //first hide evrything
+            $("#holdingdiv").hide();
+            $("#holdingdiv1").hide();
+            $("#name").hide();
+            $("#date").hide();
+            $('#sel1').change().val('choose');
+            $('#sel1').on('change', function () {
+
+                if (this.value == 'choose') {
+                    $("#holdingdiv").hide();
+                    $("#holdingdiv1").hide();
+                }
+                if (this.value == 'name') {
+                    $("#holdingdiv").show();
+                    $("#name").show();
+                    $("#date").hide();
+                    $("#holdingdiv1").hide();
+                }
+                if (this.value == 'date') {
+                    $("#holdingdiv1").show();
+                    $("#date").show();
+                    $("#name").hide();
+                    $("#holdingdiv").hide();
+                }
+            });
+        });
+    </script>
+}

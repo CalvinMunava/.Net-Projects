@@ -1,0 +1,75 @@
+﻿@model Iserv.Models.Address
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutProvider.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Address</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StreetNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StreetNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StreetName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StreetName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Province.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Province.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address1.StreetName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address1.StreetName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address2.StreetName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address2.StreetName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AddressID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

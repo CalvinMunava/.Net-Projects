@@ -1,0 +1,67 @@
+﻿/* Set padding to keep content from hitting the edges */
+.body-content {
+    margin-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists
+   will truncate terms that are too long to fit in the left column
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+#resultsTable {
+    table-layout: fixed;
+}
+
+    #resultsTable th:nth-child(1) {
+        width: 10%;
+        min-width: 10%;
+        max-width: 10%;
+    }
+
+    #resultsTable th:nth-child(2) {
+        width: 23%;
+        min-width: 23%;
+        max-width: 23%;
+    }
+
+    #resultsTable th:nth-child(3) {
+        width: 23%;
+        min-width: 23%;
+        max-width: 23%;
+    }
+
+    #resultsTable th:nth-child(4) {
+        width: 10%;
+        min-width: 10%;
+        max-width: 10%;
+    }
+
+    #resultsTable th:nth-child(5) {
+        width: 23%;
+        min-width: 23%;
+        max-width: 23%;
+    }
+
+#clearButton {
+    width: 120px; /* Adjust the width as needed */
+}
+
+#searchButton {
+    width: 120px; /* Adjust the width as needed */
+}
+
+
+.buttons {
+    background-color:mediumvioletred
+}

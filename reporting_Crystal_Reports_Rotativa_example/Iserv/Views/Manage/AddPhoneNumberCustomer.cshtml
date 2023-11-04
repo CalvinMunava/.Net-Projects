@@ -1,0 +1,44 @@
+﻿@model Iserv.Models.AddPhoneNumberViewModel
+@{
+    ViewBag.Title = "Phone Number";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+
+}
+
+
+
+<h2 style="margin-left:20%">Add Phone Number</h2>
+<hr />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="jumbotron" style="background-color:rgba(0,0,0,0.85);border-radius:20px;width:500px;margin-left:27%">
+        <hr />
+
+        <div class="form-horizontal" style="margin-left:20%;">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                <label style="color:white" class="control-label">Add Phone Number:</label>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Number, new { @class = "form-control" })
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add Number" class="btn" style="border-radius:20px;background-color:cornflowerblue;color:white" />
+            </div>
+        </div>
+    </div>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

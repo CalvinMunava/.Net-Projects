@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "Create Category";
+}
+
+@using (Html.BeginForm("Create","Category")) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <div class="form-group">
+            <br />
+            <h4>Add new Category</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group" style="border-radius:20px">
+                <label>Category ID</label>
+                <input id="catID" name="catID" style="color:black;border-radius:20px" required />
+            </div>
+
+            <div class="form-group">
+                <label>Category Name</label>
+                <input id="catName" name="catName" style="color:black;border-radius:20px" required />
+            </div>
+            <div class="btn btn-group" style="margin-left:50px;">
+                <input type="submit" value="Back" class="btn btn-danger" onclick="window.history.go(-1)" />
+                <input type="submit" value="Add Category" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+        }
+     
+
+

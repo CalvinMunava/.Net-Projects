@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "AddProduct";
+}
+
+<h2>Add Product </h2>
+
+@using (Html.BeginForm("AddProducttoDb","Home", FormMethod.Post, new { enctype = "multipart/form-data"})) 
+{
+    <button class="btn btn-primary btn-sm" onclick="window.history.go(-1)"> <i class="glyphicon glyphicon-backward"></i>Home</button>
+
+    <div style="background-color: rgba(0,0,0,0.84);border-radius: 10px;text-align: center;display: block; margin-left: auto; margin-right: auto;width:800px">
+        <h2>Enter Product Details</h2>
+
+        <div class="form-group" style="border-radius:20px">
+            <input id="prodDesc" name="prodDesc" style="color:white;background-color:black;border-radius:20px" required placeholder="Product Description" />
+        </div>
+
+        <div class="form-group">
+            <input type="number" min="1.00" id="prodPrice" step="any" name="prodPrice" style="color: white; background-color: black; border-radius: 20px" required placeholder="Product Price" />
+        </div>
+
+        <div class="form-group">
+            <input type="number" min="1" id="prodQuantity" name="prodQuantity" style="color: white; background-color: black; border-radius: 20px" required placeholder="Product Quantity" />
+        </div>
+
+        @Html.DropDownList("ID", (IEnumerable<SelectListItem>)ViewBag.Types, "Select Type", htmlAttributes: new { @class = "btn dropdown-toggle;required", @style = "border-radius:20px;" })
+        <br />
+        <br />
+
+        <div class="form-group">
+            <input class="btn btn-success" type="file" id="prodBlob" name="prodBlob" style="color: white; background-color: black; border-radius: 20px;margin-left:270px" required placeholder="Select Image" />
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-success btn-lg">Add </button>
+        </div>
+        <br />
+        <br />
+    </div>
+}
+

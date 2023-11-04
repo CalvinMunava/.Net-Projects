@@ -1,0 +1,114 @@
+﻿@model Iserv.Models.ServiceProvider
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<br />
+<div style=" background-color: white;border-radius:20px">
+    <div class="wrapper content">
+        <div class="wrapped-div">
+            <div class="tab-header">
+            </div>
+            <div class="row">
+                <div class="col-md-10 offset-md-1">
+
+                    <img src="~/Content/Site/complete.png" class="mx-auto d-block" style="height:200px;width:200px;margin-left:27%">
+                    @using (Html.BeginForm("Create", "ServiceProviders", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <label><b style="color:black">Name</b></label>
+                        <input style="border-radius:20px;height:30px;background-color:rgba(0,0,0,0.87);color:white" type="text" class="form-control" id="Name" name="Name" required>
+                        <br />
+
+                        <label style="color:black">Surname</label>
+                        <input style="border-radius:20px;height:30px;background-color:rgba(0,0,0,0.87);color:white" type="text" class="form-control" id="Surname" name="Surname" required>
+                        <br />
+
+                        <label style="color:black">ID Number</label>
+                        <input style="border-radius:20px;height:30px;background-color:rgba(0,0,0,0.87);color:white" type="number" class="form-control" id="ID_Number" name="ID_Number" required>
+                        <br />
+
+                        <label style="color:black">Gender</label>
+                        <input style="border-radius:20px;height:30px;background-color:rgba(0,0,0,0.87);color:white" type="text" class="form-control" id="Gender" name="Gender" required>
+                        <br />
+
+
+                        <h3 style="color:black;margin-left:10%">Enter Address Information Below </h3>
+
+                        <label style="color:black">Business Name</label>
+                        <input style="border-radius:20px;height:30px;background-color:rgba(0,0,0,0.87);color:white" type="text" class="form-control" id="BusinessName" name="BusinessName" required>
+                        <br />
+
+                        <br />
+                        <div class="form-group">
+                            <label style="color:black">Street Number</label>
+                            <div class="col-md-10">
+                                <input type="number" min="1" id="StreetNumber" name="StreetNumber" style="border-radius:20px;height:30px;background-color:rgba(0,0,0,0.87);color:white" required />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label style="color:black">Street Name</label>
+                            <div class="col-md-10">
+                                <input id="StreetName" name="StreetName" style="border-radius:20px;height:30px;background-color:rgba(0,0,0,0.87);color:white" required />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label style="color:black">Province</label>
+                            <div class="col-md-10">
+                                @Html.DropDownList("ServiceID", (IEnumerable<SelectListItem>)ViewBag.ServiceID, "--Service--", htmlAttributes: new { @class = "btn dropdown-toggle;required form-control", @style = "border-radius:20px;height:45px;background-color:rgba(0,0,0,0.87);color:white", @id = "ProvinceID" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label style="color:black">Province</label>
+                            <div class="col-md-10">
+                                @Html.DropDownList("ProvinceID", (IEnumerable<SelectListItem>)ViewBag.ProvinceID, "--Province--", htmlAttributes: new { @class = "btn dropdown-toggle;required form-control", @style = "border-radius:20px;height:45px;background-color:rgba(0,0,0,0.87);color:white", @id = "ProvinceID" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label style="color:black">City</label>
+                            <div class="col-md-10">
+                                @Html.DropDownList("CityID", (IEnumerable<SelectListItem>)ViewBag.CityID, "--City--", htmlAttributes: new { @class = "btn dropdown-toggle;required", @style = "border-radius:20px;height:45px;background-color:rgba(0,0,0,0.87);color:white", @id = "CityID" })
+                            </div>
+                        </div>
+                        <br />
+
+                        <h3 style="color:black;margin-left:10%">Enter Account Information Below </h3>
+
+
+                        <label><b style="color:black">UserName</b></label>
+                        <input style="border-radius:20px;height:30px;background-color:rgba(0,0,0,0.87);color:white" type="text" class="form-control" id="UserName" name="UserName" required>
+                        <br />
+
+                        <label style="color:black">Email</label>
+                        <input style="border-radius:20px;height:30px;background-color:rgba(0,0,0,0.87);color:white" type="email" class="form-control" id="Email" name="Email" required>
+                        <br />
+
+                        <label style="color:black">Password</label>
+                        <input style="border-radius:20px;height:30px;background-color:rgba(0,0,0,0.87);color:white" type="password" class="form-control" id="Password" name="Password" required>
+                        <br />
+
+                        <label style="color:black">Confirm Password</label>
+                        <input style="border-radius:20px;height:30px;background-color:rgba(0,0,0,0.87);color:white" type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" required>
+                        <br />
+
+
+                        <div>
+                            <div class="col-md-offset-2 col-md-10">
+                                <input style="width:200px; margin-left:50%; background-color:lightskyblue; color:white ;border-radius:25px" type="submit" value="Apply" class="btn btn-sm" />
+                            </div>
+                        </div>
+                        <br />
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

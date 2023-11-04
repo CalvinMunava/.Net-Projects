@@ -1,0 +1,1401 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="InternetServicesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="AddressID" />
+    </Key>
+    <Property Name="AddressID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StreetNumber" Type="int" />
+    <Property Name="StreetName" Type="varchar(max)" />
+    <Property Name="CityID" Type="int" />
+    <Property Name="ProvinceID" Type="int" />
+    <Property Name="UserID" Type="int" />
+  </EntityType>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="AdminID" />
+    </Key>
+    <Property Name="AdminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar(max)" />
+    <Property Name="Surname" Type="varchar(max)" />
+    <Property Name="Age" Type="int" />
+    <Property Name="Email" Type="varchar(max)" />
+    <Property Name="ID_Number" Type="varchar(max)" />
+    <Property Name="Cell_Number" Type="varchar(max)" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="AddressID" Type="int" />
+    <Property Name="GenderID" Type="int" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="ImagePath" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="CityID" />
+    </Key>
+    <Property Name="CityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar(max)" />
+    <Property Name="ProvinceID" Type="int" />
+  </EntityType>
+  <EntityType Name="Consumer">
+    <Key>
+      <PropertyRef Name="ConsumerID" />
+    </Key>
+    <Property Name="ConsumerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar(max)" />
+    <Property Name="Surname" Type="varchar(max)" />
+    <Property Name="Age" Type="int" />
+    <Property Name="Email" Type="varchar(max)" />
+    <Property Name="ID_Number" Type="varchar(max)" />
+    <Property Name="Cell_Number" Type="varchar(max)" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="AddressID" Type="int" />
+    <Property Name="GenderID" Type="int" />
+  </EntityType>
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="GenderID" />
+    </Key>
+    <Property Name="GenderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Invoice">
+    <Key>
+      <PropertyRef Name="InvoiceID" />
+    </Key>
+    <Property Name="InvoiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Total" Type="float" />
+    <Property Name="PaymentMethod_ID" Type="int" />
+    <Property Name="ServiceQuote_Status_ID" Type="int" />
+    <Property Name="ConsumerID" Type="int" />
+    <Property Name="ServiceProvider_ID" Type="int" />
+    <Property Name="ServiceRequestID" Type="int" />
+    <Property Name="ValidUntil" Type="date" />
+    <Property Name="ServiceQuoteID" Type="int" />
+  </EntityType>
+  <EntityType Name="Messages">
+    <Key>
+      <PropertyRef Name="MessageID" />
+    </Key>
+    <Property Name="MessageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateSent" Type="date" />
+    <Property Name="TimeSent" Type="time" Precision="7" />
+    <Property Name="MessageBody" Type="varchar(max)" />
+    <Property Name="SentFrom" Type="varchar" MaxLength="50" />
+    <Property Name="MesseageLocation" Type="varchar" MaxLength="50" />
+    <Property Name="MessageSentTo" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PaymentMethod">
+    <Key>
+      <PropertyRef Name="PaymentMethodID" />
+    </Key>
+    <Property Name="PaymentMethodID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="ProviderAppointment">
+    <Key>
+      <PropertyRef Name="ProviderAppointmentID" />
+    </Key>
+    <Property Name="ProviderAppointmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="schedule_Description" Type="nvarchar(max)" />
+    <Property Name="themecolor" Type="varchar(max)" />
+    <Property Name="isFullDay" Type="bit" />
+    <Property Name="scheduleStatus" Type="varchar(max)" />
+    <Property Name="Subject" Type="varchar(max)" />
+    <Property Name="Start" Type="datetime" />
+    <Property Name="End" Type="datetime" />
+    <Property Name="ServiceProvider_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="Province">
+    <Key>
+      <PropertyRef Name="ProvinceID" />
+    </Key>
+    <Property Name="ProvinceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Rating">
+    <Key>
+      <PropertyRef Name="RatingID" />
+    </Key>
+    <Property Name="RatingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Rate" Type="int" />
+    <Property Name="Comment" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Schedule">
+    <Key>
+      <PropertyRef Name="schedule_ID" />
+    </Key>
+    <Property Name="schedule_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="schedule_Description" Type="varchar(max)" />
+    <Property Name="themecolor" Type="varchar(max)" />
+    <Property Name="isFullDay" Type="bit" />
+    <Property Name="scheduleStatus" Type="varchar(max)" />
+    <Property Name="Subject" Type="varchar(max)" />
+    <Property Name="Start" Type="datetime" />
+    <Property Name="End" Type="datetime" />
+    <Property Name="Meetinglink" Type="varchar(max)" />
+    <Property Name="ApplicantName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ScheduleAppoitnment">
+    <Key>
+      <PropertyRef Name="ScheduleappoitnmentID" />
+    </Key>
+    <Property Name="ScheduleappoitnmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="date" />
+    <Property Name="Time" Type="time" Precision="7" />
+    <Property Name="Questions" Type="varchar(max)" />
+    <Property Name="ZoomName" Type="varchar(max)" />
+    <Property Name="SPA_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="Service">
+    <Key>
+      <PropertyRef Name="ServiceID" />
+    </Key>
+    <Property Name="ServiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar(max)" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="ImagePath" Type="varchar(max)" />
+    <Property Name="CategoryID" Type="int" />
+  </EntityType>
+  <EntityType Name="Service_Provider_Application">
+    <Key>
+      <PropertyRef Name="SPA_ID" />
+    </Key>
+    <Property Name="SPA_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar(max)" />
+    <Property Name="Email" Type="varchar(max)" />
+    <Property Name="ldimage" Type="varchar(max)" />
+    <Property Name="SPA_Status_ID" Type="int" />
+    <Property Name="ServiceID" Type="int" />
+    <Property Name="Surname" Type="varchar(max)" />
+    <Property Name="IdNumber" Type="varchar" MaxLength="13" />
+    <Property Name="GenderID" Type="int" />
+    <Property Name="BusinessName" Type="varchar(max)" />
+    <Property Name="VatNumber" Type="varchar" MaxLength="10" />
+    <Property Name="StreetName" Type="varchar(max)" />
+    <Property Name="StreetNumber" Type="varchar(max)" />
+    <Property Name="ProvinceID" Type="int" />
+    <Property Name="CityID" Type="int" />
+    <Property Name="Password" Type="varchar(max)" />
+    <Property Name="CellNumber" Type="varchar" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="Service_Provider_Application_Status">
+    <Key>
+      <PropertyRef Name="SPA_Status_ID" />
+    </Key>
+    <Property Name="SPA_Status_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Status" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="ServiceOrder">
+    <Key>
+      <PropertyRef Name="ServiceOrderID" />
+    </Key>
+    <Property Name="ServiceOrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Service_Order_Status_ID" Type="int" />
+    <Property Name="ServiceQuoteID" Type="int" />
+    <Property Name="ServiceProvider_ID" Type="int" />
+    <Property Name="ConsumerID" Type="int" />
+    <Property Name="datecompleted" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'InternetServices.dbo.ServiceOrder_Rating' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ServiceOrder_Rating">
+    <Key>
+      <PropertyRef Name="RatingID" />
+      <PropertyRef Name="ServiceOrderID" />
+    </Key>
+    <Property Name="RatingID" Type="int" Nullable="false" />
+    <Property Name="ServiceOrderID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ServiceOrder_Status">
+    <Key>
+      <PropertyRef Name="Service_Order_Status_ID" />
+    </Key>
+    <Property Name="Service_Order_Status_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="ServiceOrderLine">
+    <Key>
+      <PropertyRef Name="ServiceOrderLineID" />
+    </Key>
+    <Property Name="ServiceOrderLineID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SericeOrderID" Type="int" />
+    <Property Name="Service_ID" Type="int" />
+    <Property Name="ServiceQuote_ID" Type="int" />
+    <Property Name="ServiceQuoteLine_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="ServiceProvider">
+    <Key>
+      <PropertyRef Name="ServiceProvider_ID" />
+    </Key>
+    <Property Name="ServiceProvider_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar(max)" />
+    <Property Name="Surname" Type="varchar(max)" />
+    <Property Name="BusinessName" Type="varchar(max)" />
+    <Property Name="AverageRating" Type="int" />
+    <Property Name="ID_Number" Type="varchar(max)" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="AddressID" Type="int" />
+    <Property Name="GenderID" Type="int" />
+  </EntityType>
+  <EntityType Name="ServiceProvider_ServiceRequest">
+    <Key>
+      <PropertyRef Name="SP_SR_ID" />
+    </Key>
+    <Property Name="SP_SR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ServiceProvider_ID" Type="int" />
+    <Property Name="ServiceRequestID" Type="int" />
+    <Property Name="ServiceQuoteID" Type="int" />
+  </EntityType>
+  <EntityType Name="ServiceProvider_Status">
+    <Key>
+      <PropertyRef Name="ServiceProvider_Status_ID" />
+    </Key>
+    <Property Name="ServiceProvider_Status_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Status" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="ServiceProviderService">
+    <Key>
+      <PropertyRef Name="ServiceProviderServiceID" />
+    </Key>
+    <Property Name="ServiceProviderServiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ServiceProvider_ID" Type="int" />
+    <Property Name="ServiceID" Type="int" />
+    <Property Name="CategoryID" Type="int" />
+  </EntityType>
+  <EntityType Name="ServiceQuote">
+    <Key>
+      <PropertyRef Name="ServiceQuoteID" />
+    </Key>
+    <Property Name="ServiceQuoteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Total" Type="float" />
+    <Property Name="PaymentMethod_ID" Type="int" />
+    <Property Name="ServiceQuote_Status_ID" Type="int" />
+    <Property Name="ConsumerID" Type="int" />
+    <Property Name="ServiceProvider_ID" Type="int" />
+    <Property Name="ServiceRequestID" Type="int" />
+    <Property Name="ValidUntil" Type="date" />
+  </EntityType>
+  <EntityType Name="ServiceQuoteLine">
+    <Key>
+      <PropertyRef Name="ServiceQuoteLine_ID" />
+    </Key>
+    <Property Name="ServiceQuoteLine_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ServiceQuoteID" Type="int" />
+    <Property Name="ItemDescription" Type="varchar" MaxLength="50" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="ItemPrice" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="ItemTotal" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="ServiceQuoteStatus">
+    <Key>
+      <PropertyRef Name="ServiceQuote_Status_ID" />
+    </Key>
+    <Property Name="ServiceQuote_Status_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Status" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="ServiceRequest">
+    <Key>
+      <PropertyRef Name="ServiceRequestID" />
+    </Key>
+    <Property Name="ServiceRequestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Service_Description" Type="varchar(max)" />
+    <Property Name="Date" Type="date" />
+    <Property Name="Address_ID" Type="int" />
+    <Property Name="ConsumerID" Type="int" />
+    <Property Name="ServiceID" Type="int" />
+    <Property Name="ImagePath" Type="varchar(max)" />
+    <Property Name="datecreated" Type="datetime" />
+    <Property Name="TimeID" Type="int" />
+    <Property Name="ServiceRequest_Status_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="ServiceRequest_Status">
+    <Key>
+      <PropertyRef Name="ServiceRequest_Status_ID" />
+    </Key>
+    <Property Name="ServiceRequest_Status_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Status" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="ServiceRequestLine">
+    <Key>
+      <PropertyRef Name="ServiceRequestLine_ID" />
+    </Key>
+    <Property Name="ServiceRequestLine_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ServiceID" Type="int" />
+    <Property Name="ServiceRequestID" Type="int" />
+    <Property Name="ServiceProvider_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="Time">
+    <Key>
+      <PropertyRef Name="TimeID" />
+    </Key>
+    <Property Name="TimeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StartTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="EndTime" Type="time" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar(max)" />
+    <Property Name="description" Type="varchar(max)" />
+    <Property Name="AspNetID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Role" Type="varchar" MaxLength="50" />
+    <Property Name="ImagePath" Type="varchar(max)" />
+    <Property Name="Status" Type="varchar(max)" />
+    <Property Name="datejoined" Type="date" />
+    <Property Name="Activity" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="Address and Consumer">
+    <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+    <End Role="Consumer" Type="Self.Consumer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="AddressID" />
+      </Principal>
+      <Dependent Role="Consumer">
+        <PropertyRef Name="AddressID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Address and Service Provider">
+    <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+    <End Role="ServiceProvider" Type="Self.ServiceProvider" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="AddressID" />
+      </Principal>
+      <Dependent Role="ServiceProvider">
+        <PropertyRef Name="AddressID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Admin and Gender">
+    <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
+    <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="GenderID" />
+      </Principal>
+      <Dependent Role="Admin">
+        <PropertyRef Name="GenderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Category and Service">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Service" Type="Self.Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="Service">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="City and Address">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="Address" Type="Self.Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="CityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="City and Application">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="Service_Provider_Application" Type="Self.Service_Provider_Application" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="Service_Provider_Application">
+        <PropertyRef Name="CityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Admin_Address">
+    <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+    <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="AddressID" />
+      </Principal>
+      <Dependent Role="Admin">
+        <PropertyRef Name="AddressID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Admin_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Admin">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Consumer_Gender">
+    <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
+    <End Role="Consumer" Type="Self.Consumer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="GenderID" />
+      </Principal>
+      <Dependent Role="Consumer">
+        <PropertyRef Name="GenderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Consumer_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Consumer" Type="Self.Consumer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Consumer">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Invoice_Consumer">
+    <End Role="Consumer" Type="Self.Consumer" Multiplicity="0..1" />
+    <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consumer">
+        <PropertyRef Name="ConsumerID" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="ConsumerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Invoice_PaymentMethod">
+    <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="0..1" />
+    <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentMethod">
+        <PropertyRef Name="PaymentMethodID" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="PaymentMethod_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Invoice_ServiceProvider">
+    <End Role="ServiceProvider" Type="Self.ServiceProvider" Multiplicity="0..1" />
+    <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceProvider">
+        <PropertyRef Name="ServiceProvider_ID" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="ServiceProvider_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Invoice_ServiceQuote">
+    <End Role="ServiceQuote" Type="Self.ServiceQuote" Multiplicity="0..1" />
+    <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceQuote">
+        <PropertyRef Name="ServiceQuoteID" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="ServiceQuoteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Invoice_ServiceQuoteStatus">
+    <End Role="ServiceQuoteStatus" Type="Self.ServiceQuoteStatus" Multiplicity="0..1" />
+    <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceQuoteStatus">
+        <PropertyRef Name="ServiceQuote_Status_ID" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="ServiceQuote_Status_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Invoice_ServiceRequest">
+    <End Role="ServiceRequest" Type="Self.ServiceRequest" Multiplicity="0..1" />
+    <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceRequest">
+        <PropertyRef Name="ServiceRequestID" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="ServiceRequestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProviderAppointment_ServiceProvider">
+    <End Role="ServiceProvider" Type="Self.ServiceProvider" Multiplicity="0..1" />
+    <End Role="ProviderAppointment" Type="Self.ProviderAppointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceProvider">
+        <PropertyRef Name="ServiceProvider_ID" />
+      </Principal>
+      <Dependent Role="ProviderAppointment">
+        <PropertyRef Name="ServiceProvider_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ScheduleAppoitnment_Service_Provider_Application">
+    <End Role="Service_Provider_Application" Type="Self.Service_Provider_Application" Multiplicity="0..1" />
+    <End Role="ScheduleAppoitnment" Type="Self.ScheduleAppoitnment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service_Provider_Application">
+        <PropertyRef Name="SPA_ID" />
+      </Principal>
+      <Dependent Role="ScheduleAppoitnment">
+        <PropertyRef Name="SPA_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceOrder_Rating_ServiceOrder">
+    <End Role="ServiceOrder" Type="Self.ServiceOrder" Multiplicity="1" />
+    <End Role="ServiceOrder_Rating" Type="Self.ServiceOrder_Rating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceOrder">
+        <PropertyRef Name="ServiceOrderID" />
+      </Principal>
+      <Dependent Role="ServiceOrder_Rating">
+        <PropertyRef Name="ServiceOrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceOrderLine_Service">
+    <End Role="Service" Type="Self.Service" Multiplicity="0..1" />
+    <End Role="ServiceOrderLine" Type="Self.ServiceOrderLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="ServiceID" />
+      </Principal>
+      <Dependent Role="ServiceOrderLine">
+        <PropertyRef Name="Service_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceOrderLine_ServiceOrder">
+    <End Role="ServiceOrder" Type="Self.ServiceOrder" Multiplicity="0..1" />
+    <End Role="ServiceOrderLine" Type="Self.ServiceOrderLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceOrder">
+        <PropertyRef Name="ServiceOrderID" />
+      </Principal>
+      <Dependent Role="ServiceOrderLine">
+        <PropertyRef Name="SericeOrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceOrderLine_ServiceQuote">
+    <End Role="ServiceQuote" Type="Self.ServiceQuote" Multiplicity="0..1" />
+    <End Role="ServiceOrderLine" Type="Self.ServiceOrderLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceQuote">
+        <PropertyRef Name="ServiceQuoteID" />
+      </Principal>
+      <Dependent Role="ServiceOrderLine">
+        <PropertyRef Name="ServiceQuote_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceProvider_Gender">
+    <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
+    <End Role="ServiceProvider" Type="Self.ServiceProvider" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="GenderID" />
+      </Principal>
+      <Dependent Role="ServiceProvider">
+        <PropertyRef Name="GenderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceProvider_ServiceRequest_ServiceProvider">
+    <End Role="ServiceProvider" Type="Self.ServiceProvider" Multiplicity="0..1" />
+    <End Role="ServiceProvider_ServiceRequest" Type="Self.ServiceProvider_ServiceRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceProvider">
+        <PropertyRef Name="ServiceProvider_ID" />
+      </Principal>
+      <Dependent Role="ServiceProvider_ServiceRequest">
+        <PropertyRef Name="ServiceProvider_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceProvider_ServiceRequest_ServiceQuote">
+    <End Role="ServiceQuote" Type="Self.ServiceQuote" Multiplicity="0..1" />
+    <End Role="ServiceProvider_ServiceRequest" Type="Self.ServiceProvider_ServiceRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceQuote">
+        <PropertyRef Name="ServiceQuoteID" />
+      </Principal>
+      <Dependent Role="ServiceProvider_ServiceRequest">
+        <PropertyRef Name="ServiceQuoteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceProvider_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="ServiceProvider" Type="Self.ServiceProvider" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="ServiceProvider">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceProviderService_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="ServiceProviderService" Type="Self.ServiceProviderService" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="ServiceProviderService">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceProviderService_Service">
+    <End Role="Service" Type="Self.Service" Multiplicity="0..1" />
+    <End Role="ServiceProviderService" Type="Self.ServiceProviderService" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="ServiceID" />
+      </Principal>
+      <Dependent Role="ServiceProviderService">
+        <PropertyRef Name="ServiceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceProviderService_ServiceProvider">
+    <End Role="ServiceProvider" Type="Self.ServiceProvider" Multiplicity="0..1" />
+    <End Role="ServiceProviderService" Type="Self.ServiceProviderService" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceProvider">
+        <PropertyRef Name="ServiceProvider_ID" />
+      </Principal>
+      <Dependent Role="ServiceProviderService">
+        <PropertyRef Name="ServiceProvider_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceQuote_Consumer">
+    <End Role="Consumer" Type="Self.Consumer" Multiplicity="0..1" />
+    <End Role="ServiceQuote" Type="Self.ServiceQuote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consumer">
+        <PropertyRef Name="ConsumerID" />
+      </Principal>
+      <Dependent Role="ServiceQuote">
+        <PropertyRef Name="ConsumerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceQuote_ServiceProvider">
+    <End Role="ServiceProvider" Type="Self.ServiceProvider" Multiplicity="0..1" />
+    <End Role="ServiceQuote" Type="Self.ServiceQuote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceProvider">
+        <PropertyRef Name="ServiceProvider_ID" />
+      </Principal>
+      <Dependent Role="ServiceQuote">
+        <PropertyRef Name="ServiceProvider_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceQuote_ServiceQuoteStatus">
+    <End Role="ServiceQuoteStatus" Type="Self.ServiceQuoteStatus" Multiplicity="0..1" />
+    <End Role="ServiceQuote" Type="Self.ServiceQuote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceQuoteStatus">
+        <PropertyRef Name="ServiceQuote_Status_ID" />
+      </Principal>
+      <Dependent Role="ServiceQuote">
+        <PropertyRef Name="ServiceQuote_Status_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceQuote_ServiceRequest">
+    <End Role="ServiceRequest" Type="Self.ServiceRequest" Multiplicity="0..1" />
+    <End Role="ServiceQuote" Type="Self.ServiceQuote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceRequest">
+        <PropertyRef Name="ServiceRequestID" />
+      </Principal>
+      <Dependent Role="ServiceQuote">
+        <PropertyRef Name="ServiceRequestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceQuoteLine_ServiceQuote">
+    <End Role="ServiceQuote" Type="Self.ServiceQuote" Multiplicity="0..1" />
+    <End Role="ServiceQuoteLine" Type="Self.ServiceQuoteLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceQuote">
+        <PropertyRef Name="ServiceQuoteID" />
+      </Principal>
+      <Dependent Role="ServiceQuoteLine">
+        <PropertyRef Name="ServiceQuoteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceRequest_Address">
+    <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+    <End Role="ServiceRequest" Type="Self.ServiceRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="AddressID" />
+      </Principal>
+      <Dependent Role="ServiceRequest">
+        <PropertyRef Name="Address_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceRequest_Consumer">
+    <End Role="Consumer" Type="Self.Consumer" Multiplicity="0..1" />
+    <End Role="ServiceRequest" Type="Self.ServiceRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consumer">
+        <PropertyRef Name="ConsumerID" />
+      </Principal>
+      <Dependent Role="ServiceRequest">
+        <PropertyRef Name="ConsumerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceRequest_Service">
+    <End Role="Service" Type="Self.Service" Multiplicity="0..1" />
+    <End Role="ServiceRequest" Type="Self.ServiceRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="ServiceID" />
+      </Principal>
+      <Dependent Role="ServiceRequest">
+        <PropertyRef Name="ServiceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceRequest_Time">
+    <End Role="Time" Type="Self.Time" Multiplicity="0..1" />
+    <End Role="ServiceRequest" Type="Self.ServiceRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Time">
+        <PropertyRef Name="TimeID" />
+      </Principal>
+      <Dependent Role="ServiceRequest">
+        <PropertyRef Name="TimeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceRequestLine_Service">
+    <End Role="Service" Type="Self.Service" Multiplicity="0..1" />
+    <End Role="ServiceRequestLine" Type="Self.ServiceRequestLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="ServiceID" />
+      </Principal>
+      <Dependent Role="ServiceRequestLine">
+        <PropertyRef Name="ServiceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceRequestLine_ServiceProvider">
+    <End Role="ServiceProvider" Type="Self.ServiceProvider" Multiplicity="0..1" />
+    <End Role="ServiceRequestLine" Type="Self.ServiceRequestLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceProvider">
+        <PropertyRef Name="ServiceProvider_ID" />
+      </Principal>
+      <Dependent Role="ServiceRequestLine">
+        <PropertyRef Name="ServiceProvider_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceRequestLine_ServiceRequest">
+    <End Role="ServiceRequest" Type="Self.ServiceRequest" Multiplicity="0..1" />
+    <End Role="ServiceRequestLine" Type="Self.ServiceRequestLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceRequest">
+        <PropertyRef Name="ServiceRequestID" />
+      </Principal>
+      <Dependent Role="ServiceRequestLine">
+        <PropertyRef Name="ServiceRequestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Gender and Application">
+    <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
+    <End Role="Service_Provider_Application" Type="Self.Service_Provider_Application" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="GenderID" />
+      </Principal>
+      <Dependent Role="Service_Provider_Application">
+        <PropertyRef Name="GenderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PaymentMethod and ServiceQuote">
+    <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="0..1" />
+    <End Role="ServiceQuote" Type="Self.ServiceQuote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentMethod">
+        <PropertyRef Name="PaymentMethodID" />
+      </Principal>
+      <Dependent Role="ServiceQuote">
+        <PropertyRef Name="PaymentMethod_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Province and Address">
+    <End Role="Province" Type="Self.Province" Multiplicity="0..1" />
+    <End Role="Address" Type="Self.Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Province">
+        <PropertyRef Name="ProvinceID" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="ProvinceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Province and Application">
+    <End Role="Province" Type="Self.Province" Multiplicity="0..1" />
+    <End Role="Service_Provider_Application" Type="Self.Service_Provider_Application" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Province">
+        <PropertyRef Name="ProvinceID" />
+      </Principal>
+      <Dependent Role="Service_Provider_Application">
+        <PropertyRef Name="ProvinceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Province and City">
+    <End Role="Province" Type="Self.Province" Multiplicity="0..1" />
+    <End Role="City" Type="Self.City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Province">
+        <PropertyRef Name="ProvinceID" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="ProvinceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Service and  SOL">
+    <End Role="Service" Type="Self.Service" Multiplicity="0..1" />
+    <End Role="ServiceOrderLine" Type="Self.ServiceOrderLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="ServiceID" />
+      </Principal>
+      <Dependent Role="ServiceOrderLine">
+        <PropertyRef Name="Service_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Service order and service order status">
+    <End Role="ServiceOrder_Status" Type="Self.ServiceOrder_Status" Multiplicity="0..1" />
+    <End Role="ServiceOrder" Type="Self.ServiceOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceOrder_Status">
+        <PropertyRef Name="Service_Order_Status_ID" />
+      </Principal>
+      <Dependent Role="ServiceOrder">
+        <PropertyRef Name="Service_Order_Status_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Service Qoute and Service Order">
+    <End Role="ServiceQuote" Type="Self.ServiceQuote" Multiplicity="0..1" />
+    <End Role="ServiceOrder" Type="Self.ServiceOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceQuote">
+        <PropertyRef Name="ServiceQuoteID" />
+      </Principal>
+      <Dependent Role="ServiceOrder">
+        <PropertyRef Name="ServiceQuoteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SO and CN">
+    <End Role="Consumer" Type="Self.Consumer" Multiplicity="0..1" />
+    <End Role="ServiceOrder" Type="Self.ServiceOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consumer">
+        <PropertyRef Name="ConsumerID" />
+      </Principal>
+      <Dependent Role="ServiceOrder">
+        <PropertyRef Name="ConsumerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SO AND SP">
+    <End Role="ServiceProvider" Type="Self.ServiceProvider" Multiplicity="0..1" />
+    <End Role="ServiceOrder" Type="Self.ServiceOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceProvider">
+        <PropertyRef Name="ServiceProvider_ID" />
+      </Principal>
+      <Dependent Role="ServiceOrder">
+        <PropertyRef Name="ServiceProvider_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SPA_Status and ServiceProvider Applicaation">
+    <End Role="Service_Provider_Application_Status" Type="Self.Service_Provider_Application_Status" Multiplicity="0..1" />
+    <End Role="Service_Provider_Application" Type="Self.Service_Provider_Application" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service_Provider_Application_Status">
+        <PropertyRef Name="SPA_Status_ID" />
+      </Principal>
+      <Dependent Role="Service_Provider_Application">
+        <PropertyRef Name="SPA_Status_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="User and Address">
+    <End Role="Address" Type="Self.Address" Multiplicity="1" />
+    <End Role="Address1" Type="Self.Address" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="AddressID" />
+      </Principal>
+      <Dependent Role="Address1">
+        <PropertyRef Name="AddressID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="User and AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="AspNetID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="InternetServicesModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Consumer" EntityType="Self.Consumer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Invoice" EntityType="Self.Invoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Messages" EntityType="Self.Messages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PaymentMethod" EntityType="Self.PaymentMethod" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProviderAppointment" EntityType="Self.ProviderAppointment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Province" EntityType="Self.Province" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rating" EntityType="Self.Rating" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Schedule" EntityType="Self.Schedule" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ScheduleAppoitnment" EntityType="Self.ScheduleAppoitnment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Service_Provider_Application" EntityType="Self.Service_Provider_Application" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Service_Provider_Application_Status" EntityType="Self.Service_Provider_Application_Status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiceOrder" EntityType="Self.ServiceOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiceOrder_Status" EntityType="Self.ServiceOrder_Status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiceOrderLine" EntityType="Self.ServiceOrderLine" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiceProvider" EntityType="Self.ServiceProvider" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiceProvider_ServiceRequest" EntityType="Self.ServiceProvider_ServiceRequest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiceProvider_Status" EntityType="Self.ServiceProvider_Status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiceProviderService" EntityType="Self.ServiceProviderService" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiceQuote" EntityType="Self.ServiceQuote" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiceQuoteLine" EntityType="Self.ServiceQuoteLine" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiceQuoteStatus" EntityType="Self.ServiceQuoteStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiceRequest" EntityType="Self.ServiceRequest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiceRequest_Status" EntityType="Self.ServiceRequest_Status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiceRequestLine" EntityType="Self.ServiceRequestLine" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Time" EntityType="Self.Time" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiceOrder_Rating" EntityType="Self.ServiceOrder_Rating" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ServiceOrder_Rating].[RatingID] AS [RatingID], 
+    [ServiceOrder_Rating].[ServiceOrderID] AS [ServiceOrderID]
+    FROM [dbo].[ServiceOrder_Rating] AS [ServiceOrder_Rating]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="Address and Consumer" Association="Self.Address and Consumer">
+      <End Role="Address" EntitySet="Address" />
+      <End Role="Consumer" EntitySet="Consumer" />
+    </AssociationSet>
+    <AssociationSet Name="Address and Service Provider" Association="Self.Address and Service Provider">
+      <End Role="Address" EntitySet="Address" />
+      <End Role="ServiceProvider" EntitySet="ServiceProvider" />
+    </AssociationSet>
+    <AssociationSet Name="Admin and Gender" Association="Self.Admin and Gender">
+      <End Role="Gender" EntitySet="Gender" />
+      <End Role="Admin" EntitySet="Admin" />
+    </AssociationSet>
+    <AssociationSet Name="Category and Service" Association="Self.Category and Service">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Service" EntitySet="Service" />
+    </AssociationSet>
+    <AssociationSet Name="City and Address" Association="Self.City and Address">
+      <End Role="City" EntitySet="City" />
+      <End Role="Address" EntitySet="Address" />
+    </AssociationSet>
+    <AssociationSet Name="City and Application" Association="Self.City and Application">
+      <End Role="City" EntitySet="City" />
+      <End Role="Service_Provider_Application" EntitySet="Service_Provider_Application" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Admin_Address" Association="Self.FK_Admin_Address">
+      <End Role="Address" EntitySet="Address" />
+      <End Role="Admin" EntitySet="Admin" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Admin_User" Association="Self.FK_Admin_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Admin" EntitySet="Admin" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Consumer_Gender" Association="Self.FK_Consumer_Gender">
+      <End Role="Gender" EntitySet="Gender" />
+      <End Role="Consumer" EntitySet="Consumer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Consumer_User" Association="Self.FK_Consumer_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Consumer" EntitySet="Consumer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Invoice_Consumer" Association="Self.FK_Invoice_Consumer">
+      <End Role="Consumer" EntitySet="Consumer" />
+      <End Role="Invoice" EntitySet="Invoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Invoice_PaymentMethod" Association="Self.FK_Invoice_PaymentMethod">
+      <End Role="PaymentMethod" EntitySet="PaymentMethod" />
+      <End Role="Invoice" EntitySet="Invoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Invoice_ServiceProvider" Association="Self.FK_Invoice_ServiceProvider">
+      <End Role="ServiceProvider" EntitySet="ServiceProvider" />
+      <End Role="Invoice" EntitySet="Invoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Invoice_ServiceQuote" Association="Self.FK_Invoice_ServiceQuote">
+      <End Role="ServiceQuote" EntitySet="ServiceQuote" />
+      <End Role="Invoice" EntitySet="Invoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Invoice_ServiceQuoteStatus" Association="Self.FK_Invoice_ServiceQuoteStatus">
+      <End Role="ServiceQuoteStatus" EntitySet="ServiceQuoteStatus" />
+      <End Role="Invoice" EntitySet="Invoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Invoice_ServiceRequest" Association="Self.FK_Invoice_ServiceRequest">
+      <End Role="ServiceRequest" EntitySet="ServiceRequest" />
+      <End Role="Invoice" EntitySet="Invoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProviderAppointment_ServiceProvider" Association="Self.FK_ProviderAppointment_ServiceProvider">
+      <End Role="ServiceProvider" EntitySet="ServiceProvider" />
+      <End Role="ProviderAppointment" EntitySet="ProviderAppointment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ScheduleAppoitnment_Service_Provider_Application" Association="Self.FK_ScheduleAppoitnment_Service_Provider_Application">
+      <End Role="Service_Provider_Application" EntitySet="Service_Provider_Application" />
+      <End Role="ScheduleAppoitnment" EntitySet="ScheduleAppoitnment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceOrder_Rating_ServiceOrder" Association="Self.FK_ServiceOrder_Rating_ServiceOrder">
+      <End Role="ServiceOrder" EntitySet="ServiceOrder" />
+      <End Role="ServiceOrder_Rating" EntitySet="ServiceOrder_Rating" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceOrderLine_Service" Association="Self.FK_ServiceOrderLine_Service">
+      <End Role="Service" EntitySet="Service" />
+      <End Role="ServiceOrderLine" EntitySet="ServiceOrderLine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceOrderLine_ServiceOrder" Association="Self.FK_ServiceOrderLine_ServiceOrder">
+      <End Role="ServiceOrder" EntitySet="ServiceOrder" />
+      <End Role="ServiceOrderLine" EntitySet="ServiceOrderLine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceOrderLine_ServiceQuote" Association="Self.FK_ServiceOrderLine_ServiceQuote">
+      <End Role="ServiceQuote" EntitySet="ServiceQuote" />
+      <End Role="ServiceOrderLine" EntitySet="ServiceOrderLine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceProvider_Gender" Association="Self.FK_ServiceProvider_Gender">
+      <End Role="Gender" EntitySet="Gender" />
+      <End Role="ServiceProvider" EntitySet="ServiceProvider" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceProvider_ServiceRequest_ServiceProvider" Association="Self.FK_ServiceProvider_ServiceRequest_ServiceProvider">
+      <End Role="ServiceProvider" EntitySet="ServiceProvider" />
+      <End Role="ServiceProvider_ServiceRequest" EntitySet="ServiceProvider_ServiceRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceProvider_ServiceRequest_ServiceQuote" Association="Self.FK_ServiceProvider_ServiceRequest_ServiceQuote">
+      <End Role="ServiceQuote" EntitySet="ServiceQuote" />
+      <End Role="ServiceProvider_ServiceRequest" EntitySet="ServiceProvider_ServiceRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceProvider_User" Association="Self.FK_ServiceProvider_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="ServiceProvider" EntitySet="ServiceProvider" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceProviderService_Category" Association="Self.FK_ServiceProviderService_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="ServiceProviderService" EntitySet="ServiceProviderService" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceProviderService_Service" Association="Self.FK_ServiceProviderService_Service">
+      <End Role="Service" EntitySet="Service" />
+      <End Role="ServiceProviderService" EntitySet="ServiceProviderService" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceProviderService_ServiceProvider" Association="Self.FK_ServiceProviderService_ServiceProvider">
+      <End Role="ServiceProvider" EntitySet="ServiceProvider" />
+      <End Role="ServiceProviderService" EntitySet="ServiceProviderService" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceQuote_Consumer" Association="Self.FK_ServiceQuote_Consumer">
+      <End Role="Consumer" EntitySet="Consumer" />
+      <End Role="ServiceQuote" EntitySet="ServiceQuote" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceQuote_ServiceProvider" Association="Self.FK_ServiceQuote_ServiceProvider">
+      <End Role="ServiceProvider" EntitySet="ServiceProvider" />
+      <End Role="ServiceQuote" EntitySet="ServiceQuote" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceQuote_ServiceQuoteStatus" Association="Self.FK_ServiceQuote_ServiceQuoteStatus">
+      <End Role="ServiceQuoteStatus" EntitySet="ServiceQuoteStatus" />
+      <End Role="ServiceQuote" EntitySet="ServiceQuote" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceQuote_ServiceRequest" Association="Self.FK_ServiceQuote_ServiceRequest">
+      <End Role="ServiceRequest" EntitySet="ServiceRequest" />
+      <End Role="ServiceQuote" EntitySet="ServiceQuote" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceQuoteLine_ServiceQuote" Association="Self.FK_ServiceQuoteLine_ServiceQuote">
+      <End Role="ServiceQuote" EntitySet="ServiceQuote" />
+      <End Role="ServiceQuoteLine" EntitySet="ServiceQuoteLine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceRequest_Address" Association="Self.FK_ServiceRequest_Address">
+      <End Role="Address" EntitySet="Address" />
+      <End Role="ServiceRequest" EntitySet="ServiceRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceRequest_Consumer" Association="Self.FK_ServiceRequest_Consumer">
+      <End Role="Consumer" EntitySet="Consumer" />
+      <End Role="ServiceRequest" EntitySet="ServiceRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceRequest_Service" Association="Self.FK_ServiceRequest_Service">
+      <End Role="Service" EntitySet="Service" />
+      <End Role="ServiceRequest" EntitySet="ServiceRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceRequest_Time" Association="Self.FK_ServiceRequest_Time">
+      <End Role="Time" EntitySet="Time" />
+      <End Role="ServiceRequest" EntitySet="ServiceRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceRequestLine_Service" Association="Self.FK_ServiceRequestLine_Service">
+      <End Role="Service" EntitySet="Service" />
+      <End Role="ServiceRequestLine" EntitySet="ServiceRequestLine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceRequestLine_ServiceProvider" Association="Self.FK_ServiceRequestLine_ServiceProvider">
+      <End Role="ServiceProvider" EntitySet="ServiceProvider" />
+      <End Role="ServiceRequestLine" EntitySet="ServiceRequestLine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceRequestLine_ServiceRequest" Association="Self.FK_ServiceRequestLine_ServiceRequest">
+      <End Role="ServiceRequest" EntitySet="ServiceRequest" />
+      <End Role="ServiceRequestLine" EntitySet="ServiceRequestLine" />
+    </AssociationSet>
+    <AssociationSet Name="Gender and Application" Association="Self.Gender and Application">
+      <End Role="Gender" EntitySet="Gender" />
+      <End Role="Service_Provider_Application" EntitySet="Service_Provider_Application" />
+    </AssociationSet>
+    <AssociationSet Name="PaymentMethod and ServiceQuote" Association="Self.PaymentMethod and ServiceQuote">
+      <End Role="PaymentMethod" EntitySet="PaymentMethod" />
+      <End Role="ServiceQuote" EntitySet="ServiceQuote" />
+    </AssociationSet>
+    <AssociationSet Name="Province and Address" Association="Self.Province and Address">
+      <End Role="Province" EntitySet="Province" />
+      <End Role="Address" EntitySet="Address" />
+    </AssociationSet>
+    <AssociationSet Name="Province and Application" Association="Self.Province and Application">
+      <End Role="Province" EntitySet="Province" />
+      <End Role="Service_Provider_Application" EntitySet="Service_Provider_Application" />
+    </AssociationSet>
+    <AssociationSet Name="Province and City" Association="Self.Province and City">
+      <End Role="Province" EntitySet="Province" />
+      <End Role="City" EntitySet="City" />
+    </AssociationSet>
+    <AssociationSet Name="Service and  SOL" Association="Self.Service and  SOL">
+      <End Role="Service" EntitySet="Service" />
+      <End Role="ServiceOrderLine" EntitySet="ServiceOrderLine" />
+    </AssociationSet>
+    <AssociationSet Name="Service order and service order status" Association="Self.Service order and service order status">
+      <End Role="ServiceOrder_Status" EntitySet="ServiceOrder_Status" />
+      <End Role="ServiceOrder" EntitySet="ServiceOrder" />
+    </AssociationSet>
+    <AssociationSet Name="Service Qoute and Service Order" Association="Self.Service Qoute and Service Order">
+      <End Role="ServiceQuote" EntitySet="ServiceQuote" />
+      <End Role="ServiceOrder" EntitySet="ServiceOrder" />
+    </AssociationSet>
+    <AssociationSet Name="SO and CN" Association="Self.SO and CN">
+      <End Role="Consumer" EntitySet="Consumer" />
+      <End Role="ServiceOrder" EntitySet="ServiceOrder" />
+    </AssociationSet>
+    <AssociationSet Name="SO AND SP" Association="Self.SO AND SP">
+      <End Role="ServiceProvider" EntitySet="ServiceProvider" />
+      <End Role="ServiceOrder" EntitySet="ServiceOrder" />
+    </AssociationSet>
+    <AssociationSet Name="SPA_Status and ServiceProvider Applicaation" Association="Self.SPA_Status and ServiceProvider Applicaation">
+      <End Role="Service_Provider_Application_Status" EntitySet="Service_Provider_Application_Status" />
+      <End Role="Service_Provider_Application" EntitySet="Service_Provider_Application" />
+    </AssociationSet>
+    <AssociationSet Name="User and Address" Association="Self.User and Address">
+      <End Role="Address" EntitySet="Address" />
+      <End Role="Address1" EntitySet="Address" />
+    </AssociationSet>
+    <AssociationSet Name="User and AspNetUsers" Association="Self.User and AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

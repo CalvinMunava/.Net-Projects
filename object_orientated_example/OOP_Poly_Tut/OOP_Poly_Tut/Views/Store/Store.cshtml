@@ -1,0 +1,117 @@
+﻿@model IEnumerable<OOP_Poly_Tut.Models.GamingConsole>
+
+@{
+    ViewBag.Title = "Store";
+}
+
+<h2>Store</h2>
+
+@*<p>
+    
+    @Html.ActionLink("Add Xb", "AddXbToStore")
+</p>*@
+
+<h1>Playstations</h1>
+<div class="container-fluid">
+    <div class="row">
+        @foreach (var item in Model.Where(x => x._consoleType == "playstation"))
+        {
+            <div class="col-lg-3">
+                <div class="card" style="width: 18rem; background-color: #dcdcdc !important;padding:10px;border-radius:20px">
+
+                    <img class="card-img-top" src="@Url.Content(item.Image)" height="150" width="150">
+
+                    <div class="card-body">
+
+                        <h5 class="card-title">@item.Name</h5>
+
+                        <p class="card-text">@item.Description</p>
+
+                        <button class="btn btn-primary" style="border-radius: 20px !important" data-toggle="modal" data-target="#exampleModal-@item.ID"> View </button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<h1>Xboxs</h1>
+<div class="container-fluid">
+    <div class="row">
+
+        @foreach (var item in Model.Where(x => x._consoleType == "xbox"))
+        {
+            <div class="col-lg-3">
+                <div class="card" style="width: 18rem; background-color: #dcdcdc !important;padding:10px;border-radius:20px">
+
+                    <img class="card-img-top" src="@Url.Content(item.Image)" height="150" width="150">
+
+                    <div class="card-body">
+
+                        <h5 class="card-title">@item.Name</h5>
+
+                        <p class="card-text">@item.Description.</p>
+
+                        <button class="btn btn-success" style="border-radius: 20px !important" data-toggle="modal" data-target="#exampleModal-@item.ID">View</button>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+<br />
+
+<!-- Modal -->
+@foreach (var item in Model)
+{
+    <div class="modal fade" id="exampleModal-@item.ID" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">@item.Name</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3>Price:</h3><span> R  @item.ItemPriceWithVat() Incl Vat </span><br />
+                    <hr />
+                    <p>@item.ItemAbout()</p>
+                    <br />
+                    <h6>@item.ItemDelay()</h6>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<!--Bootstrap Grid System-->
+<div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3">
+                <h4>Use Case 1</h4>
+                <img src="~/Content/Images/Use_Cases/uc1.png" height="400" width="200" />
+            </div>
+            <div class="col-lg-3">
+                <h4>Use Case 2</h4>
+                <img src="~/Content/Images/Use_Cases/uc2.png" height="400" width="200" />
+            </div>
+            <div class="col-lg-3">
+                <h4>Use Case 3</h4>
+                <img src="~/Content/Images/Use_Cases/uc2.png" height="400" width="200" />
+            </div>
+            <div class="col-lg-3">
+                <h4>Use Case 4</h4>
+                <img src="~/Content/Images/Use_Cases/uc2.png" height="400" width="200" />
+            </div>
+        </div>
+    </div>
+
+
+

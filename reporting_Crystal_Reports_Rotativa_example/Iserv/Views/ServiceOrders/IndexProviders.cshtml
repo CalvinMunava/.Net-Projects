@@ -1,0 +1,111 @@
+@model IEnumerable<Iserv.Models.ServiceOrder>
+@{
+    ViewBag.Title = "IndexProviders";
+    Layout = "~/Views/Shared/_LayoutProvider.cshtml";
+}
+
+<h2 class="text-info">Recently Accepted</h2>
+<hr />
+
+<div class="row" style="height:100%;">
+    @if (Model.Where(x => x.Service_Order_Status_ID == 1).Count() != 0)
+    {
+        foreach (var item in Model.Where(x => x.Service_Order_Status_ID == 1))
+        {
+            <div class="card " style="width:380px;height:auto;border:1px solid;border-radius:10px;padding:10px;background-color:rgba(0,0,0,0.88);margin-left:5px;margin-top:10px">
+
+                <img src="@Url.Content(item.ServiceQuote.Consumer.User.ImagePath)" class="rounded-circle z-depth-1-half" alt="example placeholder avatar" style="width: 150px;">
+
+                <div class="card-body">
+
+                    <h4 class="card-text" style="color:white">Order Requested by <span class="text-info"> @item.ServiceQuote.Consumer.Name   </span></h4>
+
+                    <p class="card-text"><strong>  Price R:  </strong><span class="text-info"> @item.ServiceQuote.Total </span></p>
+                    <p class="card-text"><strong>  Service job for   </strong><span class="text-info"> @item.ServiceQuote.ServiceRequest.Service.Name </span></p>
+                    <p class="card-text"><strong>  City:  </strong><span class="text-info"> @item.ServiceQuote.ServiceRequest.Address.City.Name</span></p>
+                    <p class="card-text"><strong>  Address:  </strong><span class="text-info"> @item.ServiceQuote.ServiceRequest.Address.StreetNumber @item.ServiceQuote.ServiceRequest.Address.StreetName  </span></p>
+                    <p class="card-text"><strong>  Date of Service: </strong><span class="text-info"> @DateTime.Parse(item.ServiceQuote.ServiceRequest.Date.ToString()).ToShortDateString() </span></p>
+                    <p class="card-text"><strong>  Time of Service: </strong><span class="text-info"> @item.ServiceQuote.ServiceRequest.Time.StartTime</span></p>
+                    <div class="btn-group">
+                        <button class="btn btn-dark btn-sm" type="submit" id="@item.ServiceOrderID" data-toggle="modal" data-target="#modal-@item.ServiceOrderID">Message</button>
+                        <button class="btn btn-info btn-sm" type="submit" onclick="window.location.href='@Url.Action("Complete", "ServiceOrders", new { id=item.ServiceOrderID , servicequote = item.ServiceQuoteID })'">Mark Completed</button>
+                    </div>
+                </div>
+                <br />
+            </div>
+
+            <div class="modal fade" id="modal-@item.ServiceOrderID" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false" style="margin-left:-69px;margin-top:8%">
+
+                <div class="modal-dialog">
+
+                    <div class="modal-content" style="background-color:#1D2026;color:white;border-radius:15px;align-content:center">
+
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">Send Message </h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        @using (Html.BeginForm("Create", "Messages", FormMethod.Post))
+                        {
+                            <div class="modal-body">
+                                <!--Below are inputs-->
+                                <input style="display: none" type="datetime" id="DateSent" name="DateSent" value="@DateTime.Now.ToShortDateString()" />
+                                <input style="display:none" type="time" id="TimeSent" name="TimeSent" value="@DateTime.Now.ToShortTimeString()" />
+                                <input style="display:none" type="text" id="MesseageLocation" name="MesseageLocation" value="Inbox" />
+                                <input style="display:none" type="text" id="SentFrom" name="SentFrom" value="@User.Identity.Name" />
+                                <input style="display:none" type="text" id="MessageSentTo" name="MessageSentTo" value="@item.Consumer.Name" />
+                                <textarea placeholder="Enter Message" style="background-color:rgba(0,0,0,0.88);color:white" required rows="2" id="MessageBody" name="MessageBody"></textarea>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-info"><i class="fa fa-check"></i> Send</button>
+                            </div>
+
+                        }
+
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <h3  style="margin-left:5%;color:white"> No Recent Orders found</h3>
+    }
+</div>
+
+<h2 class="text-info">Past Orders</h2>
+<hr style="background-color:white" />
+<br />
+
+<div class="row" style="height:100%;">
+    @if (Model.Where(x => x.Service_Order_Status_ID != 1).Count() != 0)
+    {
+        foreach (var item in Model.Where(x => x.Service_Order_Status_ID != 1))
+        {
+
+            <div class="card " style="width:320px;height:auto;border:1px solid;border-radius:10px;padding:10px;background-color:rgba(0,0,0,0.88);margin-left:5px;margin-top:10px">
+
+                <img src="@Url.Content(item.ServiceQuote.Consumer.User.ImagePath)" class="img-rounded" style="width:60%;height:60%; border-radius:30px">
+
+                <div class="card-body">
+                    <h4 class="card-text" style="color:white">Order Requested by <span class="text-info"> @item.ServiceQuote.Consumer.Name   </span></h4>
+                    <p class="card-text"><strong>  Price R:  </strong><span class="text-info"> @item.ServiceQuote.Total </span></p>
+                    <p class="card-text"><strong>   Orderd By  </strong><span class="text-info"> @item.ServiceQuote.ServiceRequest.Service.Name </span></p>
+                    <p class="card-text"><strong>  City:  </strong><span class="text-info"> @item.ServiceQuote.ServiceRequest.Address.City.Name</span></p>
+                    <p class="card-text"><strong>  Address:  </strong><span class="text-info"> @item.ServiceQuote.ServiceRequest.Address.StreetNumber @item.ServiceQuote.ServiceRequest.Address.StreetName  </span></p>
+                    <p class="card-text"><strong>  Date of Service: </strong><span class="text-info"> @DateTime.Parse(item.ServiceQuote.ServiceRequest.Date.ToString()).ToShortDateString() </span></p>
+                    <p class="card-text"><strong>  Time of Service: </strong><span class="text-info"> @item.ServiceQuote.ServiceRequest.Time.StartTime</span></p>
+                    <p class="card-text"><strong> Completed on :</strong><span class="text-info"> @DateTime.Parse(item.datecompleted.ToString()).ToShortDateString() </span></p>
+                </div>
+                <br />
+            </div>
+        }
+
+    }
+    else
+    {
+     <h2 class="text-info"> No Past Orders found</h2>
+    }
+</div>
+
+

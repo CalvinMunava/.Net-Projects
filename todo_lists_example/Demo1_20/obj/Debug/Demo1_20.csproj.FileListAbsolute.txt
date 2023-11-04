@@ -1,0 +1,143 @@
+C:/Users/Taylor/Desktop/Calvin/JA/Inf272-master/ToDoList_Lists/Demo1_20/bin/Demo1_20.dll.config
+C:/Users/Taylor/Desktop/Calvin/JA/Inf272-master/ToDoList_Lists/Demo1_20/bin/Demo1_20.dll
+C:/Users/Taylor/Desktop/Calvin/JA/Inf272-master/ToDoList_Lists/Demo1_20/bin/Demo1_20.pdb
+C:/Users/Taylor/Desktop/Calvin/JA/Inf272-master/ToDoList_Lists/Demo1_20/bin/roslyn/csc.exe
+C:/Users/Taylor/Desktop/Calvin/JA/Inf272-master/ToDoList_Lists/Demo1_20/bin/roslyn/csc.exe.config
+C:/Users/Taylor/Desktop/Calvin/JA/Inf272-master/ToDoList_Lists/Demo1_20/bin/roslyn/csc.rsp
+C:/Users/Taylor/Desktop/Calvin/JA/Inf272-master/ToDoList_Lists/Demo1_20/bin/roslyn/csi.exe
+C:/Users/Taylor/Desktop/Calvin/JA/Inf272-master/ToDoList_Lists/Demo1_20/bin/roslyn/csi.exe.config
+C:/Users/Taylor/Desktop/Calvin/JA/Inf272-master/ToDoList_Lists/Demo1_20/bin/roslyn/csi.rsp
+C:/Users/Taylor/Desktop/Calvin/JA/Inf272-master/ToDoList_Lists/Demo1_20/bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll
+C:/Users/Taylor/Desktop/Calvin/JA/Inf272-master/ToDoList_Lists/Demo1_20/bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll
+C:/Users/Taylor/Desktop/Calvin/JA/Inf272-master/ToDoList_Lists/Demo1_20/bin/Newtonsoft.Json.xml
+C:/Users/Taylor/Desktop/Calvin/JA/Inf272-master/ToDoList_Lists/Demo1_20/bin/System.Net.Http.Formatting.xml
+C:/Users/Taylor/Desktop/Calvin/JA/Inf272-master/ToDoList_Lists/Demo1_20/bin/System.Web.Helpers.xml
+C:/Users/Taylor/Desktop/Calvin/JA/Inf272-master/ToDoList_Lists/Demo1_20/bin/System.Web.Http.xml
+C:/Users/Taylor/Desktop/Calvin/JA/Inf272-master/ToDoList_Lists/Demo1_20/bin/System.Web.Http.WebHost.xml
+C:/Users/Taylor/Desktop/Calvin/JA/Inf272-master/ToDoList_Lists/Demo1_20/bin/System.Web.Mvc.xml
+C:/Users/Taylor/Desktop/Calvin/JA/Inf272-master/ToDoList_Lists/Demo1_20/bin/System.Web.Optimization.xml
+C:/Users/Taylor/Desktop/Calvin/JA/Inf272-master/ToDoList_Lists/Demo1_20/bin/System.Web.Razor.xml
+C:/Users/Taylor/Desktop/Calvin/JA/Inf272-master/ToDoList_Lists/Demo1_20/bin/System.Web.WebPages.xml
+C:/Users/Taylor/Desktop/Calvin/JA/Inf272-master/ToDoList_Lists/Demo1_20/bin/System.Web.WebPages.Deployment.xml
+C:/Users/Taylor/Desktop/Calvin/JA/Inf272-master/ToDoList_Lists/Demo1_20/bin/System.Web.WebPages.Razor.xml
+C:/Users/Taylor/Desktop/Calvin/JA/Inf272-master/ToDoList_Lists/Demo1_20/bin/Antlr3.Runtime.pdb
+C:/Users/Taylor/Desktop/Calvin/JA/Inf272-master/ToDoList_Lists/Demo1_20/bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:/Users/Taylor/Desktop/Calvin/JA/Inf272-master/ToDoList_Lists/Demo1_20/obj/Debug/Demo1_20.csprojAssemblyReference.cache
+C:/Users/Taylor/Desktop/Calvin/JA/Inf272-master/ToDoList_Lists/Demo1_20/obj/Debug/Demo1_20.csproj.CoreCompileInputs.cache
+C:/Users/Taylor/Desktop/Calvin/JA/Inf272-master/ToDoList_Lists/Demo1_20/obj/Debug/Demo1_20.csproj.CopyComplete
+C:/Users/Taylor/Desktop/Calvin/JA/Inf272-master/ToDoList_Lists/Demo1_20/obj/Debug/Demo1_20.dll
+C:/Users/Taylor/Desktop/Calvin/JA/Inf272-master/ToDoList_Lists/Demo1_20/obj/Debug/Demo1_20.pdb
+/Users/calvinmunava/Desktop/ToDoList_Lists/Demo1_20/bin/Demo1_20.dll
+/Users/calvinmunava/Desktop/ToDoList_Lists/Demo1_20/bin/Demo1_20.pdb
+/Users/calvinmunava/Desktop/ToDoList_Lists/Demo1_20/bin/roslyn/csc.exe
+/Users/calvinmunava/Desktop/ToDoList_Lists/Demo1_20/bin/roslyn/csc.exe.config
+/Users/calvinmunava/Desktop/ToDoList_Lists/Demo1_20/bin/roslyn/csc.rsp
+/Users/calvinmunava/Desktop/ToDoList_Lists/Demo1_20/bin/roslyn/csi.exe
+/Users/calvinmunava/Desktop/ToDoList_Lists/Demo1_20/bin/roslyn/csi.exe.config
+/Users/calvinmunava/Desktop/ToDoList_Lists/Demo1_20/bin/roslyn/csi.rsp
+/Users/calvinmunava/Desktop/ToDoList_Lists/Demo1_20/bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll
+/Users/calvinmunava/Desktop/ToDoList_Lists/Demo1_20/bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll
+/Users/calvinmunava/Desktop/ToDoList_Lists/Demo1_20/bin/Newtonsoft.Json.xml
+/Users/calvinmunava/Desktop/ToDoList_Lists/Demo1_20/bin/System.Net.Http.Formatting.xml
+/Users/calvinmunava/Desktop/ToDoList_Lists/Demo1_20/bin/System.Web.Helpers.xml
+/Users/calvinmunava/Desktop/ToDoList_Lists/Demo1_20/bin/System.Web.Http.xml
+/Users/calvinmunava/Desktop/ToDoList_Lists/Demo1_20/bin/System.Web.Http.WebHost.xml
+/Users/calvinmunava/Desktop/ToDoList_Lists/Demo1_20/bin/System.Web.Mvc.xml
+/Users/calvinmunava/Desktop/ToDoList_Lists/Demo1_20/bin/System.Web.Optimization.xml
+/Users/calvinmunava/Desktop/ToDoList_Lists/Demo1_20/bin/System.Web.Razor.xml
+/Users/calvinmunava/Desktop/ToDoList_Lists/Demo1_20/bin/System.Web.WebPages.xml
+/Users/calvinmunava/Desktop/ToDoList_Lists/Demo1_20/bin/System.Web.WebPages.Deployment.xml
+/Users/calvinmunava/Desktop/ToDoList_Lists/Demo1_20/bin/System.Web.WebPages.Razor.xml
+/Users/calvinmunava/Desktop/ToDoList_Lists/Demo1_20/bin/Antlr3.Runtime.pdb
+/Users/calvinmunava/Desktop/ToDoList_Lists/Demo1_20/bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+/Users/calvinmunava/Desktop/ToDoList_Lists/Demo1_20/obj/Debug/Demo1_20.csprojAssemblyReference.cache
+/Users/calvinmunava/Desktop/ToDoList_Lists/Demo1_20/obj/Debug/Demo1_20.csproj.CoreCompileInputs.cache
+/Users/calvinmunava/Desktop/ToDoList_Lists/Demo1_20/obj/Debug/Demo1_20.csproj.CopyComplete
+/Users/calvinmunava/Desktop/ToDoList_Lists/Demo1_20/obj/Debug/Demo1_20.dll
+/Users/calvinmunava/Desktop/ToDoList_Lists/Demo1_20/obj/Debug/Demo1_20.pdb
+/Users/calvinmunava/Downloads/Dev/Repos/Inf272/ToDoList_Lists/Demo1_20/bin/Demo1_20.dll
+/Users/calvinmunava/Downloads/Dev/Repos/Inf272/ToDoList_Lists/Demo1_20/bin/Demo1_20.pdb
+/Users/calvinmunava/Downloads/Dev/Repos/Inf272/ToDoList_Lists/Demo1_20/bin/roslyn/csc.exe
+/Users/calvinmunava/Downloads/Dev/Repos/Inf272/ToDoList_Lists/Demo1_20/bin/roslyn/csc.exe.config
+/Users/calvinmunava/Downloads/Dev/Repos/Inf272/ToDoList_Lists/Demo1_20/bin/roslyn/csc.rsp
+/Users/calvinmunava/Downloads/Dev/Repos/Inf272/ToDoList_Lists/Demo1_20/bin/roslyn/csi.exe
+/Users/calvinmunava/Downloads/Dev/Repos/Inf272/ToDoList_Lists/Demo1_20/bin/roslyn/csi.exe.config
+/Users/calvinmunava/Downloads/Dev/Repos/Inf272/ToDoList_Lists/Demo1_20/bin/roslyn/csi.rsp
+/Users/calvinmunava/Downloads/Dev/Repos/Inf272/ToDoList_Lists/Demo1_20/bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll
+/Users/calvinmunava/Downloads/Dev/Repos/Inf272/ToDoList_Lists/Demo1_20/bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll
+/Users/calvinmunava/Downloads/Dev/Repos/Inf272/ToDoList_Lists/Demo1_20/bin/Newtonsoft.Json.xml
+/Users/calvinmunava/Downloads/Dev/Repos/Inf272/ToDoList_Lists/Demo1_20/bin/System.Net.Http.Formatting.xml
+/Users/calvinmunava/Downloads/Dev/Repos/Inf272/ToDoList_Lists/Demo1_20/bin/System.Web.Helpers.xml
+/Users/calvinmunava/Downloads/Dev/Repos/Inf272/ToDoList_Lists/Demo1_20/bin/System.Web.Http.xml
+/Users/calvinmunava/Downloads/Dev/Repos/Inf272/ToDoList_Lists/Demo1_20/bin/System.Web.Http.WebHost.xml
+/Users/calvinmunava/Downloads/Dev/Repos/Inf272/ToDoList_Lists/Demo1_20/bin/System.Web.Mvc.xml
+/Users/calvinmunava/Downloads/Dev/Repos/Inf272/ToDoList_Lists/Demo1_20/bin/System.Web.Optimization.xml
+/Users/calvinmunava/Downloads/Dev/Repos/Inf272/ToDoList_Lists/Demo1_20/bin/System.Web.Razor.xml
+/Users/calvinmunava/Downloads/Dev/Repos/Inf272/ToDoList_Lists/Demo1_20/bin/System.Web.WebPages.xml
+/Users/calvinmunava/Downloads/Dev/Repos/Inf272/ToDoList_Lists/Demo1_20/bin/System.Web.WebPages.Deployment.xml
+/Users/calvinmunava/Downloads/Dev/Repos/Inf272/ToDoList_Lists/Demo1_20/bin/System.Web.WebPages.Razor.xml
+/Users/calvinmunava/Downloads/Dev/Repos/Inf272/ToDoList_Lists/Demo1_20/bin/Antlr3.Runtime.pdb
+/Users/calvinmunava/Downloads/Dev/Repos/Inf272/ToDoList_Lists/Demo1_20/bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+/Users/calvinmunava/Downloads/Dev/Repos/Inf272/ToDoList_Lists/Demo1_20/obj/Debug/Demo1_20.csprojAssemblyReference.cache
+/Users/calvinmunava/Downloads/Dev/Repos/Inf272/ToDoList_Lists/Demo1_20/obj/Debug/Demo1_20.csproj.CoreCompileInputs.cache
+/Users/calvinmunava/Downloads/Dev/Repos/Inf272/ToDoList_Lists/Demo1_20/obj/Debug/Demo1_20.csproj.CopyComplete
+/Users/calvinmunava/Downloads/Dev/Repos/Inf272/ToDoList_Lists/Demo1_20/obj/Debug/Demo1_20.dll
+/Users/calvinmunava/Downloads/Dev/Repos/Inf272/ToDoList_Lists/Demo1_20/obj/Debug/Demo1_20.pdb
+E:\Dev\TDO\Code\2020\272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\Demo1_20.dll.config
+E:\Dev\TDO\Code\2020\272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\Demo1_20.dll
+E:\Dev\TDO\Code\2020\272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\Demo1_20.pdb
+E:\Dev\TDO\Code\2020\272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\roslyn\csc.exe
+E:\Dev\TDO\Code\2020\272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\roslyn\csc.exe.config
+E:\Dev\TDO\Code\2020\272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\roslyn\csc.rsp
+E:\Dev\TDO\Code\2020\272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\roslyn\csi.exe
+E:\Dev\TDO\Code\2020\272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\roslyn\csi.exe.config
+E:\Dev\TDO\Code\2020\272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\roslyn\csi.rsp
+E:\Dev\TDO\Code\2020\272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Dev\TDO\Code\2020\272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Dev\TDO\Code\2020\272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\Newtonsoft.Json.xml
+E:\Dev\TDO\Code\2020\272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\System.Net.Http.Formatting.xml
+E:\Dev\TDO\Code\2020\272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\System.Web.Helpers.xml
+E:\Dev\TDO\Code\2020\272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\System.Web.Http.xml
+E:\Dev\TDO\Code\2020\272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\System.Web.Http.WebHost.xml
+E:\Dev\TDO\Code\2020\272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\System.Web.Mvc.xml
+E:\Dev\TDO\Code\2020\272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\System.Web.Optimization.xml
+E:\Dev\TDO\Code\2020\272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\System.Web.Razor.xml
+E:\Dev\TDO\Code\2020\272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\System.Web.WebPages.xml
+E:\Dev\TDO\Code\2020\272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\System.Web.WebPages.Deployment.xml
+E:\Dev\TDO\Code\2020\272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\System.Web.WebPages.Razor.xml
+E:\Dev\TDO\Code\2020\272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\Antlr3.Runtime.pdb
+E:\Dev\TDO\Code\2020\272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Dev\TDO\Code\2020\272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\obj\Debug\Demo1_20.csproj.AssemblyReference.cache
+E:\Dev\TDO\Code\2020\272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\obj\Debug\Demo1_20.csproj.CoreCompileInputs.cache
+E:\Dev\TDO\Code\2020\272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\obj\Debug\Demo1_20.csproj.CopyComplete
+E:\Dev\TDO\Code\2020\272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\obj\Debug\Demo1_20.dll
+E:\Dev\TDO\Code\2020\272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\obj\Debug\Demo1_20.pdb
+D:\TutorDevOps\Tutoring\Content\2020\INF - 272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\Demo1_20.dll.config
+D:\TutorDevOps\Tutoring\Content\2020\INF - 272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\Demo1_20.dll
+D:\TutorDevOps\Tutoring\Content\2020\INF - 272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\Demo1_20.pdb
+D:\TutorDevOps\Tutoring\Content\2020\INF - 272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\roslyn\csc.exe
+D:\TutorDevOps\Tutoring\Content\2020\INF - 272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\roslyn\csc.exe.config
+D:\TutorDevOps\Tutoring\Content\2020\INF - 272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\roslyn\csc.rsp
+D:\TutorDevOps\Tutoring\Content\2020\INF - 272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\roslyn\csi.exe
+D:\TutorDevOps\Tutoring\Content\2020\INF - 272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\roslyn\csi.exe.config
+D:\TutorDevOps\Tutoring\Content\2020\INF - 272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\roslyn\csi.rsp
+D:\TutorDevOps\Tutoring\Content\2020\INF - 272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\TutorDevOps\Tutoring\Content\2020\INF - 272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\TutorDevOps\Tutoring\Content\2020\INF - 272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\Newtonsoft.Json.xml
+D:\TutorDevOps\Tutoring\Content\2020\INF - 272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\System.Net.Http.Formatting.xml
+D:\TutorDevOps\Tutoring\Content\2020\INF - 272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\System.Web.Helpers.xml
+D:\TutorDevOps\Tutoring\Content\2020\INF - 272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\System.Web.Http.xml
+D:\TutorDevOps\Tutoring\Content\2020\INF - 272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\System.Web.Http.WebHost.xml
+D:\TutorDevOps\Tutoring\Content\2020\INF - 272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\System.Web.Mvc.xml
+D:\TutorDevOps\Tutoring\Content\2020\INF - 272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\System.Web.Optimization.xml
+D:\TutorDevOps\Tutoring\Content\2020\INF - 272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\System.Web.Razor.xml
+D:\TutorDevOps\Tutoring\Content\2020\INF - 272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\System.Web.WebPages.xml
+D:\TutorDevOps\Tutoring\Content\2020\INF - 272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\System.Web.WebPages.Deployment.xml
+D:\TutorDevOps\Tutoring\Content\2020\INF - 272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\System.Web.WebPages.Razor.xml
+D:\TutorDevOps\Tutoring\Content\2020\INF - 272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\Antlr3.Runtime.pdb
+D:\TutorDevOps\Tutoring\Content\2020\INF - 272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\TutorDevOps\Tutoring\Content\2020\INF - 272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\obj\Debug\Demo1_20.csproj.AssemblyReference.cache
+D:\TutorDevOps\Tutoring\Content\2020\INF - 272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\obj\Debug\Demo1_20.csproj.CoreCompileInputs.cache
+D:\TutorDevOps\Tutoring\Content\2020\INF - 272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\obj\Debug\Demo1_20.csproj.CopyComplete
+D:\TutorDevOps\Tutoring\Content\2020\INF - 272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\obj\Debug\Demo1_20.dll
+D:\TutorDevOps\Tutoring\Content\2020\INF - 272\Github\May\3-ListExamples\ToDoList_Lists\Demo1_20\obj\Debug\Demo1_20.pdb

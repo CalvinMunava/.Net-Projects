@@ -1,0 +1,29 @@
+@model Iserv.Models.Category
+
+@{
+  ViewBag.Title = "Details";
+  Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<h2 style="color:white">Service Category</h2>
+<hr />
+
+<div class="row" style="height:100%;">
+
+
+  <div class="card " style="width:320px;height:250px;border:1px solid;border-radius:10px;padding:10px;background-color:rgba(0,0,0,0.88);margin-left:5px;margin-top:10px">
+    <div class="card-body" style="height:100px">
+      <h4 class="card-title" style="color:white"> Name : @Model.Name    </h4>
+      <p class="card-text"><strong> Description : @Model.Description</strong></p>
+
+      <div class="btn-group">
+        <button class="btn btn-info btn-sm" type="submit" onclick="window.location.href='@Url.Action("Edit", "Categories", new { id = Model.CategoryID })'">Modify</button>
+        <button class="btn btn-dark btn-sm" type="submit" onclick="window.location.href='@Url.Action("Index", "Categories")'">Back</button>
+      </div>
+
+    </div>
+    <br />
+  </div>
+
+</div>

@@ -1,0 +1,51 @@
+﻿@using Microsoft.AspNet.Identity
+@model Iserv.Models.User
+@{
+    ViewBag.Title = "HomeProvider";
+    Layout = "~/Views/Shared/_LayoutProvider.cshtml";
+}
+
+<h2 class="text-info"> Welcome Back </h2>
+
+<div class="container" style="background-color:black;border-radius:20px;width:300px;float:left;margin-left:-40%">
+    <p class="text-info btn" style="border-bottom-right-radius: 20px; border-top-right-radius: 20px; margin-left: -15px"> Logged In - @ViewBag.Time  </p>
+
+    <div class="form-horizontal" style="margin-left:20%;">
+        <div class="mb-4" style="margin-left:5%">
+            <br />
+            @if (Model.ImagePath == null)
+            {
+                <img src="~/Content/Pictures/placeholder-avatar.jpg" class="rounded-circle z-depth-1-half" alt="example placeholder avatar" style="width: 150px;">
+            }
+            else
+            {
+                <img src="@Url.Content(Model.ImagePath)" class="rounded-circle z-depth-1-half" alt="example placeholder avatar" style="width: 150px;">
+            }
+        </div>
+        <div style="margin-left:50px">
+            <span style="color:white">@Model.UserName</span>
+            <br />
+        </div>
+        <br />
+        <br />
+    </div>
+</div>
+<br />
+<div class="card " style="width:100%;height:100%;border:1px solid;border-radius:10px;padding:10px;background-color:rgba(0,0,0,1);margin-left:5px;margin-top:10px">
+    <div class="btn-group-lg">
+        <button class="btn btn-info btn-lg" onclick="window.location.href='@Url.Action("Index","Messages")'"> Messages</button>
+        <button class="btn btn-dark btn-lg" onclick="window.location.href='@Url.Action("Index","ServiceProviderServices")'"> Services Portal </button>
+        <button class="btn btn-dark btn-lg" onclick="window.location.href='@Url.Action("IndexProviders","ServiceQuotes")'"> Service Quotes </button>
+        <button class="btn btn-dark btn-lg" onclick="window.location.href='@Url.Action("ServiceRequestsProvider","ServiceRequests")'"> Service Requests </button>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+@section Scripts {}
+

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ReportingExample.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+           Customer Name
+        </th>
+        <th>
+            Customer Surname
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @item.CustomerName
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerSurname)
+        </td>
+        <td>
+            <button class="btn btn-success" onclick="window.location.href='@Url.Action("Edit","CustomerTest", new { id = item.CustomerID })'"> Edit </button>
+            <button class="btn btn-success" onclick="window.location.href='@Url.Action("Details","CustomerTest", new { id = item.CustomerID })'"> Details </button>
+            <button class="btn btn-success" onclick="window.location.href='@Url.Action("Delete","CustomerTest", new { id = item.CustomerID })'"> Delete </button>
+        </td>
+    </tr>
+}
+
+</table>

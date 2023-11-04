@@ -1,0 +1,90 @@
+﻿@model List<TDO_DB_MVC.Models.Product>
+
+
+    <div>
+        <div style="float:right">
+            <button class="btn btn-primary btn-sm" onclick="window.history.go(-1)"> <i class="glyphicon glyphicon-backward"></i>Logout</button>
+        </div>
+        <div>
+            <h1 style="color:cadetblue">Products </h1>
+        </div>
+    </div>
+    <div style="float:left">
+        <button class="btn btn-primary btn-sm" onclick="location.href ='@Url.Action("AddProduct", "Home")'"><i class="glyphicon glyphicon-barcode"></i>  Add Products</button>
+
+        <button class="btn btn-primary btn-sm" onclick="location.href ='@Url.Action("Filter", "Filter")'" style="float:right"> <i class="glyphicon glyphicon-bell"></i>Filter Section</button>
+    </div>
+    <div class="btn btn-success" role="alert" style="margin-left:300px;width:300px">
+        @ViewBag.Message
+    </div>
+    <br />
+    <br />
+    <br />
+
+    @if (Model.Count == 0)
+    {
+        <div class="btn btn-primary" role="alert" style="margin-left:410px;width:auto;border-radius:10px" onclick="window.location.href='@Url.Action("AddProduct", "Home")'">
+            <h1><i class="glyphicon glyphicon-barcode"></i>  Add Products</h1>
+        </div>
+    }
+    else
+    {
+        foreach (var product in Model)
+        {
+            <div class="row" style="height:100%;">
+                <div style="background-color:rgba(0,0,0,0.84); border-radius:20px;">
+                    <table class="table" style="width:auto">
+                        <thead>
+                            <tr style="color:white;width:auto">
+                                <th scope="col">Image</th>
+                                <th scope="col">Description</th>
+                                <th>Price</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">ProductType</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="color:white">
+
+                                @if (product.ImagePath == null)
+                                {
+                                    <td><img  style="width:20%;height:20%" /></td>
+                                }
+                                else
+                                {
+                                    <td><img src="@Url.Content(product.ImagePath)" style="width:20%;height:20%" /></td>
+                                }
+
+                                <td>@product.Description</td>
+                                <td>R @product.Price</td>
+                                <td>@product.Quantity left</td>
+                                <td>@product.ProductTypeText </td>
+                                <td> <button class="btn btn-primary" onclick="location.href ='@Url.Action("UpdateProduct", "Home", new { Id = product.ID })'"><i class="glyphicon glyphicon-pencil"></i> </button></td>
+                                <td> <button class="btn btn-danger" id="@product.ID" data-toggle="modal" data-target="#model-@product.ID"><i class="glyphicon glyphicon-trash"></i> </button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="modal fade" id="model-@product.ID" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="background-color:black;color:white;border-radius:15px;align-content:center">
+                        <div class="modal-header">
+                            <button style="color:red" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title" id="myModalLabel">@product.Description</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you Sure you want to delete this Product ? </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" style="align-content:center"><i class="glyphicon glyphicon-remove"></i></button>
+                            <button type="submit" class="btn btn-success" data-dismiss="modal" onclick="window.location.href='@Url.Action("DeleteProduct", "Home", new { ID = product.ID })'"><i class="glyphicon glyphicon-ok"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }

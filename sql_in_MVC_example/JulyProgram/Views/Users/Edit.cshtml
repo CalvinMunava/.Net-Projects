@@ -1,0 +1,62 @@
+﻿@model JulyProgram.Models.User
+
+@using (Html.BeginForm("Edit", "Users", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Edit User</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.StudentId)
+    @Html.HiddenFor(model => model.StudentImage)
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Student Picture</label>
+        <div class="col-md-10">
+            <img src="@Url.Content(Model.StudentImage)" height="150" width="150" />
+        </div>
+    </div>
+
+
+
+    <div class= "form-group" >
+    @Html.LabelFor(model => model.StudentName, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class= "col-md-10" >
+    @Html.EditorFor(model => model.StudentName, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.StudentName, "", new { @class = "text-danger" })
+    </div >
+    </div >
+
+    <div class= "form-group" >
+    @Html.LabelFor(model => model.StudentDegree, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class= "col-md-10" >
+    @Html.EditorFor(model => model.StudentDegree, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.StudentDegree, "", new { @class = "text-danger" })
+    </div >
+    </div >
+
+    <div class= "form-group" hidden >
+    @Html.LabelFor(model => model.StudentImage, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class= "col-md-10" >
+    @Html.EditorFor(model => model.StudentImage, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.StudentImage, "", new { @class = "text-danger" })
+    </div >
+    </div >
+
+    <div class="form-group">
+            <label class="control-label col-md-2">Student Picture</label>
+            <div class="col-md-10">
+                <input type="file" id="Blob" name="Blob" class="form-control" />
+            </div>
+    </div>
+
+    <br />
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-success" />
+        </div>
+    </div>
+</div>
+}
+

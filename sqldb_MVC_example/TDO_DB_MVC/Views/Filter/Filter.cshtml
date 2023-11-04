@@ -1,0 +1,245 @@
+﻿@model List<TDO_DB_MVC.Models.Product>
+
+@{
+    ViewBag.Title = "Filter";
+}
+
+<div>
+    <div style="float:right">
+        <button class="btn btn-primary btn-sm" onclick="window.history.go(-1)"> <i class="glyphicon glyphicon-backward"></i>Back</button>
+    </div>
+    <div>
+        <h1 style="color:cadetblue">Products </h1>
+    </div>
+</div>
+
+<div class="form-group" style="float:left">
+
+    <h4 for="sel1" style="color:white">Filter Table by :</h4>
+
+    <select class="form-control btn btn-primary" id="sel1" style="border-radius:20px">
+        <option value="choose">--Choose Filter--</option>
+
+        <option value="prod">ProductType</option>
+
+        <option value="price">Price</option>
+
+        <option value="quan">Quantity</option>
+
+        <option value="filterAll">Filter Multiple</option>
+    </select>
+</div>
+
+<br />
+<br />
+
+<div class="btn btn-success" role="alert" style="margin-left:300px;width:300px">
+    @ViewBag.Message
+</div>
+<br />
+<br />
+<br />
+
+<div id="holdingdiv" style="border-radius:20px;background-color:rgba(0,0,0,0.84);margin-left:300px;width:600px">
+
+
+    <div id="prod" style="margin-left:260px">
+        <!--This For Radio-->
+        @using (Html.BeginForm("FilterSearchRadio", "Filter"))
+        {
+            <label style="color:white">ALL </label>
+            @Html.RadioButton("Type", "All")
+            <br />
+            <label style="color:white">CPU</label>
+            @Html.RadioButton("Type", "CPU")
+            <br />
+            <label style="color:white">RAM</label>
+            @Html.RadioButton("Type", "RAM")
+            <br />
+            <label style="color:white">SSD</label>
+            @Html.RadioButton("Type", "SSD")
+            <br /> <br />
+            <button class="btn btn-success" type="submit">Search</button>
+            <br />
+            <br />
+        }
+    </div>
+
+    <div id="price" style="margin-left:90px">
+        <!--This For Min an Max-->
+        @using (Html.BeginForm("FilterSearchPrice", "Filter"))
+        {
+            <br />
+            <br />
+            <label style="color:white">Min Price</label>
+            <input style="color: white; background-color: black; border-radius: 20px" type="number" id="minNum" name="minNum" min="1" step="any" required />
+            <label style="color:white">Max Price</label>
+            <input style="color: white; background-color: black; border-radius: 20px" type="number" id="maxNum" name="maxNum" min="1" step="any" required />
+            <br />
+            <br />
+            <button class="btn btn-success" type="submit" style="margin-left:165px">Search</button>
+            <br />
+            <br />
+        }
+    </div>
+
+    <div id="quan" style="margin-left:200px">
+        <!--This For Min an Max-->
+
+        @using (Html.BeginForm("FilterSearchQuantity", "Filter"))
+        {
+            <label style="color:white;margin-left:60px">Search by Quantity</label>
+            <br />
+            <br />
+            <input style="color: white; background-color: black; border-radius: 20px;margin-left:20px" type="number" id="maxQuan" name="maxQuan" min="1" required />
+            <br />
+            <br />
+            <button class="btn btn-success" type="submit" style="margin-left:60px">Search</button>
+            <br />
+            <br />
+        }
+    </div>
+
+    <!--Filter All-->
+    <div id="filterall" style="margin-left:200px">
+        <!--This For All-->
+
+        @using (Html.BeginForm("FilterSearchAll", "Filter"))
+        {
+            <br />
+            <h3 style="color:white">Enter Filter Criteria</h3>
+            <div>
+                <label style="color:white">
+                    ALL
+                </label>
+                @Html.RadioButton("Type", "All")
+                <label style="color:white">
+                    CPU
+                </label>
+                @Html.RadioButton("Type", "CPU")
+                <label style="color:white">
+                    RAM
+                </label>
+                @Html.RadioButton("Type", "RAM")
+
+                <label style="color:white">
+                    SSD
+                </label>
+                @Html.RadioButton("Type", "SSD")
+
+            </div>
+            <br />
+            <div style="margin-left:-120px">
+                <label style="color:white">Min Price</label>
+                <input style="color: white; background-color: black; border-radius: 20px" type="number" id="minNum" name="minNum" min="1" step="any" required />
+                <label style="color:white">Max Price</label>
+                <input style="color: white; background-color: black; border-radius: 20px" type="number" id="maxNum" name="maxNum" min="1" step="any" required />
+            </div>
+            <br />
+            <label style="color:white;margin-left:60px">Quantity</label>
+            <br />
+            <br />
+            <input style="color: white; background-color: black; border-radius: 20px;margin-left:20px" type="number" id="maxQuan" name="maxQuan" min="1" required />
+            <br />
+            <br />
+            <button class="btn btn-primary" type="submit" style="margin-left:60px">Search </button>
+            <br />
+            <br />
+        }
+    </div>
+
+ </div>
+<br />
+<br />
+@if (Model.Count == 0)
+{
+    <div class="btn btn-primary" role="alert" style="margin-left:410px;width:auto;border-radius:10px">
+        <h1><i class="glyphicon glyphicon-remove"> </i>Oops... Nothing to See here</h1>
+    </div>
+}
+else
+{
+    foreach (var product in Model)
+    {
+        <div class="row" style="height:100%;">
+            <div style="background-color:rgba(0,0,0,0.84); border-radius:20px">
+                <table class="table">
+                    <thead>
+                        <tr style="color:white">
+                            <th scope="col">Description</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">ProductType</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="color:white">
+                            <td>@product.Description</td>
+                            <td>@product.Price</td>
+                            <td>@product.Quantity</td>
+                            <td>@product.ProductTypeText</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+}
+
+<!--Section for javascript-->
+@section scripts
+{
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            //first hide evrything
+            $("#holdingdiv").hide();
+            $("#radio").hide();
+            $("#price").hide();
+            $("#quan").hide();
+            $("#filterall").hide();
+            $('#sel1').change().val('choose');
+
+            $('#sel1').on('change', function () {
+
+                if (this.value == 'prod') {
+                    $("#holdingdiv").show();
+                    $("#prod").show();
+                    $("#price").hide();
+                    $("#quan").hide();
+                }
+                if (this.value == 'price') {
+                    $("#holdingdiv").show();
+                    $("#price").show();
+                    $("#prod").hide();
+                    $("#quan").hide();
+                }
+
+                if (this.value == 'quan') {
+                    $("#holdingdiv").show();
+                    $("#quan").show();
+                    $("#prod").hide();
+                    $("#price").hide();
+                }
+
+                if (this.value == 'choose') {
+                    $("#holdingdiv").hide();
+                    $("#quan").hide();
+                    $("#prod").hide();
+                    $("#price").hide();
+                }
+
+                if (this.value == 'filterAll') {
+                    $("#holdingdiv").show();
+                    $("#filterall").show();
+                    $("#quan").hide();
+                    $("#prod").hide();
+                   $("#price").hide();
+                }
+            });
+
+
+        });
+    </script>
+}

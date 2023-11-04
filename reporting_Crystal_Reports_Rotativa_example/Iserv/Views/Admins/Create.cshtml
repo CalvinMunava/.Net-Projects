@@ -1,0 +1,242 @@
+﻿@model Iserv.Models.Admin
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<h2 style="color:white">Add new System  Admin</h2>
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+              <div style="float:left">
+                  <br />
+                  <br />
+                  <br />
+
+                <div class="form-group" style="width:250px">
+        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", required = true } })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+              <div class="form-group" style="width:250px">
+        @Html.LabelFor(model => model.Surname, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Surname, new { htmlAttributes = new { @class = "form-control", required = true } })
+            @Html.ValidationMessageFor(model => model.Surname, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+              <div class="form-group" style="width:250px">
+        @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control", required = true } })
+            @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+              <div class="form-group" style="width:250px">
+        <label> Gender</label>
+        <div class="col-md-10">
+            @Html.DropDownList("GenderID", null, htmlAttributes: new { @class = "form-control", @style = "background-color:rgba(0,0,0,0.88);border-radius:20px;color:white" })
+            @Html.ValidationMessageFor(model => model.GenderID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+              <div class="form-group" style="width:250px">
+        <label>Email Address</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", required = true } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+              <div class="form-group" style="width:250px">
+        <label>ID Number</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ID_Number, new { htmlAttributes = new { @class = "form-control", size = "13", id = "idn", name = "ID_Number", required = true } })
+            @Html.ValidationMessageFor(model => model.ID_Number, "", new { @class = "text-danger" })
+        </div>
+    </div>
+         
+              <div class="form-group" style="width:250px">
+        <label>Contact No.</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Cell_Number, new { htmlAttributes = new { @class = "form-control", required = true } })
+            @Html.ValidationMessageFor(model => model.Cell_Number, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+                </div>
+              <div style="float:right">
+                  <br />
+                  <br />
+                  <br />
+
+                  <div class="form-group">
+                      <label>Street Number</label>
+                      <br />
+                      <input type="number" class="form-control" id="StreetNumber" name="StreetNumber" style="width:200px" required>
+                  </div>
+                  <br />
+                  <div class="form-group">
+                      <label>Street Name</label>
+                      <br />
+                      <input class="form-control" id="StreetName" name="StreetName" style="width:200px" required6" required>
+                  </div>
+
+                  <div class="form-group">
+                      <label style="color:white">Province</label>
+                      <div class="col-md-10">
+                          @Html.DropDownList("ProvinceID", (IEnumerable<SelectListItem>)ViewBag.ProvinceID, "--Province--", htmlAttributes: new { @class = "form-control", @style = "background-color:rgba(0,0,0,0.88);border-radius:20px;color:white", id = "firstDropDownId", name = "firstDropDownId" })
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <label style="color:white">City</label>
+                      <div class="col-md-10">
+                          @Html.DropDownList("CityID", (IEnumerable<SelectListItem>)ViewBag.CityID, "--City--", htmlAttributes: new { @class = "form-control", @style = "background-color:rgba(0,0,0,0.88);border-radius:20px;color:white", id = "secondDropDownId", name = "secondDropDownId" })
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <div class="col-md-offset-2 col-md-10">
+                          <button type="submit" class="button button-primary" style="border-radius:20px;margin-left:50px" id="checkid">Create</button>
+                      </div>
+                  </div>
+
+              </div>
+              <div id="debug" style="border:1px solid; border-radius:5px;border-color:darkred;width:auto;background-color:black;color:red">
+
+        </div>
+        <br />
+        <br />
+    }
+
+</div>
+
+
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#firstDropDownId').change(function () {
+                $(function () {
+                    var city = parseInt($("#firstDropDownId").val());
+                    $.ajax({
+                        url: '@Url.Action("GetSecondData", "Service_Provider_Application")',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: { 'firstId': city },
+                        success: function (data) {
+                            var options = $('#secondDropDownId');
+                            options.empty();
+                            console.log(data);
+                            $.each(data, function (i, item) {
+                                options.append($('<option />').val(item.Value).text(item.Text));
+                            });
+                        },
+                        error: function (response) {
+                            console.log(response);
+                        }
+                    });
+
+                });
+            });
+        });
+            function validateRSAidnumber() {
+
+                $('#debug').empty();
+
+                // the anatomy of an RSA ID Number : http://warwickchapman.com/the-anatomy-of-an-rsa-id-number
+                // structure: (YYMMDD GSSS CAZ)
+
+                var idnumber = $('#idn').val(),
+                    invalid = 0;
+
+                // display debugging
+                var debug = $('#debug');
+
+                // check that value submitted is a number
+                if (isNaN(idnumber)) {
+                    debug.append('ID supplied is not a valid number.<br />');
+                    invalid++;
+                }
+
+                // check length of 13 digits
+                if (idnumber.length != 13) {
+                    debug.append('The ID Number supplied does not have 13 digits.<br />');
+                    invalid++;
+                }
+
+                // check that YYMMDD group is a valid date
+                var yy = idnumber.substring(0, 2),
+                    mm = idnumber.substring(2, 4),
+                    dd = idnumber.substring(4, 6);
+
+                var dob = new Date(yy, (mm - 1), dd);
+
+                // check values - add one to month because Date() uses 0-11 for months
+                if (!(((dob.getFullYear() + '').substring(2, 4) == yy) && (dob.getMonth() == mm - 1) && (dob.getDate() == dd))) {
+                    debug.append('Date in first 6 digits of ID is invalid.<br />');
+                    invalid++;
+                }
+
+                // evaluate GSSS group for gender and sequence
+                var gender = parseInt(idnumber.substring(6, 10), 10) > 5000 ? "M" : "F";
+
+                // ensure third to last digit is a 1 or a 0
+                if (idnumber.substring(10, 11) > 1) {
+                    debug.append('Third to last digit in ID can only be a 0 or 1 but is a ' + idnumber.substring(10, 11) + '.<br />');
+                    invalid++;
+                } else {
+                    // determine citizenship from third to last digit (C)
+                    var saffer = parseInt(idnumber.substring(10, 11), 10) === 0 ? "C" : "F";
+                }
+
+                // ensure second to last digit is a 8 or a 9
+                if (idnumber.substring(11, 12) < 8) {
+                    debug.append('Second to last digit in ID can only be a 8 or 9 but is a ' + idnumber.substring(11, 12) + '.<br />');
+                    invalid++;
+                }
+
+                // calculate check bit (Z) using the Luhn algorithm
+                var ncheck = 0,
+                    beven = false;
+
+                for (var c = idnumber.length - 1; c >= 0; c--) {
+                    var cdigit = idnumber.charAt(c),
+                        ndigit = parseInt(cdigit, 10);
+
+                    if (beven) {
+                        if ((ndigit *= 2) > 9) ndigit -= 9;
+                    }
+
+                    ncheck += ndigit;
+                    beven = !beven;
+                }
+
+                if ((ncheck % 10) !== 0) {
+                    debug.append('Checkbit ID is incorrect.<br />');
+                    invalid++;
+                }
+
+                // if one or more checks fail, display details
+                if (invalid > 0) {
+                    debug.css('display', 'block');
+                }
+
+                return (ncheck % 10) === 0;
+            }
+            $('#checkid').click(validateRSAidnumber);
+    </script>
+
+}

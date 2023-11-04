@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Iserv.Models.Invoice>
+@{
+    ViewBag.Title = "IndexCustomers";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+<div id="Active">
+    @if (Model.Count() != 0)
+    {
+        <h2 class="text-info">Currently Active</h2>
+        <div class="row" style="height:100%;margin-left:-5%">
+            <br />
+            @foreach (var item in Model)
+            {
+                <div class="card " style="width:450px;height:auto;border:1px solid;border-radius:10px;padding:10px;background-color:rgba(0,0,0,1);margin-left:-2%;margin-top:50px">
+                    <p class="card-text" style="color:white">Quote Valid Until <strong class="text-info"> @DateTime.Parse(item.ValidUntil.ToString()).ToShortDateString()</strong></p>
+                    <div class="card-body">
+                        <img class="card-img-top" src="@Url.Content(item.Consumer.User.ImagePath)" style="width:60%;height:40%">
+                        <h4 style="color:white">Sent to <span class="text-info">@item.Consumer.Name @item.Consumer.Surname</span></h4>
+                        <p class="card-title" style="color:white"> Total Amount: <span class="text-info"> @item.Total </span></p>
+                        <p class="card-title" style="color:white">Prefferd Payment Method : <span class="text-info"> @item.PaymentMethod.Name</span></p>
+                        <button class="btn btn-dark btn-sm" type="submit" onclick="window.location.href='@Url.Action("PastDetails", "Invoices", new { id = item.InvoiceID })'">View Invoice</button>
+                        <button class="btn btn-dark btn-sm" type="submit" id="@item.ServiceQuoteID" data-toggle="modal" data-target="#modal-@item.ServiceQuoteID">Message</button>
+                    </div>
+                    <div class="modal fade" id="modal-@item.ServiceQuoteID" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false" style="margin-left:-69px;margin-top:8%">
+
+                        <div class="modal-dialog">
+
+                            <div class="modal-content" style="background-color:#1D2026;color:white;border-radius:15px;align-content:center">
+
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="myModalLabel">Send Message </h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                </div>
+                                @using (Html.BeginForm("Create", "Messages", FormMethod.Post))
+                                {
+                                    <div class="modal-body">
+                                        <!--Below are inputs-->
+                                        <input style="display: none" type="datetime" id="DateSent" name="DateSent" value="@DateTime.Now.ToShortDateString()" />
+                                        <input style="display:none" type="time" id="TimeSent" name="TimeSent" value="@DateTime.Now.ToShortTimeString()" />
+                                        <input style="display:none" type="text" id="MesseageLocation" name="MesseageLocation" value="Inbox" />
+                                        <input style="display:none" type="text" id="SentFrom" name="SentFrom" value="@User.Identity.Name" />
+                                        <input style="display:none" type="text" id="MessageSentTo" name="MessageSentTo" value="@item.Consumer.Name" />
+                                        <textarea placeholder="Enter Message" style="background-color:rgba(0,0,0,0.88);color:white" required rows="2" id="MessageBody" name="MessageBody"></textarea>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-info"><i class="fa fa-check"></i> Send</button>
+                                    </div>
+
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <h2 class="text-info">No Invoices  Found</h2>
+    }
+</div>
