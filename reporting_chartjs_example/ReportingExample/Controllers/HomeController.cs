@@ -14,6 +14,7 @@ namespace ReportingExample.Controllers
     public class HomeController : Controller
     {
         private ReportStoreEntities db = new ReportStoreEntities();
+
         public ActionResult Index(int? productID)
         {
             //Get List of Names to load to view
@@ -37,39 +38,29 @@ namespace ReportingExample.Controllers
         {
             //Instantiatelist to hold data
             List<ProductHolder> holdinglist = new List<ProductHolder>();
+
             //Group Objects
-            var Products = (from invoiceline in db.InvoiceLines
+            var ProductsQuery = (from invoiceline in db.InvoiceLines
                             group invoiceline by invoiceline.ProductID into groupedobjects
                             orderby groupedobjects.Key
                             select new ProductHolder
                             {
                                 ProductID = groupedobjects.Key,
-                                ProductQuantity = (int)groupedobjects.Sum(oi => oi.Quantity * oi.ls)
-                            }).ToList(); ;
-            //loop through each object and add name to complete model
-            // make list to hold things for chart
-            List<ProductHolder> chartlist = new List<ProductHolder>();
-            foreach (var line in Products)
-            {
-                var findProductName = db.Products.Where(x => x.ProductID == line.ProductID).FirstOrDefault();
-                line.ProductName = findProductName.ProductName;
-                if(line.ProductQuantity >= quantity)
-                {
-                    chartlist.Add(line);
-                }
-            }
+                                ProductName = groupedobjects.FirstOrDefault().Product.ProductName,
+                                ProductQuantity = (int)groupedobjects.Sum(oi => oi.Quantity),
+                            }).Where(x=> x.ProductQuantity >= quantity).ToList();
 
-            //render things for calander
-            //List<int> quantities = new List<int>();
-            //var productnames = chartlist.Select(x => x.ProductName).Distinct();
-            //foreach( var chartItem in chartlist)
-            //{
-            //    quantities.Add(chartItem.ProductQuantity);
-            //}
-            // send data to back
-    
-            return new JsonResult { Data = chartlist,  JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+
+            var ProductsLamda = db.InvoiceLines.GroupBy(x => x.ProductID).Select(x => new ProductHolder
+                            {
+                                ProductID = x.Key,
+                                ProductName = x.FirstOrDefault().Product.ProductName,
+                                ProductQuantity = (int)x.Sum(oi => oi.Quantity),
+                            }).Where(x => x.ProductQuantity >= quantity).ToList();
+
+
+            return new JsonResult { Data = ProductsQuery,  JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
-
+   
     }
 }
